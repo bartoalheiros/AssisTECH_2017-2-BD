@@ -30,7 +30,7 @@ public class RepositorioClientesArrayList implements IRepositorioClientes, Seria
 	}
 
 	@Override
-	public boolean cadastrar(Cliente cliente) {
+	public boolean cadastra(Cliente cliente) {
 		List<Cliente> listaClientes = getInstance().listaClientes;
 		
 		if(!listaClientes.contains(cliente)) {
@@ -54,7 +54,7 @@ public class RepositorioClientesArrayList implements IRepositorioClientes, Seria
 	}
 
 	@Override
-	public Cliente buscaPorCpf(Long cpf) {
+	public Cliente busca(Long cpf) {
 		Cliente cliente = null;
 
 		for(Cliente cli: getInstance().listaClientes) {
@@ -79,7 +79,7 @@ public class RepositorioClientesArrayList implements IRepositorioClientes, Seria
 	}
 
 	@Override
-	public void remover(Long cpf) {
+	public void exclui(Long cpf) {
 
 		for(Cliente cli: getInstance().listaClientes) {
 			if(cli.getCpf().equals(cpf)) {
@@ -92,7 +92,7 @@ public class RepositorioClientesArrayList implements IRepositorioClientes, Seria
 	}
 
 	@Override
-	public void atualizar(Cliente cli) {
+	public void atualiza(Cliente cli) {
 		List<Cliente> listaClientes = getInstance().listaClientes;
 
 		if( getInstance().existe(cli) ){
@@ -177,9 +177,9 @@ public class RepositorioClientesArrayList implements IRepositorioClientes, Seria
 
 
 		System.out.println("Adicionando CLientes");
-		repo.cadastrar(cli1);
-		repo.cadastrar(cli2);
-		repo.cadastrar(cli3);
+		repo.cadastra(cli1);
+		repo.cadastra(cli2);
+		repo.cadastra(cli3);
 
 
 

@@ -8,12 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.ufrpe.assistec.model.Fornecedor;
-import br.ufrpe.assistec.model.Funcionario;
 
 public class RepositorioFornecedor implements IRepositorioFornecedor {
 
 	@Override
-	public List<Fornecedor> lista_Fornecedor(Connection connection) {
+	public List<Fornecedor> lista(Connection connection) {
 		List<Fornecedor> listaFornecedor = new ArrayList<>();
 
 		String sql = "select * from fornecedor";
@@ -22,19 +21,12 @@ public class RepositorioFornecedor implements IRepositorioFornecedor {
 			PreparedStatement statement = connection.prepareStatement(sql);
 			
 			ResultSet resultset = statement.executeQuery();
-			Funcionario f = new Funcionario();
+			Fornecedor f = new Fornecedor();
 			
 			while (resultset.next()) {
 				
-				f.setMatricula(resultset.getString("Matricula"));
-				f.setMatriculaSuperv(resultset.getString("MatriculaSupervisor"));
-				f.setNome(resultset.getString("Nome"));
-				f.setCPF(resultset.getLong("CPF"));
-				f.setCodUnid_Suporte(resultset.getInt("Cod_Unid_Suporte"));
-				f.setLogin(resultset.getString("Login"));
-				f.setSenha(resultset.getString("Senha"));
-				f.setEmail(resultset.getString("Email"));
-				f.setCargaHoraria(resultset.getInt("Carga_hora"));
+				//fornecedor.dadosDoResultSet()
+				//procurar nos outros repositorios
 
 				listaFornecedor.add(f);
 

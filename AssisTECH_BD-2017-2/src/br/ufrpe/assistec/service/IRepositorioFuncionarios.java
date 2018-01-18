@@ -16,12 +16,12 @@ import br.ufrpe.assistec.model.Funcionario;
 public interface IRepositorioFuncionarios {
 	
     //adiciona um funcionario ao banco
-	public boolean cadastrar(Funcionario f);
+	public boolean cadastra(Funcionario f);
 	
-	public void salvarAlteracoes(Funcionario f) throws SQLException;
+	public void atualiza(Funcionario f) throws SQLException;
 
-	public List<Funcionario> listar_Funcionarios(String nomeFuncionario);
+	public List<Funcionario> busca(String nomeFuncionario);
 
-	public List<Funcionario> listar_Funcionarios();
+	public List<Funcionario> lista();
 
 }

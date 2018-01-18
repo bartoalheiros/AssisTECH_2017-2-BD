@@ -28,7 +28,7 @@ public class ControladorClientes {
 			throw new ClienteJahCadastradoException(cliente.getCpf());
 		}
 		
-		this.repositorio.cadastrar(cliente);
+		this.repositorio.cadastra(cliente);
 		
 		
 //		boolean r = this.repositorio.cadastrar(cliente);
@@ -39,13 +39,13 @@ public class ControladorClientes {
 //				throw new ClienteJahCadastradoException(cpf);
 //			} 
 //		}else {
-//			throw new IllegalArgumentException("Parâmetro inválido");
+//			throw new IllegalArgumentException("Parï¿½metro invï¿½lido");
 //		}
 
 	}
 
 	public Cliente buscar(Long cpf) throws ClienteNaoCadastradoException {
-		Cliente cli = ((RepositorioClientesArrayList)this.repositorio).buscaPorCpf(cpf);
+		Cliente cli = ((RepositorioClientesArrayList)this.repositorio).busca(cpf);
 
 		if(cli == null) {
 			throw new ClienteNaoCadastradoException(cpf);
@@ -65,13 +65,13 @@ public class ControladorClientes {
 
 	public void atualizar (Cliente c) {
 		if(this.existe(c)){
-			((RepositorioClientesArrayList)this.repositorio).atualizar(c);
+			((RepositorioClientesArrayList)this.repositorio).atualiza(c);
 		}
 	}
 
 	public void remover(Long cpf) {
 		
-		((RepositorioClientesArrayList)this.repositorio).remover(cpf);
+		((RepositorioClientesArrayList)this.repositorio).exclui(cpf);
 		
 	}
 

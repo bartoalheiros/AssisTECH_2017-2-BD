@@ -52,7 +52,7 @@
                <font>
                   <Font size="16.0" />
                </font></Label>
-            <Button fx:id="btn_Cadastrar" layoutX="93.0" layoutY="506.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="46.0" prefWidth="93.0" text="CADASTRAR" />
+            <Button fx:id="btn_Cadastrar" layoutX="93.0" layoutY="506.0" mnemonicParsing="false" onAction="#cadastra" prefHeight="46.0" prefWidth="93.0" text="CADASTRAR" />
             <TextField fx:id="tf_Login" layoutX="781.0" layoutY="163.0" prefHeight="37.0" prefWidth="323.0">
                <font>
                   <Font size="16.0" />
@@ -119,10 +119,10 @@
                   <TableColumn fx:id="cl_Cod_Unid_Suporte" prefWidth="161.0" text="CodigoUnidadeDeSuporte" />
               </columns>
             </TableView>
-            <Button fx:id="btn_Exibir" layoutX="202.0" layoutY="506.0" mnemonicParsing="false" onAction="#listarFuncionarios_2_0" prefHeight="46.0" prefWidth="93.0" text="CONSULTAR" />
+            <Button fx:id="btn_Exibir" layoutX="202.0" layoutY="506.0" mnemonicParsing="false" onAction="#busca" prefHeight="46.0" prefWidth="93.0" text="CONSULTAR" />
             <TextField fx:id="filtro_consultar" layoutX="312.0" layoutY="508.0" prefHeight="35.0" prefWidth="327.0" />
             <Button fx:id="btn_Editar" layoutX="882.0" layoutY="502.0" mnemonicParsing="false" onAction="#editarFuncionario" prefHeight="46.0" prefWidth="93.0" text="EDITAR" />
-            <Button fx:id="btn_Salvar" layoutX="659.0" layoutY="502.0" mnemonicParsing="false" onAction="#salvarAteracoes" prefHeight="46.0" prefWidth="150.0" text="SALVAR ALTERAÇÕES" />
+            <Button fx:id="btn_Salvar" layoutX="659.0" layoutY="502.0" mnemonicParsing="false" onAction="#atualiza" prefHeight="46.0" prefWidth="150.0" text="SALVAR ALTERAÇÕES" />
             <Button fx:id="btn_Excluir" layoutX="1013.0" layoutY="501.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="93.0" text="EXCLUIR" />
             <TextField fx:id="tf_ID_Jornada" layoutX="779.0" layoutY="423.0" prefHeight="37.0" prefWidth="221.0">
                <font>

@@ -6,14 +6,14 @@ import br.ufrpe.assistec.exception.ClienteJahCadastradoException;
 import br.ufrpe.assistec.model.Cliente;
 
 public interface IRepositorioClientes {
-	public boolean cadastrar(Cliente cliente);
+	public boolean cadastra(Cliente cliente);
 	
-	public void atualizar(Cliente cli);
+	public void atualiza(Cliente cli);
 
-	public Cliente buscaPorCpf(Long cpf);
+	public Cliente busca(Long cpf);
 
 
-	void remover(Long cpf);
+	void exclui(Long cpf);
 	
-	//public List<Cliente> listarTodos();
+	
 }

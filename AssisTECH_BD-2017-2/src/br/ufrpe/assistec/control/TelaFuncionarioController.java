@@ -118,9 +118,9 @@ public class TelaFuncionarioController {
 	@FXML
 	private TableColumn<Funcionario,String> cl_ID_Jornada;
 	
-	private IRepositorioFuncionarios repositorio = RepositorioFuncionarios.getInstance();
+	private IRepositorioFuncionarios repFunc = RepositorioFuncionarios.getInstance();
 	
-	private List<Funcionario> employeeList = repositorio.listar_Funcionarios();
+	private List<Funcionario> employeeList = repFunc.lista();
 	
 	private ObservableList<Funcionario> employeeTableList = FXCollections.observableArrayList();
 
@@ -129,7 +129,7 @@ public class TelaFuncionarioController {
 
 		//tableFuncionario = new TableView<Funcionario>();
 		
-		this.listarFuncionarios_2_0();
+		this.listar_Funcionarios();
 		
 		/**/
 		//listarFuncionarios();
@@ -141,9 +141,9 @@ public class TelaFuncionarioController {
 	//método adaptado para mostrar os campos de um funcionário informado pelo usuário
 	//seria melhor o nome 'buscar'
 	@FXML
-	void listarFuncionarios() {   
+	void busca() {   
 		try {
-			List<Funcionario> listaFuncionarios = this.repositorio.listar_Funcionarios(filtro_consultar.getText());
+			List<Funcionario> listaFuncionarios = this.repFunc.busca(filtro_consultar.getText());
 
 			if (listaFuncionarios.isEmpty()){
 				Alert err = new Alert(AlertType.ERROR);
@@ -163,12 +163,15 @@ public class TelaFuncionarioController {
 				tf_Email.setEditable(false);
 				tf_Login.setText(listaFuncionarios.get(0).getLogin());
 				tf_Login.setEditable(false);
+				tf_Senha.setText(listaFuncionarios.get(0).getSenha());
+				tf_Senha.setEditable(false);
 				tf_Nome.setText(listaFuncionarios.get(0).getNome());
 				tf_Nome.setEditable(false);
 				tf_Cod_Unid_Suporte.setText(Integer.toString(listaFuncionarios.get(0).getCodUnid_Suporte()));
 				tf_Cod_Unid_Suporte.setEditable(false);
 				tf_Carga_hora.setText(Integer.toString(listaFuncionarios.get(0).getCargaHoraria()));
 				tf_Carga_hora.setEditable(false);
+				System.out.println(listaFuncionarios.get(0));
 
 			}
 
@@ -182,7 +185,7 @@ public class TelaFuncionarioController {
 	}
 
 	@FXML
-	void listarFuncionarios_2_0() {
+	void listar_Funcionarios() {
 		
 		cl_MatriculaFuncionario.setCellValueFactory(new PropertyValueFactory<>("Matricula"));
 		cl_CPF.setCellValueFactory(new PropertyValueFactory<>("CPF"));
@@ -205,7 +208,7 @@ public class TelaFuncionarioController {
 		
 		for(Funcionario funcionario : employeeList) {
 					employeeTableList.add(funcionario);
-					System.out.println(funcionario);
+					//System.out.println(funcionario);
 				
 		}
 		
@@ -233,7 +236,7 @@ public class TelaFuncionarioController {
 	}
 	
 	@FXML
-	void salvarAteracoes(ActionEvent event) {
+	void atualiza(ActionEvent event) {
 		
 		java.text.DateFormat format = java.text.DateFormat.getDateInstance();
 		
@@ -252,7 +255,7 @@ public class TelaFuncionarioController {
 		}
 		
 		try {
-			this.repositorio.salvarAlteracoes(f);
+			this.repFunc.atualiza(f);
 			Alert infoAlterar = new Alert(AlertType.INFORMATION);
 			infoAlterar.setContentText("Atualizado com sucesso!");
 			infoAlterar.showAndWait();
@@ -267,13 +270,13 @@ public class TelaFuncionarioController {
 	
 	//cadastra um funcionário no banco
 	@FXML
-	void cadastrar(ActionEvent event) {
+	void cadastra(ActionEvent event) {
 		
 		 DateFormat format = new SimpleDateFormat("yyyy-MM-dd"); 
 
-		Funcionario f = null;
+		Funcionario func = null;
 		try {
-			f = new Funcionario(tf_MatriculaF.getText(), tf_Matricula_Superv.getText(), tf_Nome.getText(), 
+			func = new Funcionario(tf_MatriculaF.getText(), tf_Matricula_Superv.getText(), tf_Nome.getText(), 
 					Long.parseLong(tf_Cpf.getText()), Integer.parseInt(tf_Cod_Unid_Suporte.getText()), 
 					tf_Login.getText(), tf_Senha.getText(), tf_Email.getText(), Integer.parseInt(tf_Carga_hora.getText()), (Date) format.parse(tf_Data_Inicio.getText()), tf_ID_Jornada.getText());
 		} catch (NumberFormatException e) {
@@ -284,7 +287,7 @@ public class TelaFuncionarioController {
 			e.printStackTrace();
 		}
 
-		this.repositorio.cadastrar(f);
+		this.repFunc.cadastra(func);
 	}
 
 }

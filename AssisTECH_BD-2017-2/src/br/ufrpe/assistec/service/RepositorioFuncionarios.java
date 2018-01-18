@@ -32,7 +32,7 @@ public class RepositorioFuncionarios implements IRepositorioFuncionarios{
 	}
 
 	@Override
-	public boolean cadastrar(Funcionario f) {
+	public boolean cadastra(Funcionario f) {
 		String sql = "insert into funcionario " +
 				"(Matricula, CPF, Login, Senha, Nome, Email, Carga_hora, Matricula_supervisor, data_inicio, Cod_Unid_Suporte) " +
 				"values (?,?,?,?,?,?,?,?,?,?)";
@@ -61,7 +61,7 @@ public class RepositorioFuncionarios implements IRepositorioFuncionarios{
 	}
 	
 	//lista os funcionários na tabela
-	public List<Funcionario> listar_Funcionarios(String nomefuncionario) {
+	public List<Funcionario> busca(String nomefuncionario) {
 
 		List<Funcionario> listaFuncionario = new ArrayList<>();
 
@@ -81,11 +81,11 @@ public class RepositorioFuncionarios implements IRepositorioFuncionarios{
 				f.setMatriculaSuperv(resultset.getString("MatriculaSupervisor"));
 				f.setNome(resultset.getString("Nome"));
 				f.setCPF(resultset.getLong("CPF"));
-				f.setCodUnid_Suporte(resultset.getInt("Cod_Unid_Suporte"));
+				f.setCodUnid_Suporte(resultset.getInt("CodigoUnidadeDeSuporte"));
 				f.setLogin(resultset.getString("Login"));
 				f.setSenha(resultset.getString("Senha"));
 				f.setEmail(resultset.getString("Email"));
-				f.setCargaHoraria(resultset.getInt("Carga_hora"));
+				f.setCargaHoraria(resultset.getInt("CargaHoraria"));
 
 				listaFuncionario.add(f);
 
@@ -104,7 +104,7 @@ public class RepositorioFuncionarios implements IRepositorioFuncionarios{
 	}
 	
 	
-	public List<Funcionario> listar_Funcionarios() {
+	public List<Funcionario> lista() {
 				
 		List<Funcionario> employeeList = new ArrayList<>();
 
@@ -151,7 +151,7 @@ public class RepositorioFuncionarios implements IRepositorioFuncionarios{
 	
 
 	@Override
-	public void salvarAlteracoes(Funcionario f) throws SQLException {
+	public void atualiza(Funcionario f) throws SQLException {
 		String Matricula = f.getMatricula();
 		String Matricula_Supervisor = f.getMatriculaSuperv();
 		String Email = f.getEmail();
@@ -174,7 +174,8 @@ public class RepositorioFuncionarios implements IRepositorioFuncionarios{
 		
 	}
 
-	}	
+
+}	
 
 
 

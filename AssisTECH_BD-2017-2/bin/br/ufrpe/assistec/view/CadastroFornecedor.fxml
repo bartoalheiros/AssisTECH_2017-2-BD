@@ -20,17 +20,17 @@
                   <Image url="@assistech5.png" />
                </image>
             </ImageView>
-            <TextField layoutX="99.0" layoutY="89.0" prefHeight="37.0" prefWidth="295.0">
+            <TextField fx:id="tf_CNPJ" layoutX="99.0" layoutY="89.0" prefHeight="37.0" prefWidth="295.0">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <TextField layoutX="101.0" layoutY="169.0" prefHeight="37.0" prefWidth="296.0">
+            <TextField fx:id="tf_RazaoSocial" layoutX="101.0" layoutY="169.0" prefHeight="37.0" prefWidth="296.0">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <TextField layoutX="103.0" layoutY="333.0" prefHeight="37.0" prefWidth="294.0">
+            <TextField fx:id="tf_Telefone" layoutX="103.0" layoutY="333.0" prefHeight="37.0" prefWidth="294.0">
                <font>
                   <Font size="16.0" />
                </font>
@@ -56,7 +56,7 @@
                   <Font name="Agency FB" size="34.0" />
                </font>
             </Label>
-            <TextField layoutX="103.0" layoutY="250.0" prefHeight="37.0" prefWidth="294.0">
+            <TextField fx:id="tf_Email" layoutX="103.0" layoutY="250.0" prefHeight="37.0" prefWidth="294.0">
                <font>
                   <Font size="16.0" />
                </font>
@@ -75,7 +75,7 @@
                </columns>
             </TableView>
             <Button layoutX="175.0" layoutY="433.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="93.0" text="CONSULTAR" />
-            <TextField layoutX="285.0" layoutY="435.0" prefHeight="35.0" prefWidth="327.0" />
+            <TextField fx:id="tf_BuscarFornecedor" layoutX="285.0" layoutY="435.0" prefHeight="35.0" prefWidth="327.0" />
             <Button layoutX="893.0" layoutY="430.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="93.0" text="EDITAR" />
             <Button layoutX="632.0" layoutY="429.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="150.0" text="SALVAR ALTERAÇÕES" />
             <Button layoutX="1019.0" layoutY="430.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="93.0" text="EXCLUIR" />
