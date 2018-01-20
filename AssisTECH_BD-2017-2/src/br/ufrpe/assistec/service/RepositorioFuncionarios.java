@@ -61,19 +61,17 @@ public class RepositorioFuncionarios implements IRepositorioFuncionarios{
 	}
 	
 	//lista os funcionários na tabela
-	public List<Funcionario> busca(String nomefuncionario) {
+	public Funcionario busca(String cpfFuncionario) {
 
-		List<Funcionario> listaFuncionario = new ArrayList<>();
+		Funcionario f = new Funcionario();
+		String sql = "select * from funcionario where CPF like'%" +cpfFuncionario+"%'";
 
-		String sql = "select * from funcionario where Nome like'%" +nomefuncionario+"%'";
-
-		//String sql = "select * from funcionario where Nome l" +nomefuncionario;
 
 		try {
 			PreparedStatement statement = connection.prepareStatement(sql);
 			
 			ResultSet resultset = statement.executeQuery();
-			Funcionario f = new Funcionario();
+			
 			
 			while (resultset.next()) {
 				
@@ -87,8 +85,6 @@ public class RepositorioFuncionarios implements IRepositorioFuncionarios{
 				f.setEmail(resultset.getString("Email"));
 				f.setCargaHoraria(resultset.getInt("CargaHoraria"));
 
-				listaFuncionario.add(f);
-
 			}
 			resultset.close();
 			statement.close();
@@ -98,9 +94,7 @@ public class RepositorioFuncionarios implements IRepositorioFuncionarios{
 			throw new RuntimeException();
 		}
 		
-		//System.out.println(listaFuncionario);
-		
-		return listaFuncionario;
+		return f;
 	}
 	
 	

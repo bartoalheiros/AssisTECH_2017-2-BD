@@ -50,7 +50,7 @@ public class TelaFuncionarioController {
 	private TextField tf_Email;
 
 	@FXML
-	private TextField filtro_consultar;
+	private TextField tf_consulta;
 
 	@FXML
 	private Button btn_Cadastrar;
@@ -125,17 +125,10 @@ public class TelaFuncionarioController {
 	private ObservableList<Funcionario> employeeTableList = FXCollections.observableArrayList();
 
 	public void initialize() {
-	
-
-		//tableFuncionario = new TableView<Funcionario>();
 		
+		//lista os funcionários na tabela
 		this.listar_Funcionarios();
 		
-		/**/
-		//listarFuncionarios();
-
-		//this.listarFuncionarios();
-
 	}
 
 	//método adaptado para mostrar os campos de um funcionário informado pelo usuário
@@ -143,9 +136,9 @@ public class TelaFuncionarioController {
 	@FXML
 	void busca() {   
 		try {
-			List<Funcionario> listaFuncionarios = this.repFunc.busca(filtro_consultar.getText());
+			Funcionario funcionario = this.repFunc.busca(tf_consulta.getText());
 
-			if (listaFuncionarios.isEmpty()){
+			if (funcionario == null ){
 				Alert err = new Alert(AlertType.ERROR);
 				err.setContentText("Nenhum funcionário cadastrado.");
 				err.showAndWait();
@@ -153,26 +146,25 @@ public class TelaFuncionarioController {
 			}
 			else{
 				//tableFuncionario.setItems(FXCollections.observableList(listaFuncionarios));
-				tf_MatriculaF.setText(listaFuncionarios.get(0).getMatricula());
+				tf_MatriculaF.setText(funcionario.getMatricula());
 				tf_MatriculaF.setEditable(false);
-				tf_Matricula_Superv.setText(listaFuncionarios.get(0).getMatriculaSuperv());
+				tf_Matricula_Superv.setText(funcionario.getMatriculaSuperv());
 				tf_Matricula_Superv.setEditable(false);
-				tf_Cpf.setText(Long.toString(listaFuncionarios.get(0).getCPF()));
+				tf_Cpf.setText(Long.toString(funcionario.getCPF()));
 				tf_Cpf.setEditable(false);
-				tf_Email.setText(listaFuncionarios.get(0).getEmail());
+				tf_Email.setText(funcionario.getEmail());
 				tf_Email.setEditable(false);
-				tf_Login.setText(listaFuncionarios.get(0).getLogin());
+				tf_Login.setText(funcionario.getLogin());
 				tf_Login.setEditable(false);
-				tf_Senha.setText(listaFuncionarios.get(0).getSenha());
+				tf_Senha.setText(funcionario.getSenha());
 				tf_Senha.setEditable(false);
-				tf_Nome.setText(listaFuncionarios.get(0).getNome());
+				tf_Nome.setText(funcionario.getNome());
 				tf_Nome.setEditable(false);
-				tf_Cod_Unid_Suporte.setText(Integer.toString(listaFuncionarios.get(0).getCodUnid_Suporte()));
+				tf_Cod_Unid_Suporte.setText(Integer.toString(funcionario.getCodUnid_Suporte()));
 				tf_Cod_Unid_Suporte.setEditable(false);
-				tf_Carga_hora.setText(Integer.toString(listaFuncionarios.get(0).getCargaHoraria()));
+				tf_Carga_hora.setText(Integer.toString(funcionario.getCargaHoraria()));
 				tf_Carga_hora.setEditable(false);
-				System.out.println(listaFuncionarios.get(0));
-
+				
 			}
 
 		} catch (Exception e) {

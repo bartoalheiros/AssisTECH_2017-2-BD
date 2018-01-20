@@ -6,5 +6,5 @@ import java.util.List;
 import br.ufrpe.assistec.model.Fornecedor;
 
 public interface IRepositorioFornecedor {
-	List<Fornecedor> lista(Connection connection);
+	List<Fornecedor> lista();
 }

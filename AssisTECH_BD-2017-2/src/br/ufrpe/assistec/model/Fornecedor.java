@@ -1,5 +1,7 @@
 package br.ufrpe.assistec.model;
 
+import java.math.BigInteger;
+
 public class Fornecedor {
 	private Long CNPJ;
 	private String RazaoSocial;
@@ -8,43 +10,43 @@ public class Fornecedor {
 	
 	public Fornecedor() {}
 	
-	public Fornecedor(Long cNPJ, String razaoSocial, String email, String telefone) {
-		CNPJ = cNPJ;
-		RazaoSocial = razaoSocial;
-		Email = email;
-		Telefone = telefone;
+	public Fornecedor(Long CNPJ, String razaoSocial, String email, String telefone) {
+		this.CNPJ = CNPJ;
+		this.RazaoSocial = razaoSocial;
+		this.Email = email;
+		this.Telefone = telefone;
 	}
 
 	public Long getCNPJ() {
-		return CNPJ;
+		return this.CNPJ;
 	}
 
-	public void setCNPJ(Long cNPJ) {
-		CNPJ = cNPJ;
+	public void setCNPJ(Long CNPJ) {
+		this.CNPJ = CNPJ;
 	}
 
 	public String getRazaoSocial() {
-		return RazaoSocial;
+		return this.RazaoSocial;
 	}
 
 	public void setRazaoSocial(String razaoSocial) {
-		RazaoSocial = razaoSocial;
+		this.RazaoSocial = razaoSocial;
 	}
 
 	public String getEmail() {
-		return Email;
+		return this.Email;
 	}
 
 	public void setEmail(String email) {
-		Email = email;
+		this.Email = email;
 	}
 
 	public String getTelefone() {
-		return Telefone;
+		return this.Telefone;
 	}
 
 	public void setTelefone(String telefone) {
-		Telefone = telefone;
+		this.Telefone = telefone;
 	}
 
 	@Override

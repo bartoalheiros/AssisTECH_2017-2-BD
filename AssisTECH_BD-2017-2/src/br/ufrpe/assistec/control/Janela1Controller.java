@@ -158,7 +158,6 @@ public class Janela1Controller {
         stage.setTitle("Cadastrar Funcionario");
         stage.setResizable(true);
         stage.show();
-        //TelaFuncionarioController.this.
     }
     
     @FXML

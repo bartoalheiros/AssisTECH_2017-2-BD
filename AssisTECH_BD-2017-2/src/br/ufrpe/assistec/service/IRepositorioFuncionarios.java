@@ -20,7 +20,7 @@ public interface IRepositorioFuncionarios {
 	
 	public void atualiza(Funcionario f) throws SQLException;
 
-	public List<Funcionario> busca(String nomeFuncionario);
+	public Funcionario busca(String cpfFuncionario);
 
 	public List<Funcionario> lista();
 

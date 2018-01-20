@@ -8,11 +8,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.ufrpe.assistec.model.Fornecedor;
+import br.ufrpe.assistec.model.Funcionario;
 
 public class RepositorioFornecedor implements IRepositorioFornecedor {
+	Connection connection = ConnectionFactory.getConexaoMySQL();
+	
+	private static IRepositorioFornecedor instance = null;
 
+	public static IRepositorioFornecedor getInstance() {
+		if(instance == null) {
+			instance = new RepositorioFornecedor();
+		}
+
+		return instance;
+	}
+
+	
 	@Override
-	public List<Fornecedor> lista(Connection connection) {
+	public List<Fornecedor> lista() {
 		List<Fornecedor> listaFornecedor = new ArrayList<>();
 
 		String sql = "select * from fornecedor";
@@ -21,14 +34,18 @@ public class RepositorioFornecedor implements IRepositorioFornecedor {
 			PreparedStatement statement = connection.prepareStatement(sql);
 			
 			ResultSet resultset = statement.executeQuery();
-			Fornecedor f = new Fornecedor();
+			Fornecedor fornecedor = new Fornecedor();
 			
 			while (resultset.next()) {
 				
-				//fornecedor.dadosDoResultSet()
-				//procurar nos outros repositorios
+				fornecedor = new Fornecedor();
+				
+				fornecedor.setCNPJ(resultset.getLong("Cnpj"));
+				fornecedor.setRazaoSocial(resultset.getString("Razao_social"));
+				fornecedor.setEmail(resultset.getString("Email"));
+				fornecedor.setTelefone(resultset.getString("Telefone"));
 
-				listaFornecedor.add(f);
+				listaFornecedor.add(fornecedor);
 
 			}
 			resultset.close();
