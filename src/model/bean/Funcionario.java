@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufrpe.assistec.model;
+package model.bean;
 
 import java.sql.Date;
 
@@ -114,14 +114,6 @@ public class Funcionario {
 
 	public void setCargaHoraria(Integer cargaHoraria) {
 		this.cargaHoraria = cargaHoraria;
-	}
-	
-	public String getMatFuncionario() {
-		return matFuncionario;
-	}
-
-	public void setMatFuncionario(String matFuncionario) {
-		this.matFuncionario = matFuncionario;
 	}
 	
 	public Date getDataInicio() {
