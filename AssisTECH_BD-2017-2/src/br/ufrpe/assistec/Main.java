@@ -1,11 +1,4 @@
 package br.ufrpe.assistec;
-<<<<<<< HEAD
-	
-=======
-//teste github	
-import java.sql.Connection;
-
->>>>>>> dbc22005012645874a1c22abfb1fed0b58c296f7
 import br.ufrpe.assistec.service.ConnectionFactory;
 import javafx.application.Application;
 import javafx.stage.Stage;
