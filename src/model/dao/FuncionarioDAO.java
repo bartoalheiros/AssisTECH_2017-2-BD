@@ -1,7 +1,5 @@
 package model.dao;
 
-package model.dao;
-
 import connection.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.Date;
@@ -42,8 +40,6 @@ public class FuncionarioDAO {
 			stmt.setInt(10, f.getCodUnid_Suporte());
 			
 			stmt.executeUpdate();
-			//stmt.close();
-				
 
             JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
         } catch (SQLException ex) {
@@ -62,7 +58,7 @@ public class FuncionarioDAO {
         List<Funcionario> funcionarios = new ArrayList<>();
 
         try {
-            stmt = con.prepareStatement("SELECT * FROM produto");
+            stmt = con.prepareStatement("SELECT * FROM funcionario");
             rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -78,6 +74,8 @@ public class FuncionarioDAO {
 				funcionario.setSenha(rs.getString("Senha"));
 				funcionario.setEmail(rs.getString("Email"));
 				funcionario.setCargaHoraria(rs.getInt("CargaHoraria"));
+				funcionario.setId_jornada(rs.getString("IdJornada"));
+				funcionario.setData_inicio(rs.getDate("DataInicio"));
 
 				funcionarios.add(funcionario);
             }
@@ -99,7 +97,7 @@ public class FuncionarioDAO {
         List<Funcionario> funcionarios = new ArrayList<>();
 
         try {
-            stmt = con.prepareStatement("SELECT * FROM produto WHERE descricao LIKE ?");
+            stmt = con.prepareStatement("SELECT * FROM funcionario WHERE Matricula LIKE ?");
             stmt.setString(1, "%"+desc+"%");
             
             rs = stmt.executeQuery();
@@ -136,12 +134,20 @@ public class FuncionarioDAO {
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("UPDATE funcionario SET descricao = ? ,qtd = ?,preco = ? WHERE matricula = ?");
-            stmt.setString(1, f.getDescricao());
-            stmt.setInt(2, f.getQtd());
-            stmt.setDouble(3, f.getPreco());
-            stmt.setInt(4, f.getId());
-
+            stmt = con.prepareStatement("UPDATE funcionario SET Matricula = ? ,CPF = ?,Login = ?,Senha = ?,Nome = ?, Email = ?, CargaHoraria = ?, MatriculaSupervisor = ?, IdJornada = ?, DataInicio = ?, CodigoUnidadeDeSuporte = ?  WHERE Matricula = ?");
+            stmt.setString(1, f.getMatricula());
+			stmt.setLong(2, f.getCPF());
+			stmt.setString(3, f.getLogin());
+			stmt.setString(4, f.getSenha());
+			stmt.setString(5, f.getNome());
+			stmt.setString(6, f.getEmail());
+			stmt.setInt(7, f.getCargaHoraria());
+			stmt.setString(8, f.getMatriculaSuperv());
+			stmt.setString(9, f.getIdjornada());
+			stmt.setDate(10, (Date) f.getDataInicio());
+			stmt.setInt(11, f.getCodUnid_Suporte());
+			stmt.setString(1, "%"+f.getMatricula()+"%");
+			
             stmt.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");
@@ -152,13 +158,13 @@ public class FuncionarioDAO {
         }
 
     }
-    public void delete(Produto p) {
+    public void delete(Funcionario f) {
 
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("DELETE FROM produto WHERE id = ?");
-            stmt.setInt(1, p.getId());
+            stmt = con.prepareStatement("DELETE FROM funcionario WHERE Matricula = ?");
+            stmt.setString(1, f.getMatricula());
 
             stmt.executeUpdate();
 
