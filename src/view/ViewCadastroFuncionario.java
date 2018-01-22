@@ -187,6 +187,16 @@ public class ViewCadastroFuncionario extends JFrame {
 		contentPane.add(scrollPane);
 
 		table = new JTable();
+		table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            	 tbl_FuncionarioMouseClicked(evt);
+            }
+        });
+		 table.addKeyListener(new java.awt.event.KeyAdapter() {
+	            public void keyReleased(java.awt.event.KeyEvent evt) {
+	            	tbl_FuncionarioKeyReleased(evt);
+	            }
+	        });
 		table.setModel(new DefaultTableModel(
 				new Object[][] {
 				},
@@ -217,8 +227,8 @@ public class ViewCadastroFuncionario extends JFrame {
 		table.getColumnModel().getColumn(10).setPreferredWidth(126);
 		scrollPane.setViewportView(table);
 
-		table.getTableHeader().setReorderingAllowed(false); 
-
+		table.getTableHeader().setReorderingAllowed(false);
+		
 		JButton btn_buscar = new JButton("");
 		btn_buscar.setIcon(new ImageIcon("img/search.png"));
 		btn_buscar.addActionListener(new ActionListener() {
@@ -328,8 +338,42 @@ public class ViewCadastroFuncionario extends JFrame {
 				f.getCodUnid_Suporte()
 		});
 
-
-
 	}
+	
+	 private void tbl_FuncionarioMouseClicked(java.awt.event.MouseEvent evt){
+		 if (table.getSelectedRow() != -1) {
 
+	            tf_mat.setText(table.getValueAt(table.getSelectedRow(), 0).toString());
+	            tf_cpf.setText(table.getValueAt(table.getSelectedRow(), 1).toString());
+	            tf_login.setText(table.getValueAt(table.getSelectedRow(), 2).toString());
+	            tf_password.setText(table.getValueAt(table.getSelectedRow(), 3).toString());
+	            tf_name.setText(table.getValueAt(table.getSelectedRow(), 4).toString());
+	            tf_email.setText(table.getValueAt(table.getSelectedRow(), 5).toString());
+	            tf_carg_hora.setText(table.getValueAt(table.getSelectedRow(), 6).toString());
+	            tf_mat_super.setText(table.getValueAt(table.getSelectedRow(), 7).toString());
+	            tf_id_jornada.setText(table.getValueAt(table.getSelectedRow(), 8).toString());
+	            tf_dt_inicio.setText(table.getValueAt(table.getSelectedRow(), 9).toString());
+	            tf_cod_unid_sup.setText(table.getValueAt(table.getSelectedRow(), 10).toString());
+
+	        }
+		 
+	 }
+	 
+	 private void tbl_FuncionarioKeyReleased(java.awt.event.KeyEvent evt) {
+		 if (table.getSelectedRow() != -1) {
+
+	            tf_mat.setText(table.getValueAt(table.getSelectedRow(), 0).toString());
+	            tf_cpf.setText(table.getValueAt(table.getSelectedRow(), 1).toString());
+	            tf_login.setText(table.getValueAt(table.getSelectedRow(), 2).toString());
+	            tf_password.setText(table.getValueAt(table.getSelectedRow(), 3).toString());
+	            tf_name.setText(table.getValueAt(table.getSelectedRow(), 4).toString());
+	            tf_email.setText(table.getValueAt(table.getSelectedRow(), 5).toString());
+	            tf_carg_hora.setText(table.getValueAt(table.getSelectedRow(), 6).toString());
+	            tf_mat_super.setText(table.getValueAt(table.getSelectedRow(), 7).toString());
+	            tf_id_jornada.setText(table.getValueAt(table.getSelectedRow(), 8).toString());
+	            tf_dt_inicio.setText(table.getValueAt(table.getSelectedRow(), 9).toString());
+	            tf_cod_unid_sup.setText(table.getValueAt(table.getSelectedRow(), 10).toString());
+
+	        }
+	 }
 }
