@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.bean;
+package src.model.bean;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
@@ -21,7 +21,7 @@ public class Funcionario {
 	private Integer cargaHoraria;
 	private String matriculaSuperv;
 	private String Id_jornada;
-	private Date data_inicio;
+	private String data_inicio;
 	private int codUnid_Suporte;
 	
 
@@ -116,12 +116,12 @@ public class Funcionario {
 		this.cargaHoraria = cargaHoraria;
 	}
 	
-	public Date getDataInicio() {
+	public String getDataInicio() {
 		return this.data_inicio;
 	}
 	
 
-	public void setData_inicio(Date data_inicio) {
+	public void setData_inicio(String data_inicio) {
 		this.data_inicio = data_inicio;
 	}
 
