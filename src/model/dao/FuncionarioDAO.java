@@ -1,4 +1,4 @@
-package src.model.dao;
+package model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,8 +10,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-import src.connection.ConnectionFactory;
-import src.model.bean.Funcionario;
+import connection.ConnectionFactory;
+import model.bean.Funcionario;
 
 public class FuncionarioDAO {
     Connection con;

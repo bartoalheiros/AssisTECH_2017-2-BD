@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -13,7 +12,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import java.awt.Component;
 import javax.swing.JScrollPane;
 
 public class ViewCadastroFornecedor extends JFrame {
@@ -144,6 +142,10 @@ public class ViewCadastroFornecedor extends JFrame {
 			}
 		});
 		scrollPane.setViewportView(table);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 15, 294, 163);
+		contentPane.add(panel);
 		
 	}
 }

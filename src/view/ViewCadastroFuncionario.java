@@ -1,4 +1,4 @@
-package src.view;
+package view;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -14,8 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-import src.model.bean.Funcionario;
-import src.model.dao.FuncionarioDAO;
+import model.bean.Funcionario;
+import model.dao.FuncionarioDAO;
 
 @SuppressWarnings("serial")
 public class ViewCadastroFuncionario extends JFrame {
