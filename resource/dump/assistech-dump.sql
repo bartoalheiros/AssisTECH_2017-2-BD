@@ -598,7 +598,7 @@ CREATE TABLE `dia` (
 
 LOCK TABLES `dia` WRITE;
 /*!40000 ALTER TABLE `dia` DISABLE KEYS */;
-INSERT INTO `dia` VALUES ('1','Segunda-feira\r'),('2','TerÃ§a-feira\r'),('3','Quarta-feira\r'),('4','Quinta-feira\r'),('5','Sexta-feira\r'),('6','SÃ¡bado');
+INSERT INTO `dia` VALUES ('1','Segunda-feira\r'),('2','Terça-feira\r'),('3','Quarta-feira\r'),('4','Quinta-feira\r'),('5','Sexta-feira\r'),('6','Sábado');
 /*!40000 ALTER TABLE `dia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -958,7 +958,7 @@ CREATE TABLE `funcionario` (
 
 LOCK TABLES `funcionario` WRITE;
 /*!40000 ALTER TABLE `funcionario` DISABLE KEYS */;
-INSERT INTO `funcionario` VALUES ('3221219790118',11898352001,'Kylan','131274509274058','Collier, Alexis Q.','non.hendrerit@quismassa.com',6,'3221219790123','34330055','1999-11-02',12369),('3221219790119',11898352002,'Finn','131274509274059','Thompson, David N.','sapien@Duisami.org',6,'3221219790118','33884623','2010-12-03',12369),('3221219790120',11898352003,'Harlan','131274509274060','Calhoun, Tatum V.','at.risus@pede.edu',4,'3221219790118','26850987','2001-11-04',12369),('3221219790121',11898352004,'Francis','131274509274061','Ayala, Francesca U.','aliquam@tempusnonlacinia.net',4,'3221219790118','25630050','2007-12-02',44665),('3221219790122',11898352005,'Minerva','131274509274062','Herman, Damian L.','tempus.lorem@tempor.net',4,'3221219790123','21326270','1994-10-20',44665),('3221219790123',11898352006,'Derek','131274509274063','Mcneil, Kendall S.','orci.lacus@gravidamolestiearcu.com',8,'3221219790118','63818535','2001-11-04',44665),('3221219790124',11898352007,'Isabella','131274509274064','Gould, Beatrice T.','neque@lacus.net',6,'3221219790118','36899851','2010-12-03',44665),('3221219790125',11898352008,'Jasper','131274509274065','Willis, Marny R.','adipiscing@luctuslobortisClass.ca',6,'3221219790130','39038317','1994-10-20',44665),('3221219790126',11898352009,'Kyra','131274509274066','Downs, Callum A.','nonummy@dolortempus.ca',6,'3221219790130','50203375','1994-10-20',44665),('3221219790127',11898352010,'Dane','131274509274067','Orr, Cain Z.','dictum.sapien@uteros.edu',4,'3221219790130','44028856','1994-10-20',44665),('3221219790128',11898352011,'Branden','131274509274068','Malone, Xena W.','magna.Cras@eulacus.ca',6,'3221219790130','66820327','1990-12-03',58994),('3221219790129',11898352012,'Dexter','131274509274069','Buckner, Martina X.','risus.In@ipsumDonecsollicitudin.edu',4,'3221219790130','64674061','2003-05-07',58994),('3221219790130',11898352013,'Leila','131274509274070','Downs, Athena Q.','nulla@Nam.org',6,'3221219790123','27575147','2003-05-07',58994),('3221219790131',11898352014,'Haviva','131274509274071','Kirk, Trevor H.','eu@nunc.co.uk',4,'3221219790123','87645460','2003-05-07',58994),('3221219790132',11898352015,'Molly','131274509274072','Coffey, Drew N.','Nullam@nec.net',4,'3221219790130','21952772','2003-05-07',58994);
+INSERT INTO `funcionario` VALUES ('3221219790118',11898352001,'Kylan','131274509274058','Collier, Alexis Q.','non.hendrerit@quismassa.com',6,'3221219790123','34330055','1999-11-02',12369),('3221219790119',11898352002,'Finn','131274509274059','Thompson, David N.','sapien@Duisami.org',6,'3221219790118','33884623','2010-12-03',12369),('3221219790120',11898352003,'Harlan','131274509274060','Calhoun, Tatum V.','at.risus@pede.edu',4,'3221219790118','26850987','2001-11-04',12369),('3221219790121',11898352004,'Francis','131274509274061','Ayala, Francesca U.','aliquam@tempusnonlacinia.net',4,'3221219790118','25630050','2007-12-02',44665),('3221219790122',11898352005,'Minerva','131274509274062','Herman, Damian L.','tempus.lorem@tempor.net',4,'3221219790123','21326270','1994-10-20',44665),('3221219790123',11898352006,'Derek','131274509274063','Mcneil, Kendall S.','orci.lacus@gravidamolestiearcu.com',8,'3221219790118','63818535','2001-11-04',44665),('3221219790124',11898352007,'Isabella','131274509274064','Gould, Beatrice T.','neque@lacus.net',6,'3221219790118','36899851','2010-12-03',44665),('3221219790125',11898352008,'Jasper','131274509274065','Willis, Marny R.','adipiscing@luctuslobortisClass.ca',6,'3221219790130','39038317','1994-10-20',44665),('3221219790126',11898352009,'Kyra','131274509274066','Downs, Callum A.','nonummy@dolortempus.ca',6,'3221219790130','50203375','1994-10-20',44665),('3221219790127',11898352010,'Dane','131274509274067','Orr, Cain Z.','dictum.sapien@uteros.edu',4,'3221219790130','44028856','1994-10-20',44665),('3221219790128',11898352011,'Branden','131274509274068','Malone, Xena W.','magna.Cras@eulacus.ca',6,'3221219790130','66820327','1990-12-03',58994),('3221219790129',11898352012,'Dexter','131274509274069','Buckner, Martina X.','risus.In@ipsumDonecsollicitudin.edu',4,'3221219790130','64674061','2003-05-07',58994),('3221219790130',11898352013,'Leila','131274509274070','Downs, Athena Q.','nulla@Nam.org',6,'3221219790123','27575147','2003-05-07',58994),('3221219790131',11898352014,'Haviva','131274509274071','Kirk, Trevor H.','eu@nunc.co.uk',4,'3221219790123','87645460','2003-05-07',58994),('3221219790132',11898352015,'Molly','131274509274072','Coffey, Drew N.','Nullam@nec.net',4,'3221219790130','21952772','2003-05-07',58994),('3221219790133',11111111111,'augusto','123451','Silvio Carlos Augusto Melo','augusto.carlos@gmail.com',8,'3221219790130','32163329','2001-12-03',12369);
 /*!40000 ALTER TABLE `funcionario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1133,7 +1133,7 @@ CREATE TABLE `jornada_de_trabalho` (
 
 LOCK TABLES `jornada_de_trabalho` WRITE;
 /*!40000 ALTER TABLE `jornada_de_trabalho` DISABLE KEYS */;
-INSERT INTO `jornada_de_trabalho` VALUES ('32163328','NÃ£','NÃ£o_Tem\r'),('32163329','NÃ£','NÃ£o_Tem\r'),('32163330','Sim','NÃ£o_Tem\r'),('32163331','Sim','NÃ£o_Tem\r'),('32163332','NÃ£','NÃ£o_Tem\r'),('32163333','NÃ£','NÃ£o_Tem\r'),('32163334','Sim','NÃ£o_Tem\r'),('32163335','NÃ£','NÃ£o_Tem\r'),('32163336','NÃ£','NÃ£o_Tem\r'),('32163337','NÃ£','NÃ£o_Tem\r'),('32163338','NÃ£','NÃ£o_Tem\r'),('32163339','Sim','NÃ£o_Tem\r'),('32163340','Sim','NÃ£o_Tem\r'),('32163341','Sim','NÃ£o_Tem\r'),('32163342','Sim','NÃ£o_Tem');
+INSERT INTO `jornada_de_trabalho` VALUES ('32163328','Não','Não_Tem\r'),('32163329','Não','Não_Tem'),('32163330','Sim','Não_Tem'),('32163331','Sim','Não_Tem'),('32163332','Não','Não_Tem'),('32163333','Não','Não_Tem'),('32163334','Sim','Não_Tem'),('32163335','Não','Não_Tem'),('32163336','Não','Não_Tem'),('32163337','Não','Não_Tem'),('32163338','Não','Não_Tem'),('32163339','Sim','Não_Tem'),('32163340','Sim','Não_Tem'),('32163341','Sim','Não_Tem'),('32163342','Sim','Não_Tem');
 /*!40000 ALTER TABLE `jornada_de_trabalho` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1750,6 +1750,7 @@ CREATE TABLE `turno` (
 
 LOCK TABLES `turno` WRITE;
 /*!40000 ALTER TABLE `turno` DISABLE KEYS */;
+INSERT INTO `turno` VALUES ('0','Manhã','07:00:00','15:00:00'),('1','Tarde','14:00:00','22:00:00'),('2','Noite','21:00:00','05:00:00');
 /*!40000 ALTER TABLE `turno` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1828,4 +1829,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-21 14:24:25
+-- Dump completed on 2018-01-22 10:27:51

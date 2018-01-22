@@ -20,6 +20,6 @@ CREATE ROLE
 
 
 
-select * from mysql.user;
+#select * from mysql.user;
 
 #drop role administrador;
