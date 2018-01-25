@@ -1,7 +1,6 @@
+#1. Para atualizar situação no ALMOXARIFADO dos  ITEM DE ESTOQUE. Quando solicitados  pelo SUPERVISOR.
 delimiter |
-create procedure att_estoque()
+create procedure upd_estoque(IN cod_ins VARCHAR(15),id_almox int(11),seq int(8))
 begin
-		declare done int default 0;
-        declare current_dnum int;
-        declare dnumcur
-end
+		
+end |
