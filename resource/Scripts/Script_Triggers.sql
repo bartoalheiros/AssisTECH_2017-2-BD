@@ -6,16 +6,13 @@ create trigger update_age
 before insert on assistech.dependente
 for each row
 begin
-	SET @ano_atual:=YEAR(curdate());
-    SET @idade:=(@ano_atual) - YEAR(new.Data_nascimento);
-    SET @mes_atual:=MONTH(curdate());
-    SET @dia_atual:=DAY(curdate());
-    SET @mes_nasc:=MONTH(new.Data_nascimento);
-    SET @dia_nasc:=DAY(new.Data_nascimento);
-   
-    if  @mes_atual<@mes_nasc then
+	SET @idade:=(YEAR(curdate())) - YEAR(new.Data_nascimento);
+    
+    #este bloco if corrige o erro que pode ocorrer pela simples subtração do ano_atual - ano_nasc.
+    #se o ano 'virou', mas nem o mês, nem o dia do aniversário da pessoa chegou, ela não completa ano.
+    if  MONTH(curdate()) < MONTH(new.Data_nascimento) then
 		set @idade:=@idade-1;
-        elseif @mes_atual>=@mes_nasc and @dia_atual>=@dia_nasc then
+        elseif MONTH(curdate()) >= MONTH(new.Data_nascimento) and DAY(curdate()) >= DAY(new.Data_nascimento) then
 			set @idade:=@idade;
     end if;
     
@@ -32,8 +29,6 @@ begin
     UPDATE assistech.unidade_de_suporte SET Nro_funcionarios = @num_func + 1 WHERE  Cod=new.CodigoUnidadeDeSuporte;
 end |
 
-
-#show triggers in assistech;
 
 #Trigger3.  Para  gerar o valor do atributo "dt_devida" de ORDEM DE SERVICO
 delimiter |
