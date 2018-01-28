@@ -9,10 +9,11 @@ assistech.* TO 'administrador';
 CREATE ROLE 
 'funcionario';
 
-
-
 CREATE ROLE
 'supervisor';
+
+GRANT INSERT, UPDATE, DELETE ON
+assistech.insumo TO 'supervisor';
 
 CREATE ROLE
 'tecnico';

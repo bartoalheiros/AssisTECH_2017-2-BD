@@ -6,22 +6,21 @@ create trigger update_age
 before insert on assistech.dependente
 for each row
 begin
-	SET @idade:=(YEAR(curdate())) - YEAR(new.Data_nascimento);
-    
-    #este bloco if corrige o erro que pode ocorrer pela simples subtração do ano_atual - ano_nasc.
-    #se o ano 'virou', mas nem o mês, nem o dia do aniversário da pessoa chegou, ela não completa ano.
-    if  MONTH(curdate()) < MONTH(new.Data_nascimento) then
-		set @idade:=@idade-1;
+	#este bloco if corrige o erro que pode ocorrer pela simples subtração do ano_atual - ano_nasc.
+    #se o ano 'virou', mas o mês chegou e o dia não é subtraído 1 da data de aniversario calculada
+    #pois a pessoa oficialmente ainda não fez aniversário.
+    if  ( MONTH(curdate()) < MONTH(new.Data_nascimento) or MONTH(curdate()) >= MONTH(new.Data_nascimento) ) and DAY(curdate()) < DAY(New.Data_nascimento) then
+		set new.Idade = ((YEAR(curdate())) - YEAR(new.Data_nascimento))-1;
         elseif MONTH(curdate()) >= MONTH(new.Data_nascimento) and DAY(curdate()) >= DAY(new.Data_nascimento) then
-			set @idade:=@idade;
+			set new.Idade = (YEAR(curdate())) - YEAR(new.Data_nascimento);
     end if;
-    
-    set new.Idade=@idade;
 end|
 
-#Trigger2.  Para atualizar   o atributo "Num.Funcionarios" de UNIDADE DE SUPORTE
+drop trigger upd_num_func_del;
+
+#Trigger2.1  Para atualizar   o atributo "Num.Funcionarios" de UNIDADE DE SUPORTE ao Inserir um Funcionário.
 delimiter |
-create trigger upd_num_funcionarios
+create trigger upd_num_func_ins
 after insert on assistech.funcionario
 for each row
 begin
@@ -29,6 +28,15 @@ begin
     UPDATE assistech.unidade_de_suporte SET Nro_funcionarios = @num_func + 1 WHERE  Cod=new.CodigoUnidadeDeSuporte;
 end |
 
+#Trigger2.2  Para atualizar   o atributo "Num.Funcionarios" de UNIDADE DE SUPORTE ao Remover um Funcionário.
+delimiter |
+create trigger upd_num_func_del
+after delete on assistech.funcionario
+for each row
+begin
+	SET @num_func:=(select Nro_funcionarios from assistech.unidade_de_suporte where Cod=old.CodigoUnidadeDeSuporte);
+    UPDATE assistech.unidade_de_suporte SET Nro_funcionarios = @num_func - 1 WHERE  Cod=old.CodigoUnidadeDeSuporte;
+end |
 
 #Trigger3.  Para  gerar o valor do atributo "dt_devida" de ORDEM DE SERVICO
 delimiter |
