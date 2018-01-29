@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `assistech` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `assistech`;
--- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: assistech
 -- ------------------------------------------------------
--- Server version	5.5.5-10.1.26-MariaDB
+-- Server version	5.6.21
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -180,7 +180,7 @@ CREATE TABLE `baseou_em` (
 
 LOCK TABLES `baseou_em` WRITE;
 /*!40000 ALTER TABLE `baseou_em` DISABLE KEYS */;
-INSERT INTO `baseou_em` VALUES (139060,901221,267080,8),(295099,702449,613590,9),(337771,109006,855547,3),(345877,498872,613677,14),(551337,977699,983704,7),(561412,293137,215386,5),(576879,538507,556703,4),(626060,812795,193624,13),(663349,579148,341250,6),(707902,628743,204239,1),(793531,746207,438841,15),(811100,251182,904566,12),(811853,640479,459121,11),(821136,743273,605518,10),(877866,896492,461863,2);
+INSERT INTO `baseou_em` VALUES (707902,628743,204239,1),(877866,896492,461863,2),(337771,109006,855547,3),(576879,538507,556703,4),(561412,293137,215386,5),(663349,579148,341250,6),(551337,977699,983704,7),(139060,901221,267080,8),(295099,702449,613590,9),(821136,743273,605518,10),(811853,640479,459121,11),(811100,251182,904566,12),(626060,812795,193624,13),(345877,498872,613677,14),(793531,746207,438841,15);
 /*!40000 ALTER TABLE `baseou_em` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -306,7 +306,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (122211,'Baixa','P.O. Box 132, 5336 Tincidunt Street','PE','nonummy.ipsum.non@Morbiaccumsan.com','81324556612\r'),(143693,'Media','9271 Donec Street','PC','sagittis.Duis@eleifendvitaeerat.net','81324556624\r'),(219478,'Baixa','8048 Dui. Rd.','BL','Nunc.lectus@sed.edu','81324556623\r'),(236843,'Media','Ap #813-6435 Pellentesque Rd.','UR','Morbi.vehicula.Pellentesque@miDuisrisus.co.uk','81324556626'),(374702,'Baixa','767-7067 Et Street','AL','pretium@sitametconsectetuer.net','81324556618\r'),(419036,'Baixa','545-5308 Aliquam Rd.','BH','molestie.tellus.Aenean@etmagnisdis.com','81324556615\r'),(421804,'Media','P.O. Box 228, 5687 Fermentum Street','CA','dictum@ettristiquepellentesque.co.uk','81324556619\r'),(444272,'Baixa','P.O. Box 683, 1827 Magna. Street','SP','egestas.Duis.ac@nonvestibulumnec.ca','81324556614\r'),(448803,'Baixa','P.O. Box 774, 5509 Felis. Street','CH','scelerisque.sed.sapien@arcu.com','81324556625\r'),(468928,'Baixa','Ap #108-1456 Nec, Street','RU','sem.Nulla@facilisislorem.co.uk','81324556617\r'),(494738,'Media','P.O. Box 852, 3735 Libero Avenue','TK','Aenean.euismod@estconguea.com','81324556616\r'),(546312,'Media','1128 Eget, Rd.','PA','Mauris.ut@nonjustoProin.com','81324556621\r'),(690810,'Baixa','Ap #428-6491 Curabitur Rd.','MG','at.pede.Cras@metus.co.uk','81324556622\r'),(754431,'Alta','9327 Sed, Road','AM','lobortis@interdumenim.ca','81324556620\r'),(921567,'Media','Ap #506-9024 Semper St.','MS','tempus@purusmauris.net','81324556613\r');
+INSERT INTO `cliente` VALUES (122211,'Baixa','P.O. Box 132, 5336 Tincidunt Street','PE','nonummy.ipsum.non@Morbiaccumsan.com','81324556612\r'),(141076,'Media','Rua Augusto Campos, 105.','MS','quinlan @email.com','81324556914'),(143693,'Media','9271 Donec Street','PC','sagittis.Duis@eleifendvitaeerat.net','81324556624\r'),(145281,'Media','Rua Alberico Morais, 72.','MS',NULL,'81324556715'),(216951,'Media','Rua Almeida Prado, 101.','PA',NULL,'81324556716'),(219478,'Baixa','8048 Dui. Rd.','BL','Nunc.lectus@sed.edu','81324556623\r'),(220323,'','Rua Augusto Moura, 107.','PA',NULL,'81324556717'),(236843,'Media','Ap #813-6435 Pellentesque Rd.','UR','Morbi.vehicula.Pellentesque@miDuisrisus.co.uk','81324556626'),(299644,'','Rua Mauro Mota, 27.','RU',NULL,'81324556718'),(300460,'','Rua Vidério Pessoa, 427.','MG',NULL,'81324556719'),(374702,'Baixa','767-7067 Et Street','AL','pretium@sitametconsectetuer.net','81324556618\r'),(419036,'Baixa','545-5308 Aliquam Rd.','BH','molestie.tellus.Aenean@etmagnisdis.com','81324556615\r'),(421804,'Media','P.O. Box 228, 5687 Fermentum Street','CA','dictum@ettristiquepellentesque.co.uk','81324556619\r'),(444272,'Baixa','P.O. Box 683, 1827 Magna. Street','SP','egestas.Duis.ac@nonvestibulumnec.ca','81324556614\r'),(448803,'Baixa','P.O. Box 774, 5509 Felis. Street','CH','scelerisque.sed.sapien@arcu.com','81324556625\r'),(467429,'','Rua Alberico Alves, 172.','MG',NULL,'81324556720'),(468928,'Baixa','Ap #108-1456 Nec, Street','RU','sem.Nulla@facilisislorem.co.uk','81324556617\r'),(494738,'Media','P.O. Box 852, 3735 Libero Avenue','TK','Aenean.euismod@estconguea.com','81324556616\r'),(546312,'Media','1128 Eget, Rd.','PA','Mauris.ut@nonjustoProin.com','81324556621\r'),(625728,'','Rua Mauro Alves, 271.','MG',NULL,'81324556721'),(631420,'','Rua Suzana Melo, 12.','PE',NULL,'81324556722'),(690810,'Baixa','Ap #428-6491 Curabitur Rd.','MG','at.pede.Cras@metus.co.uk','81324556622\r'),(754431,'Alta','9327 Sed, Road','AM','lobortis@interdumenim.ca','81324556620\r'),(782268,'','Rua Alfa Ribeiro, 270.','PE',NULL,'81324556723'),(834677,'','Rua Beta Campos, 171.','SC',NULL,'81324556724'),(898542,'','Rua Caetano Veloso, 198.','PE',NULL,'81324556725'),(921567,'Media','Ap #506-9024 Semper St.','MS','tempus@purusmauris.net','81324556613\r'),(925755,'','Rua Alto do Moura, 101.','MG',NULL,'81324556726'),(934833,'','Avenida Almeida Belo, 189.','PR',NULL,'81324556727'),(978804,'','Travessa Zé Ramalho, 451.','SP',NULL,'81324556728');
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -798,7 +798,7 @@ CREATE TABLE `envolveu` (
 
 LOCK TABLES `envolveu` WRITE;
 /*!40000 ALTER TABLE `envolveu` DISABLE KEYS */;
-INSERT INTO `envolveu` VALUES (109006,'19703\r'),(251182,'20790\r'),(293137,'79969\r'),(498872,'75322\r'),(538507,'29476\r'),(579148,'18398\r'),(628743,'34993\r'),(640479,'99542\r'),(702449,'36512\r'),(743273,'53435\r'),(746207,'31115'),(812795,'44201\r'),(896492,'13508\r'),(901221,'41246\r'),(977699,'55377\r');
+INSERT INTO `envolveu` VALUES (896492,'13508\r'),(579148,'18398\r'),(109006,'19703\r'),(251182,'20790\r'),(538507,'29476\r'),(746207,'31115'),(628743,'34993\r'),(702449,'36512\r'),(901221,'41246\r'),(812795,'44201\r'),(743273,'53435\r'),(977699,'55377\r'),(498872,'75322\r'),(293137,'79969\r'),(640479,'99542\r');
 /*!40000 ALTER TABLE `envolveu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1885,4 +1885,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-26 11:59:50
+-- Dump completed on 2018-01-29 18:06:51

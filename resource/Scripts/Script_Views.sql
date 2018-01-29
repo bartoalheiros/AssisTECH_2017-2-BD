@@ -1,0 +1,1 @@
+SELECT  Cod_cliente, Cnpj as 'Cnpj/CPF', Razao_social as 'Nome/Razao_social' from cliente_jur UNION (SELECT * from cliente_fis);
