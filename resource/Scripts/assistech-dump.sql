@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `assistech` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `assistech`;
--- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: assistech
 -- ------------------------------------------------------
--- Server version	5.6.21
+-- Server version	5.5.5-10.1.26-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -180,7 +180,7 @@ CREATE TABLE `baseou_em` (
 
 LOCK TABLES `baseou_em` WRITE;
 /*!40000 ALTER TABLE `baseou_em` DISABLE KEYS */;
-INSERT INTO `baseou_em` VALUES (707902,628743,204239,1),(877866,896492,461863,2),(337771,109006,855547,3),(576879,538507,556703,4),(561412,293137,215386,5),(663349,579148,341250,6),(551337,977699,983704,7),(139060,901221,267080,8),(295099,702449,613590,9),(821136,743273,605518,10),(811853,640479,459121,11),(811100,251182,904566,12),(626060,812795,193624,13),(345877,498872,613677,14),(793531,746207,438841,15);
+INSERT INTO `baseou_em` VALUES (139060,901221,267080,8),(295099,702449,613590,9),(337771,109006,855547,3),(345877,498872,613677,14),(551337,977699,983704,7),(561412,293137,215386,5),(576879,538507,556703,4),(626060,812795,193624,13),(663349,579148,341250,6),(707902,628743,204239,1),(793531,746207,438841,15),(811100,251182,904566,12),(811853,640479,459121,11),(821136,743273,605518,10),(877866,896492,461863,2);
 /*!40000 ALTER TABLE `baseou_em` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -251,7 +251,7 @@ CREATE TABLE `chamado` (
   `Mat_supervisor` varchar(13) DEFAULT NULL,
   `Mat_tec_interno` varchar(13) DEFAULT NULL,
   `Mat_atendente` varchar(13) NOT NULL,
-  `Num_ordem_servico` int(11) NOT NULL,
+  `Num_ordem_servico` int(11) DEFAULT NULL,
   `Cod_cliente` int(11) NOT NULL,
   `Id_atendimento` int(11) NOT NULL,
   `Dta_abertura` date NOT NULL,
@@ -798,7 +798,7 @@ CREATE TABLE `envolveu` (
 
 LOCK TABLES `envolveu` WRITE;
 /*!40000 ALTER TABLE `envolveu` DISABLE KEYS */;
-INSERT INTO `envolveu` VALUES (896492,'13508\r'),(579148,'18398\r'),(109006,'19703\r'),(251182,'20790\r'),(538507,'29476\r'),(746207,'31115'),(628743,'34993\r'),(702449,'36512\r'),(901221,'41246\r'),(812795,'44201\r'),(743273,'53435\r'),(977699,'55377\r'),(498872,'75322\r'),(293137,'79969\r'),(640479,'99542\r');
+INSERT INTO `envolveu` VALUES (109006,'19703\r'),(251182,'20790\r'),(293137,'79969\r'),(498872,'75322\r'),(538507,'29476\r'),(579148,'18398\r'),(628743,'34993\r'),(640479,'99542\r'),(702449,'36512\r'),(743273,'53435\r'),(746207,'31115'),(812795,'44201\r'),(896492,'13508\r'),(901221,'41246\r'),(977699,'55377\r');
 /*!40000 ALTER TABLE `envolveu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -890,7 +890,7 @@ CREATE TABLE `fatura` (
 
 LOCK TABLES `fatura` WRITE;
 /*!40000 ALTER TABLE `fatura` DISABLE KEYS */;
-INSERT INTO `fatura` VALUES (117095,12,0.00,'Incompleto',122211),(150619,12,0.00,'ConcluÃ­do',448803),(231307,12,0.00,'Incompleto',419036),(254807,12,0.00,'ConcluÃ­do',921567),(332619,12,0.00,'Incompleto',546312),(417174,12,0.00,'ConcluÃ­do',494738),(525009,12,0.00,'Em andamento',468928),(544386,12,0.00,'ConcluÃ­do',421804),(559734,12,0.00,'Em andamento',236843),(592439,12,0.00,'Em andamento',219478),(629787,12,0.00,'ConcluÃ­do',690810),(743797,12,0.00,'Em andamento',444272),(805070,12,0.00,'Incompleto',374702),(857787,12,0.00,'Em andamento',754431),(913831,12,0.00,'Incompleto',143693);
+INSERT INTO `fatura` VALUES (117095,12,0.00,'Incompleto',122211),(150619,12,0.00,'Concluída',448803),(231307,12,0.00,'Incompleto',419036),(254807,12,0.00,'Concluída',921567),(332619,12,0.00,'Incompleto',546312),(417174,12,0.00,'Concluída',494738),(525009,12,0.00,'Em andamento',468928),(544386,12,0.00,'Concluída',421804),(559734,12,0.00,'Em andamento',236843),(592439,12,0.00,'Em andamento',219478),(629787,12,0.00,'Concluída',690810),(743797,12,0.00,'Em andamento',444272),(805070,12,0.00,'Incompleto',374702),(857787,12,0.00,'Em andamento',754431),(913831,12,0.00,'Incompleto',143693);
 /*!40000 ALTER TABLE `fatura` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1352,7 +1352,7 @@ DROP TABLE IF EXISTS `orcamento`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `orcamento` (
-  `Cod` int(11) NOT NULL,
+  `Cod` int(11) unsigned NOT NULL,
   `Data_emissao` date NOT NULL,
   `Validade_num_dias` int(11) NOT NULL,
   `ultima_data` date NOT NULL,
@@ -1385,13 +1385,15 @@ CREATE TABLE `ordem_servico` (
   `Prazo_em_dias` int(11) NOT NULL,
   `Dt_criacao` date NOT NULL,
   `Status` varchar(20) NOT NULL,
-  `Cod_servico` int(11) unsigned NOT NULL,
   `Cod_orcamento` int(11) unsigned DEFAULT NULL,
   `Cod_fatura` int(11) DEFAULT NULL,
   PRIMARY KEY (`Num_Ordem_Servico`),
   UNIQUE KEY `Cod_orcamento` (`Cod_orcamento`),
+  UNIQUE KEY `Cod_fatura_UNIQUE` (`Cod_fatura`),
   KEY `ord_servico_fatura_fk_idx` (`Cod_fatura`),
-  CONSTRAINT `ord_servico_fatura_fk` FOREIGN KEY (`Cod_fatura`) REFERENCES `fatura` (`Cod`) ON DELETE NO ACTION ON UPDATE CASCADE
+  KEY `ord_servico_orcamento_fk_idx` (`Cod_orcamento`),
+  CONSTRAINT `ord_servico_fatura_fk` FOREIGN KEY (`Cod_fatura`) REFERENCES `fatura` (`Cod`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `ord_servico_orcamento_fk` FOREIGN KEY (`Cod_orcamento`) REFERENCES `orcamento` (`Cod`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1401,9 +1403,49 @@ CREATE TABLE `ordem_servico` (
 
 LOCK TABLES `ordem_servico` WRITE;
 /*!40000 ALTER TABLE `ordem_servico` DISABLE KEYS */;
-INSERT INTO `ordem_servico` VALUES (109006,'2013-10-14',3,'2019-01-15','Em Curso',855547,130254,743797),(251182,'2022-10-14',3,'2028-01-15','Em Curso',904566,578698,592439),(293137,'2015-10-14',3,'2021-01-15','Em Curso',215386,438497,417174),(498872,'2024-10-14',3,'2030-01-15','Em Curso',613677,736090,150619),(538507,'2014-10-14',3,'2020-01-15','Em aberto',556703,905543,231307),(579148,'2016-10-14',3,'2022-01-15','Em Curso',341250,272995,525009),(702449,'2019-10-14',3,'2025-01-15','Em Curso',613590,408327,857787),(743273,'2020-10-14',3,'2026-01-15','Em Curso',605518,758001,332619),(746207,'2025-10-14',3,'2031-01-15','Em Curso',438841,203114,559734),(812795,'2023-10-14',3,'2029-01-15','Em Curso',193624,809677,913831),(896492,'2012-10-14',3,'2018-01-15','Em Curso',461863,326744,254807),(901221,'2018-10-14',3,'2024-01-15','Em Curso',267080,896738,544386),(977699,'2017-10-14',3,'2023-01-15','Em Curso',983704,412926,805070);
+INSERT INTO `ordem_servico` VALUES (109006,'2013-10-14',3,'2019-01-15','Em Curso',130254,743797),(123658,'2020-03-03',14,'2020-02-18','Em Curso',905543,117095),(251182,'2022-10-14',3,'2028-01-15','Em Curso',578698,592439),(293137,'2015-10-14',3,'2021-01-15','Em Curso',438497,417174),(498872,'2024-10-14',3,'2030-01-15','Em Curso',736090,150619),(579148,'2016-10-14',3,'2022-01-15','Em Curso',272995,525009),(702449,'2019-10-14',3,'2025-01-15','Em Curso',408327,857787),(743273,'2020-10-14',3,'2026-01-15','Em Curso',758001,332619),(746207,'2025-10-14',3,'2031-01-15','Em Curso',203114,559734),(812795,'2023-10-14',3,'2029-01-15','Em Curso',809677,913831),(896492,'2012-10-14',3,'2018-01-15','Em Curso',326744,254807),(901221,'2018-10-14',3,'2024-01-15','Em Curso',896738,544386),(977699,'0000-00-00',14,'2019-02-19','Em Curso',412926,805070);
 /*!40000 ALTER TABLE `ordem_servico` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger set_dta_devida
+before insert on assistech.ordem_servico
+for each row
+begin
+	
+	 SET @bissexto:=(YEAR(new.Dt_criacao) %4 = 0) AND (YEAR(new.Dt_criacao) % 100 != 0) OR (YEAR(new.Dt_criacao) % 400 = 0);
+	
+     if (@bissexto)  then
+		if MONTH(new.Dt_criacao)=02 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 29 then
+			set @diferenca:=abs(29 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );
+            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-','03', '-',@diferenca);
+		elseif  MONTH(new.Dt_criacao)!=02 AND(MONTH(new.Dt_criacao)%2!=0 or MONTH(new.Dt_criacao)=8 or MONTH(new.Dt_criacao)=10 
+			or MONTH(new.Dt_criacao)=12) AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 31 then
+					
+			set @diferenca:=abs(31 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
+            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao)+1, '-',@diferenca);
+			
+		end if;		
+     end if;       
+        
+        
+	 
+     
+     
+		
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `pagamento`
@@ -1885,4 +1927,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-29 18:06:51
+-- Dump completed on 2018-01-30 11:44:41

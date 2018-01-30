@@ -16,7 +16,6 @@ begin
     end if;
 end|
 
-drop trigger upd_num_func_del;
 
 #Trigger2.1  Para atualizar   o atributo "Num.Funcionarios" de UNIDADE DE SUPORTE ao Inserir um Funcionário.
 delimiter |
@@ -46,24 +45,24 @@ for each row
 begin
 	
 	 SET @bissexto:=(YEAR(new.Dt_criacao) %4 = 0) AND (YEAR(new.Dt_criacao) % 100 != 0) OR (YEAR(new.Dt_criacao) % 400 = 0);
+     SET @mes_31:=MONTH(new.Dt_criacao)!=02 AND MONTH(new.Dt_criacao)!=04 AND MONTH(new.Dt_criacao)!=06 AND MONTH(new.Dt_criacao)!=09 AND MONTH(new.Dt_criacao)!=11;
 	
-     if (@bissexto)  then
-		if MONTH(new.Dt_criacao)=02 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 29 then
-			set @diferenca:=abs(29 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );
-            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-','03', '-',@diferenca);
-		elseif  MONTH(new.Dt_criacao)!=02 AND(MONTH(new.Dt_criacao)%2!=0 or MONTH(new.Dt_criacao)=8 or MONTH(new.Dt_criacao)=10 
-			or MONTH(new.Dt_criacao)=12) AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 31 then
-					
+     CASE @bissexto
+        WHEN @mes_31 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 31 then
 			set @diferenca:=abs(31 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
             set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao)+1, '-',@diferenca);
-			
-		end if;		
-     end if;       
-        
-        
-	 
+            
+        WHEN !@mes_31 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 30 then
+			set @diferenca:=abs(30 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
+            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao)+1, '-',@diferenca);
+            
+        WHEN MONTH(new.Dt_criacao)=02 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 29 then
+			set @diferenca:=abs(29 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );
+            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-','03', '-',@diferenca);
+	 END CASE;
      
-     
+     CASE !@bissexto
+		 
 		
 end |
 
