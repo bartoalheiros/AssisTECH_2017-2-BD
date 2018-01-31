@@ -43,10 +43,23 @@ create trigger set_dta_devida
 before insert on assistech.ordem_servico
 for each row
 begin
-	
 	 SET @bissexto:=(YEAR(new.Dt_criacao) %4 = 0) AND (YEAR(new.Dt_criacao) % 100 != 0) OR (YEAR(new.Dt_criacao) % 400 = 0);
      SET @mes_31:=MONTH(new.Dt_criacao)!=02 AND MONTH(new.Dt_criacao)!=04 AND MONTH(new.Dt_criacao)!=06 AND MONTH(new.Dt_criacao)!=09 AND MONTH(new.Dt_criacao)!=11;
 	
+	 CASE !@bissexto
+		WHEN @mes_31 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 31 then
+			set @diferenca:=abs(31 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
+            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao)+1, '-',@diferenca);
+            
+        WHEN !@mes_31 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 30 then
+			set @diferenca:=abs(30 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
+            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao)+1, '-',@diferenca);
+            
+        WHEN MONTH(new.Dt_criacao)=02 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 28 then
+			set @diferenca:=abs(28 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );
+            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-','03', '-',@diferenca);
+      END CASE;
+     
      CASE @bissexto
         WHEN @mes_31 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 31 then
 			set @diferenca:=abs(31 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
@@ -60,10 +73,6 @@ begin
 			set @diferenca:=abs(29 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );
             set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-','03', '-',@diferenca);
 	 END CASE;
-     
-     CASE !@bissexto
-		 
-		
 end |
 
 drop trigger set_dta_devida;
