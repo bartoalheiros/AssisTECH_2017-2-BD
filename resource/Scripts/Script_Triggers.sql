@@ -43,46 +43,31 @@ create trigger set_dta_devida
 before insert on assistech.ordem_servico
 for each row
 begin
-	 SET @bissexto:=(YEAR(new.Dt_criacao) %4 = 0) AND (YEAR(new.Dt_criacao) % 100 != 0) OR (YEAR(new.Dt_criacao) % 400 = 0);
-     SET @mes_31:=MONTH(new.Dt_criacao) = 01 OR MONTH(new.Dt_criacao) = 03 OR MONTH(new.Dt_criacao) = 05 OR MONTH(new.Dt_criacao) = 07 OR MONTH(new.Dt_criacao) = 12;
-	
-	 IF !@bissexto THEN
-	
-		IF MONTH(new.Dt_criacao)=02 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 28 then
-			set @diferenca:=abs(28 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );
-            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-','03', '-',@diferenca);
-        END IF;    
-		
-        IF !@mes_31 AND MONTH(new.Dt_criacao!=02) AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 30 then
+	 #SET @bissexto:=(YEAR(new.Dt_criacao) %4 = 0) AND (YEAR(new.Dt_criacao) % 100 != 0) OR (YEAR(new.Dt_criacao) % 400 = 0);
+     #SELECT MONTH(LAST_DAY("2017-02-12"));
+ 
+		IF DAY(LAST_DAY(new.Dt_criacao))=30 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 30 then
 			set @diferenca:=abs(30 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
             set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao)+1, '-',@diferenca);
         END IF;    
-         
-        IF @mes_31 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 31 then
+        
+        IF DAY(LAST_DAY(new.Dt_criacao))=31 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 31 then
 			set @diferenca:=abs(31 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
             set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao)+1, '-',@diferenca);
         END IF;    
         
-     END IF;
-     
-     IF @bissexto THEN
-		
-        IF MONTH(new.Dt_criacao)=02 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 29 then
-			set @diferenca:=abs(29 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );
+        IF DAY(LAST_DAY(new.Dt_criacao))=28 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 28 then
+			set @diferenca:=abs(28 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );
             set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-','03', '-',@diferenca);
         END IF;    
-	 
-		IF !@mes_31 AND MONTH(new.Dt_criacao!=02) AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 30 then
-			set @diferenca:=abs(30 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
-            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao)+1, '-',@diferenca);
+        
+        #ano bissexto. Fevereiro tem 29 dias.
+        IF DAY(LAST_DAY(new.Dt_criacao))=29 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 29 then
+			set @diferenca:=abs(29 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );
+            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-','03', '-',@diferenca);     
         END IF;    
-     
-		IF @mes_31 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 31 then
-			set @diferenca:=abs(31 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
-            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao)+1, '-',@diferenca);
-        END IF;    
-
-     END IF;
+         
+	
      
 end |
 
