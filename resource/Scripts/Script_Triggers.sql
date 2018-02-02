@@ -43,32 +43,33 @@ create trigger set_dta_devida
 before insert on assistech.ordem_servico
 for each row
 begin
-	 #SET @bissexto:=(YEAR(new.Dt_criacao) %4 = 0) AND (YEAR(new.Dt_criacao) % 100 != 0) OR (YEAR(new.Dt_criacao) % 400 = 0);
-     #SELECT MONTH(LAST_DAY("2017-02-12"));
- 
+	
 		IF DAY(LAST_DAY(new.Dt_criacao))=30 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 30 then
 			set @diferenca:=abs(30 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
             set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao)+1, '-',@diferenca);
-        END IF;    
+        END IF;  
         
-        IF DAY(LAST_DAY(new.Dt_criacao))=31 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 31 then
+        IF EXTRACT(MONTH from new.Dt_criacao)=12 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 31 then
+				set @diferenca:=abs(31 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
+				set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao)+1, '-','01', '-',@diferenca);
+        END IF;
+        
+        IF EXTRACT(MONTH from new.Dt_criacao)!=12 AND DAY(LAST_DAY(new.Dt_criacao))=31 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 31 then
 			set @diferenca:=abs(31 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
             set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao)+1, '-',@diferenca);
-        END IF;    
+		END IF;
         
         IF DAY(LAST_DAY(new.Dt_criacao))=28 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 28 then
 			set @diferenca:=abs(28 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );
             set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-','03', '-',@diferenca);
         END IF;    
         
-        #ano bissexto. Fevereiro tem 29 dias.
+        #ano bissexto. - Fevereiro tem 29 dias.
         IF DAY(LAST_DAY(new.Dt_criacao))=29 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 29 then
 			set @diferenca:=abs(29 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );
             set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-','03', '-',@diferenca);     
         END IF;    
-         
-	
-     
+       
 end |
 
 drop trigger set_dta_devida;
