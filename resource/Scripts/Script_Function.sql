@@ -1,3 +1,25 @@
+#Das funções só tentamos a primeira
+
+#Edvaldo
+DELIMITER $
+CREATE FUNCTION fn_hora(m VARCHAR(13))
+RETURNS INT
+
+determINistic
+BEGIN
+
+DECLARE aux INT (11);
+DECLARE r INT (11);
+
+SET aux = ( SELECT CargaHoraria
+FROM assistech.funcionario
+WHERE Matricula = m) ;
+SET r = aux*2;
+RETURN r;
+
+END $
+
+#Bartô
 delimiter |
 CREATE FUNCTION fn_hora_semana(mat VARCHAR(13))
 returns int

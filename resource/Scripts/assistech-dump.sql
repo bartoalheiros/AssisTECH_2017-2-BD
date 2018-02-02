@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `assistech` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `assistech`;
--- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: assistech
 -- ------------------------------------------------------
--- Server version	5.6.21
+-- Server version	5.5.5-10.1.26-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -180,7 +180,7 @@ CREATE TABLE `baseou_em` (
 
 LOCK TABLES `baseou_em` WRITE;
 /*!40000 ALTER TABLE `baseou_em` DISABLE KEYS */;
-INSERT INTO `baseou_em` VALUES (707902,628743,204239,1),(877866,896492,461863,2),(337771,109006,855547,3),(576879,538507,556703,4),(561412,293137,215386,5),(663349,579148,341250,6),(551337,977699,983704,7),(139060,901221,267080,8),(295099,702449,613590,9),(821136,743273,605518,10),(811853,640479,459121,11),(811100,251182,904566,12),(626060,812795,193624,13),(345877,498872,613677,14),(793531,746207,438841,15);
+INSERT INTO `baseou_em` VALUES (139060,901221,267080,8),(295099,702449,613590,9),(337771,109006,855547,3),(345877,498872,613677,14),(551337,977699,983704,7),(561412,293137,215386,5),(576879,538507,556703,4),(626060,812795,193624,13),(663349,579148,341250,6),(707902,628743,204239,1),(793531,746207,438841,15),(811100,251182,904566,12),(811853,640479,459121,11),(821136,743273,605518,10),(877866,896492,461863,2);
 /*!40000 ALTER TABLE `baseou_em` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -798,7 +798,7 @@ CREATE TABLE `envolveu` (
 
 LOCK TABLES `envolveu` WRITE;
 /*!40000 ALTER TABLE `envolveu` DISABLE KEYS */;
-INSERT INTO `envolveu` VALUES (896492,'13508\r'),(579148,'18398\r'),(109006,'19703\r'),(251182,'20790\r'),(538507,'29476\r'),(746207,'31115'),(628743,'34993\r'),(702449,'36512\r'),(901221,'41246\r'),(812795,'44201\r'),(743273,'53435\r'),(977699,'55377\r'),(498872,'75322\r'),(293137,'79969\r'),(640479,'99542\r');
+INSERT INTO `envolveu` VALUES (109006,'19703\r'),(251182,'20790\r'),(293137,'79969\r'),(498872,'75322\r'),(538507,'29476\r'),(579148,'18398\r'),(628743,'34993\r'),(640479,'99542\r'),(702449,'36512\r'),(743273,'53435\r'),(746207,'31115'),(812795,'44201\r'),(896492,'13508\r'),(901221,'41246\r'),(977699,'55377\r');
 /*!40000 ALTER TABLE `envolveu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -890,7 +890,7 @@ CREATE TABLE `fatura` (
 
 LOCK TABLES `fatura` WRITE;
 /*!40000 ALTER TABLE `fatura` DISABLE KEYS */;
-INSERT INTO `fatura` VALUES (117095,12,0.00,'Incompleto',122211),(150619,12,0.00,'Concluída',448803),(231307,12,0.00,'Incompleto',419036),(254807,12,0.00,'Concluída',921567),(332619,12,0.00,'Incompleto',546312),(417174,12,0.00,'Concluída',494738),(525009,12,0.00,'Em andamento',468928),(544386,12,0.00,'Concluída',421804),(559734,12,0.00,'Em andamento',236843),(592439,12,0.00,'Em andamento',219478),(629787,12,0.00,'Concluída',690810),(743797,12,0.00,'Em andamento',444272),(805070,12,0.00,'Incompleto',374702),(857787,12,0.00,'Em andamento',754431),(913831,12,0.00,'Incompleto',143693),(923654,15,120.00,'Incompleto',143693);
+INSERT INTO `fatura` VALUES (111365,12,750.00,'Em andamento',754431),(117095,12,0.00,'Em andamento',122211),(125469,4,500.23,'Liquidada',444272),(133652,30,3054.26,'Em andamento',143693),(133965,6,1900.56,'Liquidada',421804),(139545,13,2500.00,'Em andamento',143693),(150619,12,0.00,'Liquidada',448803),(189562,20,450.00,'Em andamento',143693),(215469,17,1200.00,'Em andamento',754431),(223259,20,1030.56,'Liquidada',374702),(231307,12,0.00,'Em andamento',419036),(254807,12,0.00,'Liquidada',921567),(255898,30,2537.10,'Em andamento',444272),(332619,12,0.00,'Em andamento',546312),(417174,12,0.00,'Liquidada',494738),(525009,12,0.00,'Em andamento',468928),(544386,12,0.00,'Liquidada',421804),(559734,12,0.00,'Em andamento',236843),(592439,12,0.00,'Em andamento',219478),(629787,12,0.00,'Liquidada',690810),(743797,12,0.00,'Em andamento',444272),(805070,12,0.00,'Em andamento',374702),(857787,12,0.00,'Em andamento',754431),(875466,3,297.56,'Liquidada',444272),(913831,12,0.00,'Em andamento',143693),(923654,15,120.00,'Em andamento',143693);
 /*!40000 ALTER TABLE `fatura` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -991,7 +991,7 @@ CREATE TABLE `funcionario` (
 
 LOCK TABLES `funcionario` WRITE;
 /*!40000 ALTER TABLE `funcionario` DISABLE KEYS */;
-INSERT INTO `funcionario` VALUES ('3221219790118',11898352001,'Kylan','131274509274058','Collier, Alexis Q.','non.hendrerit@quismassa.com',6,'3221219790123','34330055','1999-11-02',12369),('3221219790119',11898352002,'Finn','131274509274059','Thompson, David N.','sapien@Duisami.org',6,'3221219790118','33884623','2010-12-03',12369),('3221219790120',11898352003,'Harlan','131274509274060','Calhoun, Tatum V.','at.risus@pede.edu',4,'3221219790118','26850987','2001-11-04',12369),('3221219790121',11898352004,'Francis','131274509274061','Ayala, Francesca U.','aliquam@tempusnonlacinia.net',4,'3221219790118','25630050','2007-12-02',44665),('3221219790122',11898352005,'Minerva','131274509274062','Herman, Damian L.','tempus.lorem@tempor.net',4,'3221219790123','21326270','1994-10-20',44665),('3221219790123',11898352006,'Derek','131274509274063','Mcneil, Kendall S.','orci.lacus@gravidamolestiearcu.com',8,'3221219790118','63818535','2001-11-04',44665),('3221219790124',11898352007,'Isabella','131274509274064','Gould, Beatrice T.','neque@lacus.net',6,'3221219790118','36899851','2010-12-03',44665),('3221219790125',11898352008,'Jasper','131274509274065','Willis, Marny R.','adipiscing@luctuslobortisClass.ca',6,'3221219790130','39038317','1994-10-20',44665),('3221219790126',11898352009,'Kyra','131274509274066','Downs, Callum A.','nonummy@dolortempus.ca',6,'3221219790130','50203375','1994-10-20',44665),('3221219790127',11898352010,'Dane','131274509274067','Orr, Cain Z.','dictum.sapien@uteros.edu',4,'3221219790130','44028856','1994-10-20',44665),('3221219790128',11898352011,'Branden','131274509274068','Malone, Xena W.','magna.Cras@eulacus.ca',6,'3221219790130','66820327','1990-12-03',58994),('3221219790129',11898352012,'Dexter','131274509274069','Buckner, Martina X.','risus.In@ipsumDonecsollicitudin.edu',4,'3221219790130','64674061','2003-05-07',58994),('3221219790130',11898352013,'Leila','131274509274070','Downs, Athena Q.','nulla@Nam.org',6,'3221219790123','27575147','2003-05-07',58994),('3221219790131',11898352014,'Haviva','131274509274071','Kirk, Trevor H.','eu@nunc.co.uk',4,'3221219790123','87645460','2003-05-07',58994),('3221219790132',11898352015,'Molly','131274509274072','Coffey, Drew N.','Nullam@nec.net',4,'3221219790130','21952772','2003-05-07',58994),('3221219790133',11111111111,'augusto','123451','Silvio Carlos Augusto Melo','augusto.carlos@gmail.com',8,'3221219790130','32163329','2001-12-03',12369),('3221219790134',88888888888,'Alberto','11111111111','Alberto Jomard','alberto_jomard@email.com',8,'3221219790130','32163349','2007-11-07',12369),('3221219790176',44444444444,'JFA','888888','Jonas Fernando Alcarroci','jonas.fernando@email.com',8,'3221219790130','32163350','2011-03-05',58994);
+INSERT INTO `funcionario` VALUES ('3221219790118',11898352001,'Kylan','131274509274058','Collier, Alexis Q.','non.hendrerit@quismassa.com',6,'3221219790123','32163328','1999-11-02',12369),('3221219790119',11898352002,'Finn','131274509274059','Thompson, David N.','sapien@Duisami.org',6,'3221219790118','33884623','2010-12-03',12369),('3221219790120',11898352003,'Harlan','131274509274060','Calhoun, Tatum V.','at.risus@pede.edu',4,'3221219790118','32163330','2001-11-04',12369),('3221219790121',11898352004,'Francis','131274509274061','Ayala, Francesca U.','aliquam@tempusnonlacinia.net',4,'3221219790118','32163331','2007-12-02',44665),('3221219790122',11898352005,'Minerva','131274509274062','Herman, Damian L.','tempus.lorem@tempor.net',4,'3221219790123','32163332','1994-10-20',44665),('3221219790123',11898352006,'Derek','131274509274063','Mcneil, Kendall S.','orci.lacus@gravidamolestiearcu.com',8,'3221219790118','32163333','2001-11-04',44665),('3221219790124',11898352007,'Isabella','131274509274064','Gould, Beatrice T.','neque@lacus.net',6,'3221219790118','32163334','2010-12-03',44665),('3221219790125',11898352008,'Jasper','131274509274065','Willis, Marny R.','adipiscing@luctuslobortisClass.ca',6,'3221219790130','32163335','1994-10-20',44665),('3221219790126',11898352009,'Kyra','131274509274066','Downs, Callum A.','nonummy@dolortempus.ca',6,'3221219790130','32163336','1994-10-20',44665),('3221219790127',11898352010,'Dane','131274509274067','Orr, Cain Z.','dictum.sapien@uteros.edu',4,'3221219790130','32163337','1994-10-20',44665),('3221219790128',11898352011,'Branden','131274509274068','Malone, Xena W.','magna.Cras@eulacus.ca',6,'3221219790130','32163338','1990-12-03',58994),('3221219790129',11898352012,'Dexter','131274509274069','Buckner, Martina X.','risus.In@ipsumDonecsollicitudin.edu',4,'3221219790130','32163339','2003-05-07',58994),('3221219790130',11898352013,'Leila','131274509274070','Downs, Athena Q.','nulla@Nam.org',6,'3221219790123','32163340','2003-05-07',58994),('3221219790131',11898352014,'Haviva','131274509274071','Kirk, Trevor H.','eu@nunc.co.uk',4,'3221219790123','32163341','2003-05-07',58994),('3221219790132',11898352015,'Molly','131274509274072','Coffey, Drew N.','Nullam@nec.net',4,'3221219790130','32163342','2003-05-07',58994),('3221219790133',11111111111,'augusto','123451','Silvio Carlos Augusto Melo','augusto.carlos@gmail.com',8,'3221219790130','32163329','2001-12-03',12369),('3221219790134',88888888888,'Alberto','11111111111','Alberto Jomard','alberto_jomard@email.com',8,'3221219790130','32163349','2007-11-07',12369),('3221219790176',44444444444,'JFA','888888','Jonas Fernando Alcarroci','jonas.fernando@email.com',8,'3221219790130','32163351','2011-03-05',58994);
 /*!40000 ALTER TABLE `funcionario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -1011,6 +1011,27 @@ begin
     
 	UPDATE assistech.unidade_de_suporte SET Nro_funcionarios = @num_func + 1 WHERE  Cod=new.CodigoUnidadeDeSuporte;
 
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger upd_num_func_del
+after delete on assistech.funcionario
+for each row
+begin
+	SET @num_func:=(select Nro_funcionarios from assistech.unidade_de_suporte where Cod=old.CodigoUnidadeDeSuporte);
+    UPDATE assistech.unidade_de_suporte SET Nro_funcionarios = @num_func - 1 WHERE  Cod=old.CodigoUnidadeDeSuporte;
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1205,9 +1226,12 @@ CREATE TABLE `jornada_de_trabalho_tem` (
   `Id_jornada` varchar(8) NOT NULL,
   `seq_dia` varchar(12) NOT NULL,
   `cod_turno` varchar(14) NOT NULL,
+  PRIMARY KEY (`Id_jornada`,`seq_dia`,`cod_turno`),
   KEY `cod_turno_fk` (`cod_turno`),
   KEY `seq_dia_fk` (`seq_dia`),
+  KEY `id_jornada_fk_idx` (`Id_jornada`),
   CONSTRAINT `cod_turno_fk` FOREIGN KEY (`cod_turno`) REFERENCES `turno` (`codigo`) ON UPDATE CASCADE,
+  CONSTRAINT `id_jornada_fk` FOREIGN KEY (`Id_jornada`) REFERENCES `jornada_de_trabalho` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `seq_dia_fk` FOREIGN KEY (`seq_dia`) REFERENCES `dia` (`sequencial`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1218,7 +1242,7 @@ CREATE TABLE `jornada_de_trabalho_tem` (
 
 LOCK TABLES `jornada_de_trabalho_tem` WRITE;
 /*!40000 ALTER TABLE `jornada_de_trabalho_tem` DISABLE KEYS */;
-INSERT INTO `jornada_de_trabalho_tem` VALUES ('32163328','1','0\r'),('32163329','2','1\r'),('32163335','1','0\r'),('32163328','4','0'),('32163328','5','1'),('32163329','1','1'),('32163329','2','1'),('32163329','3','1'),('32163329','4','2'),('32163329','5','2'),('32163335','1','0'),('32163335','2','0'),('32163335','3','0'),('32163335','4','0'),('32163335','5','1'),('32163328','2','0'),('32163328','3','0'),('32163349','1','0'),('32163349','1','0'),('32163349','1','0'),('32163350','1','0'),('32163350','2','0'),('32163350','3','0'),('32163350','4','0');
+INSERT INTO `jornada_de_trabalho_tem` VALUES ('32163328','1','0\r'),('32163328','5','1'),('32163329','1','1'),('32163329','2','1\r'),('32163329','3','1'),('32163329','4','2'),('32163329','5','2'),('32163335','1','0\r'),('32163335','5','1');
 /*!40000 ALTER TABLE `jornada_de_trabalho_tem` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1368,7 +1392,7 @@ CREATE TABLE `orcamento` (
 
 LOCK TABLES `orcamento` WRITE;
 /*!40000 ALTER TABLE `orcamento` DISABLE KEYS */;
-INSERT INTO `orcamento` VALUES (130254,'2030-09-05',5,'2029-12-06','Sem descricao','2010-01-16'),(203114,'2021-06-05',5,'2029-12-06','Sem descricao','2001-10-16'),(272995,'2031-08-05',5,'2029-12-06','Sem descricao','2012-09-16'),(326744,'2024-07-05',5,'2029-12-06','Sem descricao','2015-03-16'),(408327,'2003-10-05',5,'2029-12-06','Sem descricao','2005-09-15'),(412926,'2002-09-05',5,'2029-12-06','Sem descricao','2012-09-16'),(438497,'2030-08-05',5,'2029-12-06','Sem descricao','2010-09-10'),(578698,'2006-07-05',5,'2029-12-06','Sem descricao','2012-09-16'),(603251,'2019-01-02',31,'2019-01-07','Sem descricao','2019-01-02'),(604439,'2013-07-05',5,'2029-12-06','Sem descricao','2012-09-16'),(736090,'2019-06-05',5,'2029-12-06','Sem descricao','2001-10-16'),(756250,'2021-09-05',5,'2029-12-06','Sem descricao','2015-03-16'),(758001,'2015-08-05',5,'2029-12-06','Sem descricao','2015-03-16'),(809677,'2006-10-05',5,'2029-12-06','Sem descricao','2015-03-16'),(896738,'2026-08-05',5,'2029-12-06','Sem descricao','2010-09-10'),(905543,'2011-10-05',5,'2029-12-06','Sem descricao','2015-03-16');
+INSERT INTO `orcamento` VALUES (107695,'2018-12-26',60,'2019-01-07','Referente a troca de dois módulos de memória DDR3  em Notebook.','2018-11-17'),(111091,'2018-12-03',90,'2019-01-05','Referente a formatação de 30 pcs HP.','2018-11-05'),(124565,'2017-12-01',90,'2017-12-03','Referente a troca de capacitores e resistores SMD das TVs da praça de alimentação.','2017-11-22'),(130254,'2030-09-05',5,'2029-12-06','Sem descricao','2010-01-16'),(135698,'2015-02-12',90,'2015-02-17','Referente a instalação de SO em 50 máquinas do laboratório de Biologia da FURGS.','2015-02-07'),(154258,'2016-02-12',90,'2016-02-22','Referente a troca da resistência de 3 bebedouros da unidade Camará.','2016-02-09'),(155624,'2018-12-03',90,'2019-01-19','Referente a troca de placa Mãe Notebook Hp dv6-6c30br.','2018-12-23'),(203114,'2021-06-05',5,'2029-12-06','Sem descricao','2001-10-16'),(233654,'2017-12-22',90,'2017-12-12','Referente a manutenção de peças de avião do jato 5936 da Azul.','2017-12-07'),(255897,'2019-01-05',90,'2019-01-17','Referente a troca de gabinete de 12 pcs de mesa.','2018-12-22'),(272995,'2031-08-05',5,'2029-12-06','Sem descricao','2012-09-16'),(326744,'2024-07-05',5,'2029-12-06','Sem descricao','2015-03-16'),(408327,'2003-10-05',5,'2029-12-06','Sem descricao','2005-09-15'),(412926,'2002-09-05',5,'2029-12-06','Sem descricao','2012-09-16'),(438497,'2030-08-05',5,'2029-12-06','Sem descricao','2010-09-10'),(578698,'2006-07-05',5,'2029-12-06','Sem descricao','2012-09-16'),(603251,'2019-01-02',31,'2019-01-07','Sem descricao','2019-01-02'),(604439,'2013-07-05',5,'2029-12-06','Sem descricao','2012-09-16'),(736090,'2019-06-05',5,'2029-12-06','Sem descricao','2001-10-16'),(756250,'2021-09-05',5,'2029-12-06','Sem descricao','2015-03-16'),(758001,'2015-08-05',5,'2029-12-06','Sem descricao','2015-03-16'),(809677,'2006-10-05',5,'2029-12-06','Sem descricao','2015-03-16'),(815265,'2017-03-12',90,'2017-03-27','Referente a troca de Placa Mãe em 27 PCs de Mesa.','2017-03-10'),(852467,'2017-03-03',90,'2017-03-05','Referente a manutenção preventiva de 120 PCs de mesa dos 3 laboratórios de Química da FURG.','2017-02-17'),(896738,'2026-08-05',5,'2029-12-06','Sem descricao','2010-09-10'),(905543,'2011-10-05',5,'2029-12-06','Sem descricao','2015-03-16');
 /*!40000 ALTER TABLE `orcamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1403,7 +1427,7 @@ CREATE TABLE `ordem_servico` (
 
 LOCK TABLES `ordem_servico` WRITE;
 /*!40000 ALTER TABLE `ordem_servico` DISABLE KEYS */;
-INSERT INTO `ordem_servico` VALUES (109006,'2013-10-14',3,'2019-01-15','Em Curso',130254,743797),(123658,'2020-03-03',14,'2020-02-18','Em Curso',905543,117095),(251182,'2022-10-14',3,'2028-01-15','Em Curso',578698,592439),(293137,'2015-10-14',3,'2021-01-15','Em Curso',438497,417174),(498872,'2024-10-14',3,'2030-01-15','Em Curso',736090,150619),(579148,'2016-10-14',3,'2022-01-15','Em Curso',272995,525009),(702449,'2019-10-14',3,'2025-01-15','Em Curso',408327,857787),(743273,'2020-10-14',3,'2026-01-15','Em Curso',758001,332619),(746207,'2025-10-14',3,'2031-01-15','Em Curso',203114,559734),(812795,'2023-10-14',3,'2029-01-15','Em Curso',809677,913831),(896492,'2012-10-14',3,'2018-01-15','Em Curso',326744,254807),(901221,'2018-10-14',3,'2024-01-15','Em Curso',896738,544386),(963325,'2019-03-02',14,'2019-02-19','Em Curso',603251,923654),(977699,'0000-00-00',14,'2019-02-19','Em Curso',412926,805070);
+INSERT INTO `ordem_servico` VALUES (109006,'2013-10-14',3,'2019-01-15','Em Curso',130254,743797),(123457,'2018-01-02',14,'2017-12-19','Concluída',124565,125469),(123658,'2020-03-03',14,'2020-02-18','Em Curso',905543,117095),(136958,'2019-03-03',14,'2019-02-19','Em Curso',107695,189562),(144568,'2016-03-04',14,'2016-02-19','Em Curso',154258,875466),(226587,'2019-03-02',14,'2019-02-19','Em Curso',111091,139545),(251182,'2022-10-14',3,'2028-01-15','Em Curso',578698,592439),(256598,'2019-03-05',14,'2019-02-19','Em Curso',255897,111365),(276894,'2019-03-03',14,'2019-02-19','Em Curso',155624,133652),(293137,'2015-10-14',3,'2021-01-15','Em Curso',438497,417174),(452265,'2015-03-05',14,'2015-02-19','Concluída',135698,223259),(456254,'2017-11-02',14,'2017-10-19','Concluída',233654,133965),(498872,'2024-10-14',3,'2030-01-15','Em Curso',736090,150619),(579148,'2016-10-14',3,'2022-01-15','Em Curso',272995,525009),(635452,'2017-04-02',14,'2017-03-19','Em Curso',852467,255898),(654525,'2017-05-03',14,'2017-04-19','Em Curso',815265,215469),(702449,'2019-10-14',3,'2025-01-15','Em Curso',408327,857787),(743273,'2020-10-14',3,'2026-01-15','Em Curso',758001,332619),(746207,'2025-10-14',3,'2031-01-15','Em Curso',203114,559734),(812795,'2023-10-14',3,'2029-01-15','Em Curso',809677,913831),(896492,'2012-10-14',3,'2018-01-15','Em Curso',326744,254807),(901221,'2018-10-14',3,'2024-01-15','Em Curso',896738,544386),(963325,'2019-03-02',14,'2019-02-19','Em Curso',603251,923654),(977699,'0000-00-00',14,'2019-02-19','Em Curso',412926,805070);
 /*!40000 ALTER TABLE `ordem_servico` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -1413,42 +1437,41 @@ UNLOCK TABLES;
 /*!50003 SET character_set_results = utf8 */ ;
 /*!50003 SET collation_connection  = utf8_general_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger set_dta_devida
 before insert on assistech.ordem_servico
 for each row
 begin
-	 SET @bissexto:=(YEAR(new.Dt_criacao) %4 = 0) AND (YEAR(new.Dt_criacao) % 100 != 0) OR (YEAR(new.Dt_criacao) % 400 = 0);
-     SET @mes_31:=MONTH(new.Dt_criacao)!=02 AND MONTH(new.Dt_criacao)!=04 AND MONTH(new.Dt_criacao)!=06 AND MONTH(new.Dt_criacao)!=09 AND MONTH(new.Dt_criacao)!=11;
-	
-	 CASE !@bissexto
-		WHEN @mes_31 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 31 then
-			set @diferenca:=abs(31 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
-            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao)+1, '-',@diferenca);
-            
-        WHEN !@mes_31 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 30 then
+	 #SET @bissexto:=(YEAR(new.Dt_criacao) %4 = 0) AND (YEAR(new.Dt_criacao) % 100 != 0) OR (YEAR(new.Dt_criacao) % 400 = 0);
+     #SELECT MONTH(LAST_DAY("2017-02-12"));
+ 
+		IF DAY(LAST_DAY(new.Dt_criacao))=30 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 30 then
 			set @diferenca:=abs(30 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
             set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao)+1, '-',@diferenca);
-            
-        WHEN MONTH(new.Dt_criacao)=02 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 28 then
+        END IF;  
+        
+        IF EXTRACT(MONTH from new.Dt_criacao)=12 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 31 then
+				set @diferenca:=abs(31 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
+				set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao)+1, '-','01', '-',@diferenca);
+        END IF;
+        
+        IF EXTRACT(MONTH from new.Dt_criacao)!=12 AND DAY(LAST_DAY(new.Dt_criacao))=31 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 31 then
+			set @diferenca:=abs(31 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
+            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao)+1, '-',@diferenca);
+		END IF;
+        
+        IF DAY(LAST_DAY(new.Dt_criacao))=28 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 28 then
 			set @diferenca:=abs(28 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );
             set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-','03', '-',@diferenca);
-      END CASE;
-     
-     CASE @bissexto
-        WHEN @mes_31 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 31 then
-			set @diferenca:=abs(31 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
-            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao)+1, '-',@diferenca);
-            
-        WHEN !@mes_31 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 30 then
-			set @diferenca:=abs(30 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
-            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao)+1, '-',@diferenca);
-            
-        WHEN MONTH(new.Dt_criacao)=02 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 29 then
+        END IF;    
+        
+        #ano bissexto. Fevereiro tem 29 dias.
+        IF DAY(LAST_DAY(new.Dt_criacao))=29 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 29 then
 			set @diferenca:=abs(29 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );
-            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-','03', '-',@diferenca);
-	 END CASE;
+            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-','03', '-',@diferenca);     
+        END IF;    
+       
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1926,6 +1949,84 @@ UNLOCK TABLES;
 --
 -- Dumping routines for database 'assistech'
 --
+/*!50003 DROP FUNCTION IF EXISTS `fn_hora_semana` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_hora_semana`(mat VARCHAR(13)) RETURNS int(11)
+    DETERMINISTIC
+begin
+
+	declare done int default 0;
+    #declare done_i int default 0;
+    declare current_fmat int;
+    declare current_idJorn int;
+    declare current_seqDia int;
+    declare current_codTurno int;
+    declare horas int;
+    #declare fmatcur cursor for select Matricula from assistech.funcionario;
+    declare idJornada_cur cursor for select Id_jornada from assistech.jornada_de_trabalho_tem;
+    declare seqDia_cur cursor for select seq_dia from assistech.jornada_de_trabalho_tem;
+    declare codTurno_cur cursor for select cod_turno from assistech.jornada_de_trabalho_tem;
+    declare continue handler for not found set done = 1;
+    #declare continue handler for not found set done_i = 1;
+    
+    #open fmatcur;
+    open idJornada_cur;
+    open seqDia_cur;
+    open codTurno_cur;
+    
+    repeat 
+		fetch  idJornada_cur into current_idJorn; 
+        fetch  seqDia_cur into current_seqDia; 
+        fetch  codTurno_cur into current_codTurno; 
+        
+        SET horas = horas +
+        abs((SELECT sum(HOUR(hora_final) )
+			from 
+			assistech.funcionario F JOIN jornada_de_trabalho J
+				ON F.IdJornada=J.Id 
+			JOIN jornada_de_trabalho_tem Jt
+				ON J.Id=Jt.Id_jornada
+            JOIN dia D
+				ON Jt.seq_dia=D.sequencial
+			JOIN turno T
+				ON Jt.cod_turno=T.codigo
+			where F.Matricula = mat and Id_jornada=current_idJorn and seq_dia=current_seqDia and cod_turno=current_codTurno)
+         -
+         (SELECT sum(HOUR(hora_inicio ))
+			from 
+			assistech.funcionario F JOIN jornada_de_trabalho J
+				ON F.IdJornada=J.Id 
+			JOIN jornada_de_trabalho_tem Jt
+				ON J.Id=Jt.Id_jornada
+			JOIN dia D
+				ON Jt.seq_dia=D.sequencial
+			JOIN turno T
+				ON Jt.cod_turno=T.codigo
+			where F.Matricula = mat and Id_jornada=current_idJorn and seq_dia=current_seqDia and cod_turno=current_codTurno));   
+            
+            until done
+	end repeat;
+   
+	close idJornada_cur;
+    close  seqDia_cur;
+	close  codTurno_cur;
+
+return horas;
+
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -1936,4 +2037,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-30 21:44:32
+-- Dump completed on 2018-02-02 11:31:36
