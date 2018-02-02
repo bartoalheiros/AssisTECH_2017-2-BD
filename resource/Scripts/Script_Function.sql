@@ -8,13 +8,27 @@ RETURNS INT
 determINistic
 BEGIN
 
+DECLARE CargaHoraria int(8);
+DECLARE Trabalha_sabado VARCHAR(3);
 DECLARE aux INT (11);
 DECLARE r INT (11);
 
 SET aux = ( SELECT CargaHoraria
-FROM assistech.funcionario
+FROM assistech.funcionario F
+INNER JOIN assistech.jornada_de_trabalho J 
+ON F.IdJornada=J.Id
 WHERE Matricula = m) ;
-SET r = aux*2;
+
+IF (SELECT Trabalha_sabado from jornada_de_trabalho JOIN assistech.funcionario ON Id=( SELECT IdJornada
+FROM assistech.funcionario F
+INNER JOIN assistech.jornada_de_trabalho J 
+ON F.IdJornada=J.Id
+WHERE Matricula = m) = 'sim') THEN
+
+SET r = aux*6;
+ELSE
+SET r= aux*5;
+END IF;
 RETURN r;
 
 END $
@@ -129,5 +143,5 @@ SELECT * from assistech.funcionario where Matricula='3221219790133';
 
 SELECT * from jornada_de_trabalho_tem where Id_jornada='32163329';
 
-SELECT fn_hora_semana('3221219790133');
+SELECT fn_hora('3221219790133');
 
