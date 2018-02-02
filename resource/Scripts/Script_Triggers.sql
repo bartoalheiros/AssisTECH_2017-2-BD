@@ -16,7 +16,6 @@ begin
     end if;
 end|
 
-drop trigger upd_num_func_del;
 
 #Trigger2.1  Para atualizar   o atributo "Num.Funcionarios" de UNIDADE DE SUPORTE ao Inserir um Funcionário.
 delimiter |
@@ -44,21 +43,36 @@ create trigger set_dta_devida
 before insert on assistech.ordem_servico
 for each row
 begin
-	 SET @dta_atual:=curdate();
-     SET @last_month_day:=DAY(LAST_DAY( @dta_atual ));
-     SET @mes_atual:=MONTH(@dta_atual);
-     SET @prazo:=new.Prazo_em_dias;
-     SET @ano_atual:=YEAR(@dta_atual);
-     SET @dia_atual:=DAY(@dta_atual);
-     
-     if (@ano_atual %4 = 0) AND (@ano_atual % 100 != 0) OR (@ano_atual % 400 = 0)  then
-		if @mes_atual=2 AND (@prazo + @dia_atual) > 29 then
-			set @diferenca:=abs(@prazo-@dia_atual);
-            
-        end if;	
-	 end if;
-		
+	
+		IF DAY(LAST_DAY(new.Dt_criacao))=30 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 30 then
+			set @diferenca:=abs(30 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
+            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao)+1, '-',@diferenca);
+        END IF;  
+        
+        IF EXTRACT(MONTH from new.Dt_criacao)=12 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 31 then
+				set @diferenca:=abs(31 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
+				set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao)+1, '-','01', '-',@diferenca);
+        END IF;
+        
+        IF EXTRACT(MONTH from new.Dt_criacao)!=12 AND DAY(LAST_DAY(new.Dt_criacao))=31 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 31 then
+			set @diferenca:=abs(31 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
+            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao)+1, '-',@diferenca);
+		END IF;
+        
+        IF DAY(LAST_DAY(new.Dt_criacao))=28 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 28 then
+			set @diferenca:=abs(28 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );
+            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-','03', '-',@diferenca);
+        END IF;    
+        
+        #ano bissexto. - Fevereiro tem 29 dias.
+        IF DAY(LAST_DAY(new.Dt_criacao))=29 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 29 then
+			set @diferenca:=abs(29 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );
+            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-','03', '-',@diferenca);     
+        END IF;    
+       
 end |
+
+drop trigger set_dta_devida;
 
 #select abs(7);
 #SELECT DAY(LAST_DAY( curdate() )) as DIAS_MES;

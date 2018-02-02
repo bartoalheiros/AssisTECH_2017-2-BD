@@ -1,3 +1,4 @@
+
 use assistech;
 
 /*SELECT  Cod_cliente, Cnpj as 'Cnpj/CPF', Razao_social as 'Nome/Razao_social' from cliente_jur UNION (SELECT * from cliente_fis);*/
@@ -11,4 +12,5 @@ CREATE VIEW pri_chamado as SELECT *FROM chamado as c where c.status_chamado = 'E
 CREATE VIEW os as SELECT *FROM ordem_servico;
 
 CREATE VIEW equi_datas as SELECT *FROM equipamento e WHERE e.data_entrada between ('2012-11-10') and ('2012-11-18');
+
 
