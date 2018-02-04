@@ -289,6 +289,8 @@ public class ViewCadastroFuncionario extends JFrame {
 		contentPane.add(btnExcluir);
 
 		readJTable();
+		
+		setResizable(false);
 
 	}
 
