@@ -1,6 +1,6 @@
 package model.bean;
 
-public class FornecedorBean {
+public class Fornecedor {
 private Long cnpj;
 private String razaoSocial;
 private String email;

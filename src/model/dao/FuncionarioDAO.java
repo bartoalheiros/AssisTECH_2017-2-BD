@@ -9,18 +9,21 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
-import connection.ConnectionFactory;
 import model.bean.Funcionario;
+import service.ConnectionFactory;
 
 public class FuncionarioDAO {
-    Connection con;
+    private static FuncionarioDAO instance = null;
     
-    public FuncionarioDAO() {
-        con = ConnectionFactory.getConnection();
-    }
+    public static FuncionarioDAO getInstance() {
+		if(instance == null) {
+			instance = new FuncionarioDAO();
+		}
+
+		return instance;
+	}
     
-    public void create(Funcionario f) {
+    public void create(Funcionario f, Connection con) {
 
         PreparedStatement stmt = null;
 
@@ -51,7 +54,7 @@ public class FuncionarioDAO {
 
     }
 
-    public List<Funcionario> read() {
+    public List<Funcionario> read(Connection con) {
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -91,7 +94,9 @@ public class FuncionarioDAO {
         return funcionarios;
 
     }
-    public Funcionario readForMat(String desc) {
+    
+    //busca a partir da matrícula do funcionario.
+    public Funcionario readForMat(String desc, Connection con) {
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -122,15 +127,13 @@ public class FuncionarioDAO {
 
         } catch (SQLException ex) {
             Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            ConnectionFactory.closeConnection(con, stmt, rs);
-        }
+        } 
 
         return funcionario;
 
     }
 
-    public void update(Funcionario f) {
+    public void update(Funcionario f, Connection con) {
 
         PreparedStatement stmt = null;
 
@@ -154,12 +157,9 @@ public class FuncionarioDAO {
             JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao atualizar: " + ex);
-        } finally {
-            ConnectionFactory.closeConnection(con, stmt);
-        }
-
+        } 
     }
-    public void delete(Funcionario f) {
+    public void delete(Funcionario f, Connection con) {
 
         PreparedStatement stmt = null;
 
@@ -172,9 +172,7 @@ public class FuncionarioDAO {
             JOptionPane.showMessageDialog(null, "Excluido com sucesso!");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao excluir: " + ex);
-        } finally {
-            ConnectionFactory.closeConnection(con, stmt);
-        }
+        } 
 
     }
 }

@@ -16,7 +16,7 @@ import java.awt.GridBagLayout;
 import java.awt.Toolkit;
 import java.awt.GridBagConstraints;
 
-public class ViewLogin extends JFrame {
+public class LoginView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -29,7 +29,7 @@ public class ViewLogin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ViewLogin frame = new ViewLogin();
+					LoginView frame = new LoginView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +41,12 @@ public class ViewLogin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ViewLogin() {
+	public LoginView() {
+		initComponents();
+		
+	}
+
+	private void initComponents() {
 		setTitle("Assistech - Área de Acesso");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 544, 385);
@@ -93,14 +98,6 @@ public class ViewLogin extends JFrame {
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.setBounds(272, 244, 89, 23);
 		panel.add(btnEntrar);
-	}
 
-	
-	
-	private void pegarResolucao() {
-       Toolkit t = Toolkit.getDefaultToolkit();
-	   Dimension dimensao = t.getScreenSize();
-	   this.setSize((dimensao.width + 5), (dimensao.height - 38));
-	 
 	}
 }

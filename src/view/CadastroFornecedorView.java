@@ -14,7 +14,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 
-public class ViewCadastroFornecedor extends JFrame {
+public class CadastroFornecedorView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtCnpj;
@@ -31,7 +31,7 @@ public class ViewCadastroFornecedor extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ViewCadastroFornecedor frame = new ViewCadastroFornecedor();
+					CadastroFornecedorView frame = new CadastroFornecedorView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +43,7 @@ public class ViewCadastroFornecedor extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ViewCadastroFornecedor() {
+	public CadastroFornecedorView() {
 		setTitle("Cadastro de fornecedor");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 494, 358);

@@ -3,6 +3,8 @@ package view;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import model.bean.Funcionario;
 import model.dao.FuncionarioDAO;
+import service.ConnectionFactory;
 
 @SuppressWarnings("serial")
 public class ViewCadastroFuncionario extends JFrame {
@@ -55,8 +58,6 @@ public class ViewCadastroFuncionario extends JFrame {
 		});
 	}
 
-
-	//FuncionarioTableModel tableModel = new FuncionarioTableModel();
 	private JTable table;
 	private JTextField textField;
 	private JButton btnCadastrar;
@@ -247,8 +248,10 @@ public class ViewCadastroFuncionario extends JFrame {
 		btnCadastrar = new JButton("+ Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Connection con = ConnectionFactory.getConnection();
 				Funcionario f = new Funcionario();
-				FuncionarioDAO dao = new FuncionarioDAO();
+				FuncionarioDAO dao = null;
+				dao = FuncionarioDAO.getInstance();
 				f.setMatricula(tf_mat.getText());
 				f.setCPF(Long.parseLong(tf_cpf.getText()));
 				f.setLogin(tf_login.getText());
@@ -260,7 +263,7 @@ public class ViewCadastroFuncionario extends JFrame {
 				f.setId_jornada(tf_id_jornada.getText());
 				f.setData_inicio(tf_dt_inicio.getText());
 				f.setCodUnid_Suporte(Integer.parseInt(tf_cod_unid_sup.getText()));
-				dao.create(f);
+				dao.create(f, con);
 
 				tf_mat.setText("");
 				tf_cpf.setText("");
