@@ -8,24 +8,37 @@ import java.awt.GraphicsEnvironment;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import model.dao.FuncionarioDAO;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.GridBagLayout;
 import java.awt.Toolkit;
 import java.awt.GridBagConstraints;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.UIManager;
+import java.awt.Insets;
 
 public class LoginView extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JPasswordField passwordField;
+	private JTextField tf_Login;
+	private JPasswordField pf_password;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		try {
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel");
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -53,19 +66,11 @@ public class LoginView extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{528, 0};
-		gbl_contentPane.rowHeights = new int[]{56, 291, 0};
-		gbl_contentPane.columnWeights = new double[]{0.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		contentPane.setLayout(gbl_contentPane);
+		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		GridBagConstraints gbc_panel = new GridBagConstraints();
-		gbc_panel.fill = GridBagConstraints.BOTH;
-		gbc_panel.gridx = 0;
-		gbc_panel.gridy = 1;
-		contentPane.add(panel, gbc_panel);
+		panel.setBounds(5, 61, 528, 291);
+		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		setResizable(false);
@@ -78,10 +83,10 @@ public class LoginView extends JFrame {
 	    
 	    setExtendedState(MAXIMIZED_BOTH);
 	    
-		textField = new JTextField();
-		textField.setBounds(98, 98, 260, 20);
-		panel.add(textField);
-		textField.setColumns(10);
+		tf_Login = new JTextField();
+		tf_Login.setBounds(98, 98, 260, 20);
+		panel.add(tf_Login);
+		tf_Login.setColumns(10);
 		
 		JLabel lblLogin = new JLabel("Login:");
 		lblLogin.setBounds(98, 73, 46, 14);
@@ -91,13 +96,30 @@ public class LoginView extends JFrame {
 		lblSenha.setBounds(98, 151, 46, 14);
 		panel.add(lblSenha);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(98, 174, 260, 20);
-		panel.add(passwordField);
+		pf_password = new JPasswordField();
+		pf_password.setBounds(98, 174, 260, 20);
+		panel.add(pf_password);
+		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JButton btnEntrar = new JButton("Entrar");
+		btnEntrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				FuncionarioDAO dao = new FuncionarioDAO();
+			       
+			       if(dao.checkLogin(tf_Login.getText(), pf_password.getText())){
+			    	   new CadastroFuncionarioView().setVisible(true); 	   
+			       }else{
+			           JOptionPane.showMessageDialog(null, "Login ou Senha incorretos!");
+			       }
+			}
+		});
 		btnEntrar.setBounds(272, 244, 89, 23);
 		panel.add(btnEntrar);
+		
+		JLabel lblAssistechBem = new JLabel("AssisTECH - Bem Vindo!");
+		lblAssistechBem.setBounds(191, 11, 120, 14);
+		contentPane.add(lblAssistechBem);
 
 	}
 }

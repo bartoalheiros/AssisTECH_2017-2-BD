@@ -16,12 +16,14 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+
+import control.CadastroFuncionarioControler;
 import model.bean.Funcionario;
 import model.dao.FuncionarioDAO;
 import service.ConnectionFactory;
 
 @SuppressWarnings("serial")
-public class ViewCadastroFuncionario extends JFrame {
+public class CadastroFuncionarioView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField tf_mat;
@@ -49,7 +51,7 @@ public class ViewCadastroFuncionario extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ViewCadastroFuncionario frame = new ViewCadastroFuncionario();
+					CadastroFuncionarioView frame = new CadastroFuncionarioView(/*con*/);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -67,14 +69,14 @@ public class ViewCadastroFuncionario extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ViewCadastroFuncionario() {
+	public CadastroFuncionarioView(/*Connection con*/) {
 
-		initComponents();
+		initComponents(/*con*/);
 
 
 	}
 
-	private void initComponents() {
+	private void initComponents(/*Connection con*/) {
 
 		setTitle("Cadastro Funcionario");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -237,21 +239,18 @@ public class ViewCadastroFuncionario extends JFrame {
 				readJTableForMat(tf_mat.getText());
 			}
 		});
-		btn_buscar.setBounds(754, 340, 60, 30);
+		btn_buscar.setBounds(843, 340, 60, 30);
 		contentPane.add(btn_buscar);
 
 		textField = new JTextField();
-		textField.setBounds(503, 350, 197, 20);
+		textField.setBounds(624, 350, 197, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 
 		btnCadastrar = new JButton("+ Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Connection con = ConnectionFactory.getConnection();
 				Funcionario f = new Funcionario();
-				FuncionarioDAO dao = null;
-				dao = FuncionarioDAO.getInstance();
 				f.setMatricula(tf_mat.getText());
 				f.setCPF(Long.parseLong(tf_cpf.getText()));
 				f.setLogin(tf_login.getText());
@@ -263,21 +262,24 @@ public class ViewCadastroFuncionario extends JFrame {
 				f.setId_jornada(tf_id_jornada.getText());
 				f.setData_inicio(tf_dt_inicio.getText());
 				f.setCodUnid_Suporte(Integer.parseInt(tf_cod_unid_sup.getText()));
-				dao.create(f, con);
+				CadastroFuncionarioControler cf = new CadastroFuncionarioControler();
+				
+				if(cf.cadastrar(f)) {
+					tf_mat.setText("");
+					tf_cpf.setText("");
+					tf_login.setText("");
+					tf_password.setText("");
+					tf_name.setText("");
+					tf_email.setText("");
+					tf_carg_hora.setText("");
+					tf_mat_super.setText("");
+					tf_id_jornada.setText("");
+					tf_dt_inicio.setText("");
+					tf_cod_unid_sup.setText("");
 
-				tf_mat.setText("");
-				tf_cpf.setText("");
-				tf_login.setText("");
-				tf_password.setText("");
-				tf_name.setText("");
-				tf_email.setText("");
-				tf_carg_hora.setText("");
-				tf_mat_super.setText("");
-				tf_id_jornada.setText("");
-				tf_dt_inicio.setText("");
-				tf_cod_unid_sup.setText("");
-
-				readJTable();
+					readJTable();
+				}
+				
 			}
 		});
 		btnCadastrar.setBounds(10, 347, 108, 23);
@@ -290,6 +292,26 @@ public class ViewCadastroFuncionario extends JFrame {
 		btnExcluir = new JButton("Excluir");
 		btnExcluir.setBounds(232, 347, 91, 23);
 		contentPane.add(btnExcluir);
+		
+		JButton btnLimparDados = new JButton("Limpar Dados");
+		btnLimparDados.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				tf_mat.setText("");
+				tf_cpf.setText("");
+				tf_login.setText("");
+				tf_password.setText("");
+				tf_name.setText("");
+				tf_email.setText("");
+				tf_carg_hora.setText("");
+				tf_mat_super.setText("");
+				tf_id_jornada.setText("");
+				tf_dt_inicio.setText("");
+				tf_cod_unid_sup.setText("");
+			}
+		});
+		btnLimparDados.setIcon(new ImageIcon("C:\\Users\\Bartô\\Documents\\GitHub\\AssisTECH_2017-2-BD\\img\\refresh.png"));
+		btnLimparDados.setBounds(333, 347, 125, 23);
+		contentPane.add(btnLimparDados);
 
 		readJTable();
 		
@@ -297,7 +319,7 @@ public class ViewCadastroFuncionario extends JFrame {
 
 	}
 
-	public void readJTable() {
+	public void readJTable(/*Connection con*/) {
 
 		DefaultTableModel modelo = (DefaultTableModel) table.getModel();
 		modelo.setNumRows(0);
