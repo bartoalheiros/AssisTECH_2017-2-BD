@@ -239,11 +239,11 @@ public class CadastroFuncionarioView extends JFrame {
 				readJTableForMat(tf_mat.getText());
 			}
 		});
-		btn_buscar.setBounds(843, 340, 60, 30);
+		btn_buscar.setBounds(744, 340, 60, 30);
 		contentPane.add(btn_buscar);
 
 		textField = new JTextField();
-		textField.setBounds(624, 350, 197, 20);
+		textField.setBounds(537, 350, 197, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 
@@ -262,9 +262,9 @@ public class CadastroFuncionarioView extends JFrame {
 				f.setId_jornada(tf_id_jornada.getText());
 				f.setData_inicio(tf_dt_inicio.getText());
 				f.setCodUnid_Suporte(Integer.parseInt(tf_cod_unid_sup.getText()));
-				CadastroFuncionarioControler cf = new CadastroFuncionarioControler();
+				CadastroFuncionarioControler cfc = new CadastroFuncionarioControler();
 				
-				if(cf.cadastrar(f)) {
+				if(cfc.cadastrar(f)) {
 					tf_mat.setText("");
 					tf_cpf.setText("");
 					tf_login.setText("");
@@ -309,9 +309,19 @@ public class CadastroFuncionarioView extends JFrame {
 				tf_cod_unid_sup.setText("");
 			}
 		});
-		btnLimparDados.setIcon(new ImageIcon("C:\\Users\\Bartô\\Documents\\GitHub\\AssisTECH_2017-2-BD\\img\\refresh.png"));
+		btnLimparDados.setIcon(new ImageIcon("img\\refresh.png"));
 		btnLimparDados.setBounds(333, 347, 125, 23);
 		contentPane.add(btnLimparDados);
+		
+		JButton btnVol = new JButton("Voltar para dados");
+		btnVol.setIcon(new ImageIcon("img\\back.png"));
+		btnVol.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				readJTable();
+			}
+		});
+		btnVol.setBounds(834, 340, 154, 23);
+		contentPane.add(btnVol);
 
 		readJTable();
 		
@@ -348,10 +358,11 @@ public class CadastroFuncionarioView extends JFrame {
 		DefaultTableModel modelo = (DefaultTableModel) table.getModel();
 		modelo.setNumRows(0);
 		FuncionarioDAO fdao = new FuncionarioDAO();
-		Funcionario f = fdao.readForMat(mat);
+		//Funcionario f = fdao.readForMat(mat);
 
 
-		modelo.addRow(new Object[]{
+		for (Funcionario f : fdao.readForMat(mat)) {
+			modelo.addRow(new Object[]{
 				f.getMatricula(),
 				f.getCPF(),
 				f.getLogin(),
@@ -363,7 +374,7 @@ public class CadastroFuncionarioView extends JFrame {
 				f.getIdjornada(),
 				f.getDataInicio(),
 				f.getCodUnid_Suporte()
-		});
+			});}
 
 	}
 	

@@ -102,11 +102,12 @@ public class FuncionarioDAO{
     }
     
     //busca a partir da matrícula do funcionario.
-    public Funcionario readForMat(String desc/*, Connection con*/) {
+    public List<Funcionario> readForMat(String desc/*, Connection con*/) {
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        Funcionario funcionario = null;
+        List<Funcionario> funcionarios = new ArrayList<>();
+       
         
 
         try {
@@ -116,8 +117,7 @@ public class FuncionarioDAO{
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-            	funcionario = new Funcionario();
-            	
+            	Funcionario funcionario = new Funcionario();
             	funcionario.setMatricula(rs.getString("Matricula"));
                 funcionario.setCPF(rs.getLong("CPF"));
                 funcionario.setLogin(rs.getString("Login"));
@@ -129,13 +129,14 @@ public class FuncionarioDAO{
 				funcionario.setData_inicio(rs.getString("DataInicio"));
 				funcionario.setCodUnid_Suporte(rs.getInt("CodigoUnidadeDeSuporte"));
 				funcionario.setId_jornada(rs.getString("IdJornada"));
+				funcionarios.add(funcionario);
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         } 
 
-        return funcionario;
+        return funcionarios;
 
     }
 
