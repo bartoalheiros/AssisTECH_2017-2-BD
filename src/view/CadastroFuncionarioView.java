@@ -290,6 +290,25 @@ public class CadastroFuncionarioView extends JFrame {
 		contentPane.add(btnAtualizar);
 
 		btnExcluir = new JButton("Excluir");
+		btnExcluir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {				
+				Funcionario f = new Funcionario();
+				f.setMatricula(tf_mat.getText());
+				f.setCPF(Long.parseLong(tf_cpf.getText()));
+				f.setLogin(tf_login.getText());
+				f.setSenha(tf_password.getText());
+				f.setNome(tf_name.getText());
+				f.setEmail(tf_email.getText());
+				f.setCargaHoraria(Integer.parseInt(tf_carg_hora.getText()));
+				f.setMatriculaSuperv(tf_mat_super.getText());
+				f.setId_jornada(tf_id_jornada.getText());
+				f.setData_inicio(tf_dt_inicio.getText());
+				f.setCodUnid_Suporte(Integer.parseInt(tf_cod_unid_sup.getText()));
+				CadastroFuncionarioControler cfc = new CadastroFuncionarioControler();
+				
+				cfc.delete(f);
+			}
+		});
 		btnExcluir.setBounds(232, 347, 91, 23);
 		contentPane.add(btnExcluir);
 		

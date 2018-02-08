@@ -47,4 +47,11 @@ public class CadastroFuncionarioControler {
 		}  
 		return d;  
 	}
+	
+	public void delete(Funcionario f){
+		FuncionarioDAO dao = null;
+		dao = FuncionarioDAO.getInstance();
+		
+		dao.delete(f);
+	}
 }
