@@ -30,26 +30,7 @@ public class LoginView extends JFrame {
 	private JTextField tf_Login;
 	private JPasswordField pf_password;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel");
-		} catch (Throwable e) {
-			e.printStackTrace();
-		}
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LoginView frame = new LoginView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
@@ -108,7 +89,8 @@ public class LoginView extends JFrame {
 				FuncionarioDAO dao = new FuncionarioDAO();
 			       
 			       if(dao.checkLogin(tf_Login.getText(), pf_password.getText())){
-			    	   new CadastroFuncionarioView().setVisible(true); 	   
+			    	   new MenuView().setVisible(true);
+			    	   close();
 			       }else{
 			           JOptionPane.showMessageDialog(null, "Login ou Senha incorretos!");
 			       }
@@ -121,5 +103,9 @@ public class LoginView extends JFrame {
 		lblAssistechBem.setBounds(191, 11, 120, 14);
 		contentPane.add(lblAssistechBem);
 
+	}
+	
+	public void close() {
+		this.setVisible(false);
 	}
 }

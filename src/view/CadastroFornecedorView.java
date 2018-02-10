@@ -1,18 +1,26 @@
 package view;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
+import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
+
+import model.bean.Fornecedor;
+import model.bean.Funcionario;
+import model.dao.FornecedorDAO;
+import model.dao.FuncionarioDAO;
 
 public class CadastroFornecedorView extends JFrame {
 
@@ -22,12 +30,19 @@ public class CadastroFornecedorView extends JFrame {
 	private JTextField txtEmail;
 	private JTextField txtTelefone;
 	private JTextField txtConsulta;
-	private JTable table;
+	//private JTable table;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		
+		try {
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel");
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -39,13 +54,23 @@ public class CadastroFornecedorView extends JFrame {
 			}
 		});
 	}
+	
+	private JTable table;
+	private JTextField textField;
+	private JButton btnCadastrar;
+	private JButton btnAtualizar;
+	private JButton btnExcluir;
 
 	/**
 	 * Create the frame.
 	 */
 	public CadastroFornecedorView() {
+		initComponents();
+	}
+	
+	public void initComponents() {
 		setTitle("Cadastro de fornecedor");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 494, 358);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -101,6 +126,19 @@ public class CadastroFornecedorView extends JFrame {
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Fornecedor f = new Fornecedor();
+				f.setCnpj(Long.parseLong(txtCnpj.getText()));
+				f.setRazaoSocial(txtRazaoSocial.getText());
+				f.setEmail(txtEmail.getText());
+				f.setTelefone(txtTelefone.getText());
+				
+				FornecedorDAO fdao = new FornecedorDAO();
+				try {
+					fdao.create(f);
+				} catch (MySQLIntegrityConstraintViolationException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		btnCadastrar.setBounds(223, 100, 93, 23);
@@ -127,6 +165,19 @@ public class CadastroFornecedorView extends JFrame {
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
+		
+	    table.addKeyListener(new java.awt.event.KeyAdapter() {
+		    public void keyReleased(java.awt.event.KeyEvent evt) {
+	            	tbl_FornecedorKeyReleased(evt);
+	        }
+	    });
+		
+		table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            	 tbl_FornecedorMouseClicked(evt);
+            }
+        });
+		
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
@@ -147,5 +198,52 @@ public class CadastroFornecedorView extends JFrame {
 		panel.setBounds(0, 15, 294, 163);
 		contentPane.add(panel);
 		
+		readJTable();
+		setResizable(false);
+
 	}
+	
+	
+
+	 private void tbl_FornecedorMouseClicked(java.awt.event.MouseEvent evt){
+		 if (table.getSelectedRow() != -1) {
+
+	            txtCnpj.setText(table.getValueAt(table.getSelectedRow(), 0).toString());
+	            txtRazaoSocial.setText(table.getValueAt(table.getSelectedRow(), 1).toString());
+	            txtEmail.setText(table.getValueAt(table.getSelectedRow(), 2).toString());
+	            txtTelefone.setText(table.getValueAt(table.getSelectedRow(), 3).toString());
+		 }
+		 
+	 }
+	 
+	 private void tbl_FornecedorKeyReleased(java.awt.event.KeyEvent evt) {
+		 if (table.getSelectedRow() != -1) {
+			 
+			 txtCnpj.setText(table.getValueAt(table.getSelectedRow(), 0).toString());
+	            txtRazaoSocial.setText(table.getValueAt(table.getSelectedRow(), 1).toString());
+	            txtEmail.setText(table.getValueAt(table.getSelectedRow(), 2).toString());
+	            txtTelefone.setText(table.getValueAt(table.getSelectedRow(), 3).toString());
+		 }
+		 
+	 }	 
+
+	 
+	 public void readJTable(/*Connection con*/) {
+
+			DefaultTableModel modelo = (DefaultTableModel) table.getModel();
+			modelo.setNumRows(0);
+			FornecedorDAO fdao = new FornecedorDAO();
+
+			for (Fornecedor f : fdao.read()) {
+
+				modelo.addRow(new Object[]{
+						f.getCnpj(),
+						f.getRazaoSocial(),
+						f.getEmail(),
+						f.getTelefone(),
+						
+				});
+			}
+		}
+
 }
