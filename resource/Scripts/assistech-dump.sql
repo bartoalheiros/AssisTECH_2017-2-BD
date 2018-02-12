@@ -266,7 +266,7 @@ CREATE TABLE `chamado` (
   CONSTRAINT `chamado_atendimento_fk` FOREIGN KEY (`Id_atendimento`) REFERENCES `atendimento` (`id_atendimento`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `chamado_cliente_fk` FOREIGN KEY (`Cod_cliente`) REFERENCES `cliente` (`Cod`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `chamado_ordem_servico_fk` FOREIGN KEY (`Num_ordem_servico`) REFERENCES `ordem_servico` (`Num_Ordem_Servico`),
-  CONSTRAINT `chamado_supervisor_fk` FOREIGN KEY (`Mat_supervisor`) REFERENCES `supervisor` (`matricula`),
+  CONSTRAINT `chamado_supervisor_fk` FOREIGN KEY (`Mat_supervisor`) REFERENCES `supervisor` (`matricula`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `chamado_tec_interno_fk` FOREIGN KEY (`Mat_tec_interno`) REFERENCES `tecnico_interno` (`matricula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -277,7 +277,7 @@ CREATE TABLE `chamado` (
 
 LOCK TABLES `chamado` WRITE;
 /*!40000 ALTER TABLE `chamado` DISABLE KEYS */;
-INSERT INTO `chamado` VALUES (127003,'Interno','Concluido','Sem descricao','Sim','3221219790121','4037469036387','2246705981087',538507,419036,0,'2010-12-15'),(142530,'Interno','Em processo','Sem descricao','Sim','3221219790118','4974678704490','6758517699760',628743,444272,0,'2014-04-19'),(285228,'Externo','Concluido','Sem descricao','NÃ£o','3221219790126','6857090937968','5968756780532',702449,444272,80369100,'2001-05-03'),(326138,'Externo','Concluido','Sem descricao','Sim','3221219790119','9607524394231','6977418034599',896492,419036,43207177,'2009-09-12'),(375295,'Interno','Em processo','Sem descricao','Sim','3221219790125','1013901989839','1539784638533',901221,494738,0,'2014-04-10'),(414136,'Externo','Na espera','Sem descricao','Sim','3221219790129','7336402053778','8182166689073',251182,754431,80369103,'2015-03-12'),(449291,'Interno','Em processo','Sem descricao','NÃ£o','3221219790132','2939681544360','5107105363576',746207,754431,0,'2001-05-03'),(455427,'Externo','Em processo','Sem descricao','Sim','3221219790127','7897223023730','6985312133607',743273,494738,80369101,'2012-07-15'),(469529,'Interno','Em processo','Sem descricao','Sim','3221219790123','5720417742894','2329300698267',579148,419036,0,'2015-03-12'),(474898,'Externo','Em processo','Sem descricao','NÃ£o','3221219790130','1877625217369','3033985495123',812795,754431,80369104,'2001-05-03'),(721605,'Externo','Concluido','Sem descricao','NÃ£o','3221219790128','5219251264524','1594092172270',640479,419036,80369102,'2014-04-10'),(831513,'Interno','Concluido','Sem descricao','Sim','3221219790131','4781915415583','2756836595671',498872,754431,0,'2014-04-10'),(857233,'Interno','Em processo','Sem descricao','NÃ£o','3221219790124','4101975791421','7006151265588',977699,494738,0,'2001-05-03'),(888642,'Interno','Em processo','Sem descricao','NÃ£o','3221219790120','7128959997536','6335131046868',109006,494738,0,'2001-05-03'),(993477,'Interno','Na espera','Sem descricao','NÃ£o','3221219790122','7067254094982','6248141194587',293137,419036,0,'2012-07-15');
+INSERT INTO `chamado` VALUES (127003,'Interno','Concluido','Sem descricao','Sim','3221219790123','4037469036387','2246705981087',538507,419036,0,'2010-12-15'),(142530,'Interno','Em processo','Sem descricao','Sim','3221219790118','4974678704490','6758517699760',628743,444272,0,'2014-04-19'),(285228,'Externo','Concluido','Sem descricao','NÃ£o','3221219790130','6857090937968','5968756780532',702449,444272,80369100,'2001-05-03'),(326138,'Externo','Concluido','Sem descricao','Sim','3221219790123','9607524394231','6977418034599',896492,419036,43207177,'2009-09-12'),(375295,'Interno','Em processo','Sem descricao','Sim','3221219790118','1013901989839','1539784638533',901221,494738,0,'2014-04-10'),(414136,'Externo','Na espera','Sem descricao','Sim','3221219790118','7336402053778','8182166689073',251182,754431,80369103,'2015-03-12'),(449291,'Interno','Em processo','Sem descricao','NÃ£o','3221219790118','2939681544360','5107105363576',746207,754431,0,'2001-05-03'),(455427,'Externo','Em processo','Sem descricao','Sim','3221219790123','7897223023730','6985312133607',743273,494738,80369101,'2012-07-15'),(469529,'Interno','Em processo','Sem descricao','Sim','3221219790130','5720417742894','2329300698267',579148,419036,0,'2015-03-12'),(474898,'Externo','Em processo','Sem descricao','NÃ£o','3221219790123','1877625217369','3033985495123',812795,754431,80369104,'2001-05-03'),(721605,'Externo','Concluido','Sem descricao','NÃ£o','3221219790118','5219251264524','1594092172270',640479,419036,80369102,'2014-04-10'),(831513,'Interno','Concluido','Sem descricao','Sim','3221219790130','4781915415583','2756836595671',498872,754431,0,'2014-04-10'),(857233,'Interno','Em processo','Sem descricao','NÃ£o','3221219790130','4101975791421','7006151265588',977699,494738,0,'2001-05-03'),(888642,'Interno','Em processo','Sem descricao','NÃ£o','3221219790123','7128959997536','6335131046868',109006,494738,0,'2001-05-03'),(993477,'Interno','Na espera','Sem descricao','NÃ£o','3221219790123','7067254094982','6248141194587',293137,419036,0,'2012-07-15');
 /*!40000 ALTER TABLE `chamado` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -991,7 +991,7 @@ CREATE TABLE `funcionario` (
 
 LOCK TABLES `funcionario` WRITE;
 /*!40000 ALTER TABLE `funcionario` DISABLE KEYS */;
-INSERT INTO `funcionario` VALUES ('3221219790118',11898352001,'Kylan','131274509274058','Collier, Alexis Q.','non.hendrerit@quismassa.com',6,'3221219790123','32163328','1999-11-02',12369),('3221219790119',11898352002,'Finn','131274509274059','Thompson, David N.','sapien@Duisami.org',6,'3221219790118','33884623','2010-12-03',12369),('3221219790120',11898352003,'Harlan','131274509274060','Calhoun, Tatum V.','at.risus@pede.edu',4,'3221219790118','32163330','2001-11-04',12369),('3221219790121',11898352004,'Francis','131274509274061','Ayala, Francesca U.','aliquam@tempusnonlacinia.net',4,'3221219790118','32163331','2007-12-02',44665),('3221219790122',11898352005,'Minerva','131274509274062','Herman, Damian L.','tempus.lorem@tempor.net',4,'3221219790123','32163332','1994-10-20',44665),('3221219790123',11898352006,'Derek','131274509274063','Mcneil, Kendall S.','orci.lacus@gravidamolestiearcu.com',8,'3221219790118','32163333','2001-11-04',44665),('3221219790124',11898352007,'Isabella','131274509274064','Gould, Beatrice T.','neque@lacus.net',6,'3221219790118','32163334','2010-12-03',44665),('3221219790125',11898352008,'Jasper','131274509274065','Willis, Marny R.','adipiscing@luctuslobortisClass.ca',6,'3221219790130','32163335','1994-10-20',44665),('3221219790126',11898352009,'Kyra','131274509274066','Downs, Callum A.','nonummy@dolortempus.ca',6,'3221219790130','32163336','1994-10-20',44665),('3221219790127',11898352010,'Dane','131274509274067','Orr, Cain Z.','dictum.sapien@uteros.edu',4,'3221219790130','32163337','1994-10-20',44665),('3221219790128',11898352011,'Branden','131274509274068','Malone, Xena W.','magna.Cras@eulacus.ca',6,'3221219790130','32163338','1990-12-03',58994),('3221219790129',11898352012,'Dexter','131274509274069','Buckner, Martina X.','risus.In@ipsumDonecsollicitudin.edu',4,'3221219790130','32163339','2003-05-07',58994),('3221219790130',11898352013,'Leila','131274509274070','Downs, Athena Q.','nulla@Nam.org',6,'3221219790123','32163340','2003-05-07',58994),('3221219790131',11898352014,'Haviva','131274509274071','Kirk, Trevor H.','eu@nunc.co.uk',4,'3221219790123','32163341','2003-05-07',58994),('3221219790132',11898352015,'Molly','131274509274072','Coffey, Drew N.','Nullam@nec.net',4,'3221219790130','32163342','2003-05-07',58994),('3221219790133',11111111111,'augusto','123451','Silvio Carlos Augusto Melo','augusto.carlos@gmail.com',8,'3221219790130','32163329','2001-12-03',12369),('3221219790134',88888888888,'Alberto','11111111111','Alberto Jomard','alberto_jomard@email.com',8,'3221219790130','32163349','2007-11-07',12369),('3221219790176',44444444444,'JFA','888888','Jonas Fernando Alcarroci','jonas.fernando@email.com',8,'3221219790130','32163351','2011-03-05',58994);
+INSERT INTO `funcionario` VALUES ('3221219790118',11898352001,'Kylan','131274509274058','Collier, Alexis Q.','non.hendrerit@quismassa.com',6,'3221219790123','32163328','1999-11-02',12369),('3221219790119',11898352002,'Finn','131274509274059','Thompson, David N.','sapien@Duisami.org',6,'3221219790118','33884623','2010-12-03',12369),('3221219790121',11898352004,'Francis','131274509274061','Ayala, Francesca U.','aliquam@tempusnonlacinia.net',4,'3221219790118','32163331','2007-12-02',44665),('3221219790123',11898352006,'Derek','131274509274063','Mcneil, Kendall S.','orci.lacus@gravidamolestiearcu.com',8,'3221219790118','32163333','2001-11-04',44665),('3221219790124',11898352007,'Isabella','131274509274064','Gould, Beatrice T.','neque@lacus.net',6,'3221219790118','32163334','2010-12-03',44665),('3221219790125',11898352008,'Jasper','131274509274065','Willis, Marny R.','adipiscing@luctuslobortisClass.ca',6,'3221219790130','32163335','1994-10-20',44665),('3221219790126',11898352009,'Kyra','131274509274066','Downs, Callum A.','nonummy@dolortempus.ca',6,'3221219790130','32163336','1994-10-20',44665),('3221219790127',11898352010,'Dane','131274509274067','Orr, Cain Z.','dictum.sapien@uteros.edu',4,'3221219790130','32163337','1994-10-20',44665),('3221219790128',11898352011,'Branden','131274509274068','Malone, Xena W.','magna.Cras@eulacus.ca',6,'3221219790130','32163338','1990-12-03',58994),('3221219790129',11898352012,'Dexter','131274509274069','Buckner, Martina X.','risus.In@ipsumDonecsollicitudin.edu',4,'3221219790130','32163339','2003-05-07',58994),('3221219790130',11898352013,'Leila','131274509274070','Downs, Athena Q.','nulla@Nam.org',6,'3221219790123','32163340','2003-05-07',58994),('3221219790131',11898352014,'Haviva','131274509274071','Kirk, Trevor H.','eu@nunc.co.uk',4,'3221219790123','32163341','2003-05-07',58994),('3221219790132',11898352015,'Molly','131274509274072','Coffey, Drew N.','Nullam@nec.net',4,'3221219790130','32163342','2003-05-07',58994),('3221219790133',11111111111,'augusto','123451','Silvio Carlos Augusto Melo','augusto.carlos@gmail.com',8,'3221219790130','32163329','2001-12-03',12369),('3221219790134',88888888888,'Alberto','11111111111','Alberto Jomard','alberto_jomard@email.com',8,'3221219790130','32163349','2007-11-07',12369),('3221219790176',44444444444,'JFA','888888','Jonas Fernando Alcarroci','jonas.fernando@email.com',8,'3221219790130','32163351','2011-03-05',58994);
 /*!40000 ALTER TABLE `funcionario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -1122,7 +1122,7 @@ CREATE TABLE `insumo` (
 
 LOCK TABLES `insumo` WRITE;
 /*!40000 ALTER TABLE `insumo` DISABLE KEYS */;
-INSERT INTO `insumo` VALUES ('13720','Memória','2','3221219790120'),('16166','Eletrônico','3','3221219790132'),('18795','Eletrônico','2','3221219790128'),('21639','Eletrônico','1','3221219790127'),('31916','Fonte de Alimentação ATX 230W','1','3221219790124'),('34094','Toner','2','3221219790125'),('42541','Eletrônico','2','3221219790131'),('45737','Carcaça Notebook Positivo','2','3221219790122'),('47092','Cabeamento','2','3221219790119'),('55610','Tela LED Notebook','3','3221219790126'),('65412','Parafuso Notebook Acer 1149','1','3221219790121'),('67333','Antenas','1','3221219790130'),('70039','Teclado Notebook HP','2','3221219790130'),('74333','Eletrônico','1','3221219790130'),('75056','Eletrônico','3','3221219790129');
+INSERT INTO `insumo` VALUES ('13720','Memória','2','3221219790118'),('16166','Eletrônico','3','3221219790130'),('18795','Eletrônico','2','3221219790118'),('21639','Eletrônico','1','3221219790123'),('31916','Fonte de Alimentação ATX 230W','1','3221219790123'),('34094','Toner','2','3221219790123'),('42541','Eletrônico','2','3221219790118'),('45737','Carcaça Notebook Positivo','2','3221219790130'),('47092','Cabeamento','2','3221219790118'),('55610','Tela LED Notebook','3','3221219790130'),('65412','Parafuso Notebook Acer 1149','1','3221219790130'),('67333','Antenas','1','3221219790130'),('70039','Teclado Notebook HP','2','3221219790118'),('74333','Eletrônico','1','3221219790123'),('75056','Eletrônico','3','3221219790130');
 /*!40000 ALTER TABLE `insumo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1654,30 +1654,6 @@ LOCK TABLES `sist_op` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `solicita`
---
-
-DROP TABLE IF EXISTS `solicita`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `solicita` (
-  `Mat_supervisor` varchar(13) NOT NULL,
-  `Quantidade` int(4) DEFAULT NULL,
-  PRIMARY KEY (`Mat_supervisor`),
-  CONSTRAINT `solicita_supervisor_fk` FOREIGN KEY (`Mat_supervisor`) REFERENCES `supervisor` (`matricula`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `solicita`
---
-
-LOCK TABLES `solicita` WRITE;
-/*!40000 ALTER TABLE `solicita` DISABLE KEYS */;
-/*!40000 ALTER TABLE `solicita` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `supervisor`
 --
 
@@ -1697,7 +1673,7 @@ CREATE TABLE `supervisor` (
 
 LOCK TABLES `supervisor` WRITE;
 /*!40000 ALTER TABLE `supervisor` DISABLE KEYS */;
-INSERT INTO `supervisor` VALUES ('3221219790118'),('3221219790119'),('3221219790120'),('3221219790121'),('3221219790122'),('3221219790123'),('3221219790124'),('3221219790125'),('3221219790126'),('3221219790127'),('3221219790128'),('3221219790129'),('3221219790130'),('3221219790131'),('3221219790132');
+INSERT INTO `supervisor` VALUES ('3221219790118'),('3221219790119'),('3221219790121'),('3221219790123'),('3221219790124'),('3221219790125'),('3221219790126'),('3221219790127'),('3221219790128'),('3221219790129'),('3221219790130'),('3221219790131'),('3221219790132');
 /*!40000 ALTER TABLE `supervisor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1938,7 +1914,7 @@ CREATE TABLE `unidade_de_suporte` (
 
 LOCK TABLES `unidade_de_suporte` WRITE;
 /*!40000 ALTER TABLE `unidade_de_suporte` DISABLE KEYS */;
-INSERT INTO `unidade_de_suporte` VALUES (13496314178466,12369,5,'Posuere Vulputate Industries','Bahia','Bahia','114-4625 Sed Ave','(81) 3031-2509\r'),(13496314178466,44665,466,'Varius Et LLC','São Paulo','São Paulo','Ap #333-7229 Pellentesque Avenue','(81) 3031-2508\r'),(13496314178466,58994,6,'Fermentum Convallis Incorporated','São Paulo','São Paulo','P.O. Box 295, 5585 Quam Street','(81) 3031-2507\r'),(13496314178469,12365,285,'Sed Neque Sed Associates','São Paulo','São Paulo','7595 Curabitur St.','(81) 3031-2506\r'),(13496314178469,45639,130,'Quisque Tincidunt Pede Incorporated','Minas Gerais','Minas Gerais','Ap #560-3318 Eget Ave','(81) 3031-2504\r'),(13496314178469,89874,102,'Ligula Aenean Euismod LLC','Rio de Janeiro','Rio de Janeiro','3905 Semper. St.','(81) 3031-2505\r'),(13496314178472,11111,999,'Quisque PC','Bahia','Bahia','Ap #317-4665 Lorem, St.','(81) 3031-2503\r'),(13496314178473,12032,27,'A PC','Paraíba','Paraíba','P.O. Box 129, 1164 Cras Road','(81) 3031-2502\r'),(13496314178474,89872,40,'Interdum Enim Non LLP','Rio de Janeiro','Rio de Janeiro','166-1000 Libero. Av.','(81) 3031-2501\r'),(13496314178475,12360,381,'Porttitor Eros Foundation','Minas Gerais','Minas Gerais','P.O. Box 581, 6377 Natoque Road','(81) 3031-2500\r'),(13496314178476,45632,347,'In Scelerisque Scelerisque LLP','Goiás','Goiás','4466 Vitae, Av.','(81) 3031-2499\r'),(13496314178477,78965,492,'A Limited','Bahia','Bahia','P.O. Box 699, 9231 Commodo St.','(81) 3031-2498\r'),(13496314178478,12366,293,'Vitae Sodales Institute','Rio Grande do Sul','Rio Grande do Sul','9472 Nunc Rd.','(81) 3031-2497\r'),(13496314178479,78963,215,'Nonummy Ac Foundation','Minas Gerais','Minas Gerais','Ap #910-3882 Praesent Avenue','(81) 3031-2496\r'),(13496314178480,12368,411,'Nec Luctus Foundation','Rio de Janeiro','Rio de Janeiro','5142 Aliquet Rd.','(81) 3031-2495');
+INSERT INTO `unidade_de_suporte` VALUES (13496314178466,12369,4,'Posuere Vulputate Industries','Bahia','Bahia','114-4625 Sed Ave','(81) 3031-2509\r'),(13496314178466,44665,465,'Varius Et LLC','São Paulo','São Paulo','Ap #333-7229 Pellentesque Avenue','(81) 3031-2508\r'),(13496314178466,58994,6,'Fermentum Convallis Incorporated','São Paulo','São Paulo','P.O. Box 295, 5585 Quam Street','(81) 3031-2507\r'),(13496314178469,12365,285,'Sed Neque Sed Associates','São Paulo','São Paulo','7595 Curabitur St.','(81) 3031-2506\r'),(13496314178469,45639,130,'Quisque Tincidunt Pede Incorporated','Minas Gerais','Minas Gerais','Ap #560-3318 Eget Ave','(81) 3031-2504\r'),(13496314178469,89874,102,'Ligula Aenean Euismod LLC','Rio de Janeiro','Rio de Janeiro','3905 Semper. St.','(81) 3031-2505\r'),(13496314178472,11111,999,'Quisque PC','Bahia','Bahia','Ap #317-4665 Lorem, St.','(81) 3031-2503\r'),(13496314178473,12032,27,'A PC','Paraíba','Paraíba','P.O. Box 129, 1164 Cras Road','(81) 3031-2502\r'),(13496314178474,89872,40,'Interdum Enim Non LLP','Rio de Janeiro','Rio de Janeiro','166-1000 Libero. Av.','(81) 3031-2501\r'),(13496314178475,12360,381,'Porttitor Eros Foundation','Minas Gerais','Minas Gerais','P.O. Box 581, 6377 Natoque Road','(81) 3031-2500\r'),(13496314178476,45632,347,'In Scelerisque Scelerisque LLP','Goiás','Goiás','4466 Vitae, Av.','(81) 3031-2499\r'),(13496314178477,78965,492,'A Limited','Bahia','Bahia','P.O. Box 699, 9231 Commodo St.','(81) 3031-2498\r'),(13496314178478,12366,293,'Vitae Sodales Institute','Rio Grande do Sul','Rio Grande do Sul','9472 Nunc Rd.','(81) 3031-2497\r'),(13496314178479,78963,215,'Nonummy Ac Foundation','Minas Gerais','Minas Gerais','Ap #910-3882 Praesent Avenue','(81) 3031-2496\r'),(13496314178480,12368,411,'Nec Luctus Foundation','Rio de Janeiro','Rio de Janeiro','5142 Aliquet Rd.','(81) 3031-2495');
 /*!40000 ALTER TABLE `unidade_de_suporte` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2037,4 +2013,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-02-02 11:31:36
+-- Dump completed on 2018-02-12  2:01:10

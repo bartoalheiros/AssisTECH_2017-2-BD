@@ -37,29 +37,6 @@ public class CadastroFuncionarioView extends JFrame {
 	private JTextField tf_id_jornada;
 	private JTextField tf_dt_inicio;
 	private JTextField tf_cod_unid_sup;
-
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel");
-		} catch (Throwable e) {
-			e.printStackTrace();
-		}
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CadastroFuncionarioView frame = new CadastroFuncionarioView(/*con*/);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	private JTable table;
 	private JTextField textField;
 	private JButton btnCadastrar;
@@ -79,7 +56,6 @@ public class CadastroFuncionarioView extends JFrame {
 	private void initComponents(/*Connection con*/) {
 
 		setTitle("Cadastro Funcionario");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1043, 645);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -341,6 +317,12 @@ public class CadastroFuncionarioView extends JFrame {
 		});
 		btnVol.setBounds(834, 340, 154, 23);
 		contentPane.add(btnVol);
+		
+		try {
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel");
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
 
 		readJTable();
 		

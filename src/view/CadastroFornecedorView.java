@@ -32,29 +32,6 @@ public class CadastroFornecedorView extends JFrame {
 	private JTextField txtConsulta;
 	//private JTable table;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		
-		try {
-			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel");
-		} catch (Throwable e) {
-			e.printStackTrace();
-		}
-		
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CadastroFornecedorView frame = new CadastroFornecedorView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	
 	private JTable table;
 	private JTextField textField;
 	private JButton btnCadastrar;
@@ -194,9 +171,23 @@ public class CadastroFornecedorView extends JFrame {
 		});
 		scrollPane.setViewportView(table);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(0, 15, 294, 163);
-		contentPane.add(panel);
+		JButton btnLimparCampos = new JButton("Limpar Campos");
+		btnLimparCampos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				txtCnpj.setText("");
+				txtRazaoSocial.setText("");
+				txtEmail.setText("");
+				txtTelefone.setText("");
+			}
+		});
+		btnLimparCampos.setBounds(225, 69, 116, 23);
+		contentPane.add(btnLimparCampos);
+		
+		try {
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel");
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
 		
 		readJTable();
 		setResizable(false);
@@ -245,5 +236,4 @@ public class CadastroFornecedorView extends JFrame {
 				});
 			}
 		}
-
 }

@@ -9,18 +9,16 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
 import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
-
 import model.bean.Funcionario;
 import service.ConnectionFactory;
 
-public class FuncionarioDAO{
+public class FuncionarioDAO extends DAO{
     private static FuncionarioDAO instance = null;
-    Connection con;
+  
     
     public FuncionarioDAO() {
-    	con = ConnectionFactory.getConnection();
+    	
     }
     
     public static FuncionarioDAO getInstance() {

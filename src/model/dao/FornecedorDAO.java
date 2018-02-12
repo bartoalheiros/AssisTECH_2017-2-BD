@@ -15,13 +15,13 @@ import model.bean.Fornecedor;
 import model.bean.Funcionario;
 import service.ConnectionFactory;
 
-public class FornecedorDAO{
+public class FornecedorDAO extends DAO{
 
 private static FornecedorDAO instance = null;
-Connection con;
+
 
 public FornecedorDAO() {
-	con = ConnectionFactory.getConnection();
+	
 }
 
 public static FornecedorDAO getInstance() {
