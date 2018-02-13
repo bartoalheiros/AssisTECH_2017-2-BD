@@ -1,5 +1,6 @@
 use assistech;
 
+#author: Bartô
 #Trigger1. Para atualizar o atributo  "idade" da tabela DEPENDENTE
 delimiter |
 create trigger update_age
@@ -16,7 +17,7 @@ begin
     end if;
 end|
 
-
+#author: Bartô
 #Trigger2.1  Para atualizar   o atributo "Num.Funcionarios" de UNIDADE DE SUPORTE ao Inserir um Funcionário.
 delimiter |
 create trigger upd_num_func_ins
@@ -27,6 +28,7 @@ begin
     UPDATE assistech.unidade_de_suporte SET Nro_funcionarios = @num_func + 1 WHERE  Cod=new.CodigoUnidadeDeSuporte;
 end |
 
+#author: Bartô
 #Trigger2.2  Para atualizar   o atributo "Num.Funcionarios" de UNIDADE DE SUPORTE ao Remover um Funcionário.
 delimiter |
 create trigger upd_num_func_del
@@ -37,6 +39,7 @@ begin
     UPDATE assistech.unidade_de_suporte SET Nro_funcionarios = @num_func - 1 WHERE  Cod=old.CodigoUnidadeDeSuporte;
 end |
 
+#author: Bartô
 #Trigger3.  Para  gerar o valor do atributo "dt_devida" de ORDEM DE SERVICO
 delimiter |
 create trigger set_dta_devida
