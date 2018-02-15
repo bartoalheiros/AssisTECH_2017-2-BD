@@ -7,32 +7,34 @@ import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import model.bean.Funcionario;
 import model.dao.FuncionarioDAO;
 
-public class CadastroFuncionarioControler {
+public class ControladorFuncionario extends Controlador<Funcionario>{
 	
-	public boolean cadastrar(Funcionario f){
+	private FuncionarioDAO func_dao;
+	
+	public ControladorFuncionario() {
+		this.func_dao = new FuncionarioDAO();
+	}
+	
+	public void cadastrar(Funcionario f){
 		
-		boolean r = true;
-		FuncionarioDAO dao = null;
-		dao = FuncionarioDAO.getInstance();
-		if(!this.sohNumeros(f.getMatricula())) {
+		//To DO essas exceções precisam ser tratadas na tela.
+		
+		/*if(!this.sohNumeros(f.getMatricula())) {
 			 JOptionPane.showMessageDialog(null, "Matrícula só pode ter números!");
 			 r = false;
 		}
 		if(f.getDataInicio().equals("")) {
 			JOptionPane.showMessageDialog(null, "Campo Data inicio vazio!");
 			 r = false;
-		}	
+		}*/	
 		
-		
-		if(r){
-			try{
-				dao.create(f);
-			}catch(MySQLIntegrityConstraintViolationException e){
-				JOptionPane.showMessageDialog(null, "Campo ID_Jornada vazio ou não existe!");
-			}
+		try{
+			func_dao.cadastrar(f);
+		}catch(MySQLIntegrityConstraintViolationException e){
+			JOptionPane.showMessageDialog(null, "Campo ID_Jornada vazio ou não existe!");
 		}
+
 		
-		return r;
 	}
 	
 	public boolean sohNumeros( String s ) {  
@@ -48,10 +50,13 @@ public class CadastroFuncionarioControler {
 		return d;  
 	}
 	
-	public void delete(Funcionario f){
-		FuncionarioDAO dao = null;
-		dao = FuncionarioDAO.getInstance();
-		
-		dao.delete(f);
+	public void remover(Funcionario f){
+		try {
+			if (f != null) {
+				func_dao.remover(f);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -1,39 +1,45 @@
-#Das funções só tentamos a primeira
 
-#Edvaldo
+/*1 para retornar o total de hora semanal de trabalho de um FUNCIONADIO a partir de sua jornada de trabalho*/
+
+use assistech
+
+DROP FUNCTION fn_hora;
+
+-- Edvaldo e Bartô
 DELIMITER $
-CREATE FUNCTION fn_hora(m VARCHAR(13))
-RETURNS INT
+ CREATE FUNCTION fn_hora(m varchar(13) )
+ returns int(8)
+ 
+ deterministic
+ begin
+ 
+declare carg int(8);
+declare r int (8);
+declare tra varchar(3);
+    
+select j.Trabalha_sabado into tra
+from funcionario as f
+inner join jornada_de_trabalho as j
+on f.IdJornada = j.Id
+where f.Matricula = m;
 
-determINistic
-BEGIN
+select f.CargaHoraria into carg
+from funcionario as f
+where f.Matricula = m;
 
-DECLARE CargaHoraria int(8);
-DECLARE Trabalha_sabado VARCHAR(3);
-DECLARE aux INT (11);
-DECLARE r INT (11);
+if  tra = 'Sim' then
+set r = (carg * 5) + 4;
+elseif 
+ tra = 'Não' then
+set r =  (carg * 5);
 
-SET aux = ( SELECT CargaHoraria
-FROM assistech.funcionario F
-INNER JOIN assistech.jornada_de_trabalho J 
-ON F.IdJornada=J.Id
-WHERE Matricula = m) ;
 
-IF (SELECT Trabalha_sabado from jornada_de_trabalho JOIN assistech.funcionario ON Id=( SELECT IdJornada
-FROM assistech.funcionario F
-INNER JOIN assistech.jornada_de_trabalho J 
-ON F.IdJornada=J.Id
-WHERE Matricula = m) = 'sim') THEN
+ end if;
+ return r;
+ end $
+ 
+ select fn_hora('3221219790129');
 
-SET r = aux*6;
-ELSE
-SET r= aux*5;
-END IF;
-RETURN r;
-
-END $
-
-SELECT fn_hora(3221219790118);
 
 #Juliana
 # Cria a função, assinatura entrando com uma variavel do tipo INT

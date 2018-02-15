@@ -3,14 +3,14 @@ package model.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
+import view.Fachada;
 
-import service.ConnectionFactory;
+public abstract class DAO<T> {
 
-public abstract class DAO {
-
-	protected Connection con = ConnectionFactory.getConnection();
+	protected Connection con;
 	protected PreparedStatement stmt;
-
+	
 	public PreparedStatement getStmt() {
 		return stmt;
 	}
@@ -19,10 +19,22 @@ public abstract class DAO {
 		return con;
 	}
 
-	
-	/*public void preparar(String sql) throws Exception {
+	public void closeStmt() throws SQLException {
+		stmt.close();
+	}
+
+	public void prepare(String sql) throws Exception {
 		con = Fachada.getInstance().getConnection();
 		stmt = con.prepareStatement(sql);
-	}*/
+	}
+
+	public abstract void cadastrar(T o) throws Exception;
+
+	public abstract List<T> listarTodos() throws Exception;
+	
+	public abstract void atualizar(T o) throws Exception;
+	
+	public abstract void remover(T o) throws Exception;
+
 	
 }

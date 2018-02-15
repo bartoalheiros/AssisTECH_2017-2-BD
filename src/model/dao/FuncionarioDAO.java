@@ -13,23 +13,13 @@ import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import model.bean.Funcionario;
 import service.ConnectionFactory;
 
-public class FuncionarioDAO extends DAO{
-    private static FuncionarioDAO instance = null;
-  
-    
-    public FuncionarioDAO() {
+public class FuncionarioDAO extends DAO<Funcionario>{
+
+	public FuncionarioDAO() {
     	
     }
-    
-    public static FuncionarioDAO getInstance() {
-		if(instance == null) {
-			instance = new FuncionarioDAO();
-		}
 
-		return instance;
-	}
-    
-    public void create(Funcionario f/*, Connection con*/) throws MySQLIntegrityConstraintViolationException{
+    public void cadastrar(Funcionario f/*, Connection con*/) throws MySQLIntegrityConstraintViolationException{
 
         PreparedStatement stmt = null;
 
@@ -58,7 +48,7 @@ public class FuncionarioDAO extends DAO{
 
     }
 
-    public List<Funcionario> read(/*Connection con*/) {
+    public List<Funcionario> listarTodos() {
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -138,7 +128,7 @@ public class FuncionarioDAO extends DAO{
 
     }
 
-    public void update(Funcionario f/*, Connection con*/) {
+    public void atualizar(Funcionario f/*, Connection con*/) {
 
         PreparedStatement stmt = null;
 
@@ -164,20 +154,22 @@ public class FuncionarioDAO extends DAO{
             JOptionPane.showMessageDialog(null, "Erro ao atualizar: " + ex);
         } 
     }
-    public void delete(Funcionario f/*, Connection con*/) {
-
-        PreparedStatement stmt = null;
-
-        try {
-            stmt = con.prepareStatement("DELETE FROM funcionario WHERE Matricula = ?");
-            stmt.setString(1, f.getMatricula());
-
-            stmt.executeUpdate();
-
-            JOptionPane.showMessageDialog(null, "Excluido com sucesso!");
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao excluir: " + ex);
-        } 
+    public void remover(Funcionario f) throws Exception {
+    	
+    	String sql = "DELETE FROM funcionario WHERE Matricula = ?";
+		prepare(sql);
+		getStmt().setString(1, f.getMatricula());
+		
+		try {
+			getStmt().execute();
+			getCon().commit();
+			JOptionPane.showMessageDialog(null,"Remoção realizada com sucesso!");
+		} catch (SQLException e) {
+			getCon().rollback();
+			JOptionPane.showMessageDialog(null,"Não foi possível remover!");
+		} finally {
+			closeStmt();
+		}
 
     }
 

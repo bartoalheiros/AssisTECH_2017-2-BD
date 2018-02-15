@@ -1,41 +1,52 @@
+#Assistech BD S
+#author: Bartô
 use assistech;
 
-#a princípio, os privilégios listados, foram dados ao administrador,
-#mas isso pode mudar.
-CREATE ROLE 'administrador';
-GRANT INSERT, SELECT, UPDATE, DELETE ON
-assistech.* TO 'administrador';
-CREATE USER 'administrador1'@'localhost' IDENTIFIED BY 'admin1passw';
-GRANT 'administrador' TO 'administrador1'@'localhost';
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin';
+GRANT ALL PRIVILEGES ON assistech.* TO 'admin'@'localhost';
 
-CREATE ROLE 'funcionario';
-GRANT SELECT, UPDATE ON assistech.funcionario TO 'funcionario';
-GRANT SELECT ON assistech.contracheque TO 'funcionario'; 
-GRANT SELECT, UPDATE ON assistech.jornada_de_trabalho TO 'funcionario'; 
-GRANT SELECT ON asssitech.jornada_de_trabalho_tem TO 'funcionario';
-GRANT SELECT, UPDATE ON assistech.dia TO 'funcionario'; 
-GRANT SELECT, UPDATE ON assistech.turno TO 'funcionario';
+FLUSH PRIVILEGES;
+
 CREATE USER 'funcionario1'@'localhost' IDENTIFIED BY 'func1passw';
-GRANT 'funcionario' TO 'funcionario1';
+GRANT SELECT, UPDATE ON assistech.funcionario TO 'funcionario1'@'localhost';
+GRANT SELECT ON assistech.contracheque TO 'funcionario1'@'localhost';
+GRANT SELECT, UPDATE ON assistech.jornada_de_trabalho TO 'funcionario1'@'localhost';
+GRANT SELECT ON jornada_de_trabalho_tem TO 'funcionario1'@'localhost';
+GRANT SELECT, UPDATE ON assistech.dia TO 'funcionario1'@'localhost'; 
+GRANT SELECT, UPDATE ON assistech.turno TO 'funcionario1'@'localhost';
 
-CREATE ROLE 'supervisor';
+FLUSH PRIVILEGES;
+
 CREATE USER 'supervisor1'@'localhost' IDENTIFIED BY 'supv1passw';
-GRANT INSERT, SELECT, DELETE, UPDATE ON assistech.insumo TO 'supervisor';
-GRANT SELECT, INSERT, UPDATE, DELETE ON assistech.categoria_insumo TO 'supervisor';
-GRANT 'supervisor' TO 'supervisor1';
+GRANT INSERT, SELECT, DELETE, UPDATE ON assistech.insumo TO 'supervisor1'@'localhost';
+GRANT SELECT, INSERT, UPDATE, DELETE ON assistech.categoria_insumo TO 'supervisor1'@'localhost';
 
-CREATE ROLE 'tecnico';
+FLUSH PRIVILEGES;
+
 CREATE USER 'tecnico1'@'localhost' IDENTIFIED BY 'tec1passw';
-GRANT SELECT ON assistech.tecnico_esta_em_equipe TO 'tecnico';
-GRANT SELECT ON assistech.kpi TO 'tecnico';
+GRANT SELECT ON assistech.tecnico_esta_em_equipe TO 'tecnico1'@'localhost';
+GRANT SELECT ON assistech.kpi TO 'tecnico1'@'localhost';
 
-CREATE ROLE 'atendente';
-GRANT SELECT, UPDATE, INSERT ON
-assistech.chamado TO 'atendente';
+FLUSH PRIVILEGES;
+
 CREATE USER 'atendente1'@'localhost' IDENTIFIED BY 'atend1passw';
+GRANT SELECT, UPDATE, INSERT ON
+assistech.chamado TO 'atendente1'@'localhost';
 
+FLUSH PRIVILEGES;
+
+
+
+
+
+
+###############################################################
+#Codigos de teste. Desconsiderar
 select * from mysql.user;
 
-select current_role();
+#SHOW GRANTS FOR 'administrador1'@'localhost';
 
-#drop role adm_financ;
+drop role administrador;
+drop role funcionario;
+
+show grants for 'funcionario1'@'localhost';

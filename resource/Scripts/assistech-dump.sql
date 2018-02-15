@@ -541,7 +541,7 @@ CREATE TABLE `dependente` (
 
 LOCK TABLES `dependente` WRITE;
 /*!40000 ALTER TABLE `dependente` DISABLE KEYS */;
-INSERT INTO `dependente` VALUES (11111,'3221219790123','José das Neves','M','1989-11-01','Irmão',28),(55555,'3221219790128','José Pereira Furtado','M','1989-11-01','Irmão',29),(77777,'3221219790123','Marina Souza','F','1989-11-01','Irmã',28),(264004,'3221219790128','Lynn Combs','F','1987-10-15','Esposa',22),(315209,'3221219790128','Bianca Wilcox','M','1987-10-14','Filho',29),(337485,'3221219790128','Teegan Mccray','F','1987-10-08','Filha',10),(412979,'3221219790128','Hayley Medina','F','1987-10-07','Filho',10),(459845,'3221219790129','Indira Spears','F','1987-10-21','Esposa',40),(498923,'3221219790121','Jordan Mercer','F','1954-10-11','Esposa',48),(557468,'3221219790121','Rae Roman','M','1987-10-20','Filha',4),(562315,'3221219790123','Afonso Pereira Souza','M','1989-11-01','Irmão',29),(633728,'3221219790123','Hannah Buck','F','1955-10-09','Filha',3),(686894,'3221219790123','Breanna Clay','M','1959-10-12','Filho',30),(701513,'3221219790123','Jolene House','F','1969-10-13','Filho',12),(760658,'3221219790123','Iris Mcbride','F','1987-10-19','Esposa',26),(783874,'3221219790125','Tatyana Haynes','F','1987-10-17','Esposa',27),(891118,'3221219790125','Allegra Reynolds','F','1977-10-10','Filho',43),(941065,'3221219790125','Sarah Duke','F','1987-10-16','Filho',55),(962050,'3221219790125','João Silva','M','1989-11-01','Filho',29),(962086,'3221219790125','Nora Baxter','M','1987-10-18','Filha',15),(962307,'3221219790123','Mauritânio Vieira','M','1989-11-01','Irmão',29),(962315,'3221219790128','Alexandra Maria Causa','F','1989-11-01','Irmã',28);
+INSERT INTO `dependente` VALUES (11111,'3221219790123','José das Neves','M','1989-11-01','Irmão',28),(55555,'3221219790128','José Pereira Furtado','M','1989-11-01','Irmão',29),(77777,'3221219790123','Marina Souza','F','1989-11-01','Irmã',28),(264004,'3221219790128','Lynn Combs','F','1987-10-15','Esposa',22),(315209,'3221219790128','Bianca Wilcox','M','1987-10-14','Filho',29),(337485,'3221219790128','Teegan Mccray','F','1987-10-08','Filha',10),(412979,'3221219790128','Hayley Medina','F','1987-10-07','Filho',10),(459845,'3221219790129','Indira Spears','F','1987-10-21','Esposa',40),(498923,'3221219790121','Jordan Mercer','F','1954-10-11','Esposa',48),(557468,'3221219790121','Rae Roman','M','1987-10-20','Filha',4),(562315,'3221219790123','Afonso Pereira Souza','M','1989-11-01','Irmão',29),(633728,'3221219790123','Hannah Buck','F','1955-10-09','Filha',3),(686894,'3221219790123','Breanna Clay','M','1959-10-12','Filho',30),(701513,'3221219790123','Jolene House','F','1969-10-13','Filho',12),(760658,'3221219790123','Iris Mcbride','F','1987-10-19','Esposa',26),(962307,'3221219790123','Mauritânio Vieira','M','1989-11-01','Irmão',29),(962315,'3221219790128','Alexandra Maria Causa','F','1989-11-01','Irmã',28);
 /*!40000 ALTER TABLE `dependente` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -803,6 +803,28 @@ INSERT INTO `envolveu` VALUES (109006,'19703\r'),(251182,'20790\r'),(293137,'799
 UNLOCK TABLES;
 
 --
+-- Temporary view structure for view `equi_datas`
+--
+
+DROP TABLE IF EXISTS `equi_datas`;
+/*!50001 DROP VIEW IF EXISTS `equi_datas`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `equi_datas` AS SELECT 
+ 1 AS `Cod`,
+ 1 AS `Data_entrada`,
+ 1 AS `Setor`,
+ 1 AS `historico`,
+ 1 AS `Fabricante`,
+ 1 AS `Estado`,
+ 1 AS `Descricao`,
+ 1 AS `Cod_contrato`,
+ 1 AS `Cnpj_Unid_Suporte`,
+ 1 AS `Cod_Cliente`,
+ 1 AS `Data_inicio`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `equipamento`
 --
 
@@ -947,7 +969,7 @@ CREATE TABLE `fornecedor` (
 
 LOCK TABLES `fornecedor` WRITE;
 /*!40000 ALTER TABLE `fornecedor` DISABLE KEYS */;
-INSERT INTO `fornecedor` VALUES (452963,'Ferreira Costa','ferreira.costa@gmail.com','55813030-3030\r'),(551368,'HP','sony@sony.com','55813030-3031\r'),(630609,'Philips','philips@philips.com','55211901-0062\r'),(708431,'Panasonic','panasonic@panasonic.com','55112213-0909\r'),(731624,'INFOBOX','philips@philips.com','55211901-0062\r'),(829104,'Sony','sony@sony.com','55213456-1199\r');
+INSERT INTO `fornecedor` VALUES (19999,'teste','teste@email.com','999999-9999'),(452963,'Ferreira Costa','ferreira.costa@gmail.com','55813030-3030\r'),(551368,'HP','sony@sony.com','55813030-3031\r'),(630609,'Philips','philips@philips.com','55211901-0062\r'),(708431,'Panasonic','panasonic@panasonic.com','55112213-0909\r'),(731624,'INFOBOX','philips@philips.com','55211901-0062\r'),(829104,'Sony','sony@sony.com','55213456-1199\r');
 /*!40000 ALTER TABLE `fornecedor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -991,7 +1013,7 @@ CREATE TABLE `funcionario` (
 
 LOCK TABLES `funcionario` WRITE;
 /*!40000 ALTER TABLE `funcionario` DISABLE KEYS */;
-INSERT INTO `funcionario` VALUES ('3221219790118',11898352001,'Kylan','131274509274058','Collier, Alexis Q.','non.hendrerit@quismassa.com',6,'3221219790123','32163328','1999-11-02',12369),('3221219790119',11898352002,'Finn','131274509274059','Thompson, David N.','sapien@Duisami.org',6,'3221219790118','33884623','2010-12-03',12369),('3221219790121',11898352004,'Francis','131274509274061','Ayala, Francesca U.','aliquam@tempusnonlacinia.net',4,'3221219790118','32163331','2007-12-02',44665),('3221219790123',11898352006,'Derek','131274509274063','Mcneil, Kendall S.','orci.lacus@gravidamolestiearcu.com',8,'3221219790118','32163333','2001-11-04',44665),('3221219790124',11898352007,'Isabella','131274509274064','Gould, Beatrice T.','neque@lacus.net',6,'3221219790118','32163334','2010-12-03',44665),('3221219790125',11898352008,'Jasper','131274509274065','Willis, Marny R.','adipiscing@luctuslobortisClass.ca',6,'3221219790130','32163335','1994-10-20',44665),('3221219790126',11898352009,'Kyra','131274509274066','Downs, Callum A.','nonummy@dolortempus.ca',6,'3221219790130','32163336','1994-10-20',44665),('3221219790127',11898352010,'Dane','131274509274067','Orr, Cain Z.','dictum.sapien@uteros.edu',4,'3221219790130','32163337','1994-10-20',44665),('3221219790128',11898352011,'Branden','131274509274068','Malone, Xena W.','magna.Cras@eulacus.ca',6,'3221219790130','32163338','1990-12-03',58994),('3221219790129',11898352012,'Dexter','131274509274069','Buckner, Martina X.','risus.In@ipsumDonecsollicitudin.edu',4,'3221219790130','32163339','2003-05-07',58994),('3221219790130',11898352013,'Leila','131274509274070','Downs, Athena Q.','nulla@Nam.org',6,'3221219790123','32163340','2003-05-07',58994),('3221219790131',11898352014,'Haviva','131274509274071','Kirk, Trevor H.','eu@nunc.co.uk',4,'3221219790123','32163341','2003-05-07',58994),('3221219790132',11898352015,'Molly','131274509274072','Coffey, Drew N.','Nullam@nec.net',4,'3221219790130','32163342','2003-05-07',58994),('3221219790133',11111111111,'augusto','123451','Silvio Carlos Augusto Melo','augusto.carlos@gmail.com',8,'3221219790130','32163329','2001-12-03',12369),('3221219790134',88888888888,'Alberto','11111111111','Alberto Jomard','alberto_jomard@email.com',8,'3221219790130','32163349','2007-11-07',12369),('3221219790176',44444444444,'JFA','888888','Jonas Fernando Alcarroci','jonas.fernando@email.com',8,'3221219790130','32163351','2011-03-05',58994);
+INSERT INTO `funcionario` VALUES ('3221219790118',11898352001,'Kylan','131274509274058','Collier, Alexis Q.','non.hendrerit@quismassa.com',6,'3221219790123','32163328','1999-11-02',12369),('3221219790119',11898352002,'Finn','131274509274059','Thompson, David N.','sapien@Duisami.org',6,'3221219790118','33884623','2010-12-03',12369),('3221219790121',11898352004,'Francis','131274509274061','Ayala, Francesca U.','aliquam@tempusnonlacinia.net',4,'3221219790118','32163331','2007-12-02',44665),('3221219790123',11898352006,'Derek','131274509274063','Mcneil, Kendall S.','orci.lacus@gravidamolestiearcu.com',8,'3221219790118','32163333','2001-11-04',44665),('3221219790124',11898352007,'Isabella','131274509274064','Gould, Beatrice T.','neque@lacus.net',6,'3221219790118','32163334','2010-12-03',44665),('3221219790126',11898352009,'Kyra','131274509274066','Downs, Callum A.','nonummy@dolortempus.ca',6,'3221219790130','32163336','1994-10-20',44665),('3221219790127',11898352010,'Dane','131274509274067','Orr, Cain Z.','dictum.sapien@uteros.edu',4,'3221219790130','32163337','1994-10-20',44665),('3221219790128',11898352011,'Branden','131274509274068','Malone, Xena W.','magna.Cras@eulacus.ca',6,'3221219790130','32163338','1990-12-03',58994),('3221219790129',11898352012,'Dexter','131274509274069','Buckner, Martina X.','risus.In@ipsumDonecsollicitudin.edu',4,'3221219790130','32163339','2003-05-07',58994),('3221219790130',11898352013,'Leila','131274509274070','Downs, Athena Q.','nulla@Nam.org',6,'3221219790123','32163340','2003-05-07',58994),('3221219790131',11898352014,'Haviva','131274509274071','Kirk, Trevor H.','eu@nunc.co.uk',4,'3221219790123','32163341','2003-05-07',58994),('3221219790132',11898352015,'Molly','131274509274072','Coffey, Drew N.','Nullam@nec.net',4,'3221219790130','32163342','2003-05-07',58994),('3221219790133',11111111111,'augusto','123451','Silvio Carlos Augusto Melo','augusto.carlos@gmail.com',8,'3221219790130','32163329','2001-12-03',12369),('3221219790134',88888888888,'Alberto','11111111111','Alberto Jomard','alberto_jomard@email.com',8,'3221219790130','32163349','2007-11-07',12369),('3221219790176',44444444444,'JFA','888888','Jonas Fernando Alcarroci','jonas.fernando@email.com',8,'3221219790130','32163351','2011-03-05',58994);
 /*!40000 ALTER TABLE `funcionario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -1480,6 +1502,24 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
+-- Temporary view structure for view `os`
+--
+
+DROP TABLE IF EXISTS `os`;
+/*!50001 DROP VIEW IF EXISTS `os`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `os` AS SELECT 
+ 1 AS `Num_Ordem_Servico`,
+ 1 AS `Dt_devida`,
+ 1 AS `Prazo_em_dias`,
+ 1 AS `Dt_criacao`,
+ 1 AS `Status`,
+ 1 AS `Cod_orcamento`,
+ 1 AS `Cod_fatura`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `pagamento`
 --
 
@@ -1600,6 +1640,47 @@ INSERT INTO `plano_orcamento` VALUES ('524702','',2047,'Sim','2018-09-29',142530
 UNLOCK TABLES;
 
 --
+-- Temporary view structure for view `pri_alta_cliente`
+--
+
+DROP TABLE IF EXISTS `pri_alta_cliente`;
+/*!50001 DROP VIEW IF EXISTS `pri_alta_cliente`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `pri_alta_cliente` AS SELECT 
+ 1 AS `Cod`,
+ 1 AS `prioridade`,
+ 1 AS `endereco`,
+ 1 AS `email`,
+ 1 AS `fone`,
+ 1 AS `cpf_cnpj`,
+ 1 AS `nome_razao_social`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `pri_chamado`
+--
+
+DROP TABLE IF EXISTS `pri_chamado`;
+/*!50001 DROP VIEW IF EXISTS `pri_chamado`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `pri_chamado` AS SELECT 
+ 1 AS `Sequencial`,
+ 1 AS `Tipo`,
+ 1 AS `Status_chamado`,
+ 1 AS `Descricao`,
+ 1 AS `Prioridade`,
+ 1 AS `Mat_supervisor`,
+ 1 AS `Mat_tec_interno`,
+ 1 AS `Mat_atendente`,
+ 1 AS `Num_ordem_servico`,
+ 1 AS `Cod_cliente`,
+ 1 AS `Id_atendimento`,
+ 1 AS `Dta_abertura`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `servico`
 --
 
@@ -1673,7 +1754,7 @@ CREATE TABLE `supervisor` (
 
 LOCK TABLES `supervisor` WRITE;
 /*!40000 ALTER TABLE `supervisor` DISABLE KEYS */;
-INSERT INTO `supervisor` VALUES ('3221219790118'),('3221219790119'),('3221219790121'),('3221219790123'),('3221219790124'),('3221219790125'),('3221219790126'),('3221219790127'),('3221219790128'),('3221219790129'),('3221219790130'),('3221219790131'),('3221219790132');
+INSERT INTO `supervisor` VALUES ('3221219790118'),('3221219790119'),('3221219790121'),('3221219790123'),('3221219790124'),('3221219790126'),('3221219790127'),('3221219790128'),('3221219790129'),('3221219790130'),('3221219790131'),('3221219790132');
 /*!40000 ALTER TABLE `supervisor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1886,6 +1967,20 @@ INSERT INTO `tv` VALUES ('55377','PH31639'),('75322','PH31639\r'),('99542','C134
 UNLOCK TABLES;
 
 --
+-- Temporary view structure for view `uniao`
+--
+
+DROP TABLE IF EXISTS `uniao`;
+/*!50001 DROP VIEW IF EXISTS `uniao`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `uniao` AS SELECT 
+ 1 AS `Cod_cliente`,
+ 1 AS `cpf_cnpj`,
+ 1 AS `Nome_Razao_social`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `unidade_de_suporte`
 --
 
@@ -1914,7 +2009,7 @@ CREATE TABLE `unidade_de_suporte` (
 
 LOCK TABLES `unidade_de_suporte` WRITE;
 /*!40000 ALTER TABLE `unidade_de_suporte` DISABLE KEYS */;
-INSERT INTO `unidade_de_suporte` VALUES (13496314178466,12369,4,'Posuere Vulputate Industries','Bahia','Bahia','114-4625 Sed Ave','(81) 3031-2509\r'),(13496314178466,44665,465,'Varius Et LLC','São Paulo','São Paulo','Ap #333-7229 Pellentesque Avenue','(81) 3031-2508\r'),(13496314178466,58994,6,'Fermentum Convallis Incorporated','São Paulo','São Paulo','P.O. Box 295, 5585 Quam Street','(81) 3031-2507\r'),(13496314178469,12365,285,'Sed Neque Sed Associates','São Paulo','São Paulo','7595 Curabitur St.','(81) 3031-2506\r'),(13496314178469,45639,130,'Quisque Tincidunt Pede Incorporated','Minas Gerais','Minas Gerais','Ap #560-3318 Eget Ave','(81) 3031-2504\r'),(13496314178469,89874,102,'Ligula Aenean Euismod LLC','Rio de Janeiro','Rio de Janeiro','3905 Semper. St.','(81) 3031-2505\r'),(13496314178472,11111,999,'Quisque PC','Bahia','Bahia','Ap #317-4665 Lorem, St.','(81) 3031-2503\r'),(13496314178473,12032,27,'A PC','Paraíba','Paraíba','P.O. Box 129, 1164 Cras Road','(81) 3031-2502\r'),(13496314178474,89872,40,'Interdum Enim Non LLP','Rio de Janeiro','Rio de Janeiro','166-1000 Libero. Av.','(81) 3031-2501\r'),(13496314178475,12360,381,'Porttitor Eros Foundation','Minas Gerais','Minas Gerais','P.O. Box 581, 6377 Natoque Road','(81) 3031-2500\r'),(13496314178476,45632,347,'In Scelerisque Scelerisque LLP','Goiás','Goiás','4466 Vitae, Av.','(81) 3031-2499\r'),(13496314178477,78965,492,'A Limited','Bahia','Bahia','P.O. Box 699, 9231 Commodo St.','(81) 3031-2498\r'),(13496314178478,12366,293,'Vitae Sodales Institute','Rio Grande do Sul','Rio Grande do Sul','9472 Nunc Rd.','(81) 3031-2497\r'),(13496314178479,78963,215,'Nonummy Ac Foundation','Minas Gerais','Minas Gerais','Ap #910-3882 Praesent Avenue','(81) 3031-2496\r'),(13496314178480,12368,411,'Nec Luctus Foundation','Rio de Janeiro','Rio de Janeiro','5142 Aliquet Rd.','(81) 3031-2495');
+INSERT INTO `unidade_de_suporte` VALUES (13496314178466,12369,4,'Posuere Vulputate Industries','Bahia','Bahia','114-4625 Sed Ave','(81) 3031-2509\r'),(13496314178466,44665,464,'Varius Et LLC','São Paulo','São Paulo','Ap #333-7229 Pellentesque Avenue','(81) 3031-2508\r'),(13496314178466,58994,6,'Fermentum Convallis Incorporated','São Paulo','São Paulo','P.O. Box 295, 5585 Quam Street','(81) 3031-2507\r'),(13496314178469,12365,285,'Sed Neque Sed Associates','São Paulo','São Paulo','7595 Curabitur St.','(81) 3031-2506\r'),(13496314178469,45639,130,'Quisque Tincidunt Pede Incorporated','Minas Gerais','Minas Gerais','Ap #560-3318 Eget Ave','(81) 3031-2504\r'),(13496314178469,89874,102,'Ligula Aenean Euismod LLC','Rio de Janeiro','Rio de Janeiro','3905 Semper. St.','(81) 3031-2505\r'),(13496314178472,11111,999,'Quisque PC','Bahia','Bahia','Ap #317-4665 Lorem, St.','(81) 3031-2503\r'),(13496314178473,12032,27,'A PC','Paraíba','Paraíba','P.O. Box 129, 1164 Cras Road','(81) 3031-2502\r'),(13496314178474,89872,40,'Interdum Enim Non LLP','Rio de Janeiro','Rio de Janeiro','166-1000 Libero. Av.','(81) 3031-2501\r'),(13496314178475,12360,381,'Porttitor Eros Foundation','Minas Gerais','Minas Gerais','P.O. Box 581, 6377 Natoque Road','(81) 3031-2500\r'),(13496314178476,45632,347,'In Scelerisque Scelerisque LLP','Goiás','Goiás','4466 Vitae, Av.','(81) 3031-2499\r'),(13496314178477,78965,492,'A Limited','Bahia','Bahia','P.O. Box 699, 9231 Commodo St.','(81) 3031-2498\r'),(13496314178478,12366,293,'Vitae Sodales Institute','Rio Grande do Sul','Rio Grande do Sul','9472 Nunc Rd.','(81) 3031-2497\r'),(13496314178479,78963,215,'Nonummy Ac Foundation','Minas Gerais','Minas Gerais','Ap #910-3882 Praesent Avenue','(81) 3031-2496\r'),(13496314178480,12368,411,'Nec Luctus Foundation','Rio de Janeiro','Rio de Janeiro','5142 Aliquet Rd.','(81) 3031-2495');
 /*!40000 ALTER TABLE `unidade_de_suporte` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1925,7 +2020,7 @@ UNLOCK TABLES;
 --
 -- Dumping routines for database 'assistech'
 --
-/*!50003 DROP FUNCTION IF EXISTS `fn_hora_semana` */;
+/*!50003 DROP FUNCTION IF EXISTS `fn_hora` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -1935,74 +2030,179 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` FUNCTION `fn_hora_semana`(mat VARCHAR(13)) RETURNS int(11)
+CREATE DEFINER=`root`@`localhost` FUNCTION `fn_hora`(m varchar(13) ) RETURNS int(8)
     DETERMINISTIC
 begin
-
-	declare done int default 0;
-    #declare done_i int default 0;
-    declare current_fmat int;
-    declare current_idJorn int;
-    declare current_seqDia int;
-    declare current_codTurno int;
-    declare horas int;
-    #declare fmatcur cursor for select Matricula from assistech.funcionario;
-    declare idJornada_cur cursor for select Id_jornada from assistech.jornada_de_trabalho_tem;
-    declare seqDia_cur cursor for select seq_dia from assistech.jornada_de_trabalho_tem;
-    declare codTurno_cur cursor for select cod_turno from assistech.jornada_de_trabalho_tem;
-    declare continue handler for not found set done = 1;
-    #declare continue handler for not found set done_i = 1;
+ 
+declare carg int(8);
+declare r int (8);
+declare tra varchar(3);
     
-    #open fmatcur;
-    open idJornada_cur;
-    open seqDia_cur;
-    open codTurno_cur;
-    
-    repeat 
-		fetch  idJornada_cur into current_idJorn; 
-        fetch  seqDia_cur into current_seqDia; 
-        fetch  codTurno_cur into current_codTurno; 
-        
-        SET horas = horas +
-        abs((SELECT sum(HOUR(hora_final) )
-			from 
-			assistech.funcionario F JOIN jornada_de_trabalho J
-				ON F.IdJornada=J.Id 
-			JOIN jornada_de_trabalho_tem Jt
-				ON J.Id=Jt.Id_jornada
-            JOIN dia D
-				ON Jt.seq_dia=D.sequencial
-			JOIN turno T
-				ON Jt.cod_turno=T.codigo
-			where F.Matricula = mat and Id_jornada=current_idJorn and seq_dia=current_seqDia and cod_turno=current_codTurno)
-         -
-         (SELECT sum(HOUR(hora_inicio ))
-			from 
-			assistech.funcionario F JOIN jornada_de_trabalho J
-				ON F.IdJornada=J.Id 
-			JOIN jornada_de_trabalho_tem Jt
-				ON J.Id=Jt.Id_jornada
-			JOIN dia D
-				ON Jt.seq_dia=D.sequencial
-			JOIN turno T
-				ON Jt.cod_turno=T.codigo
-			where F.Matricula = mat and Id_jornada=current_idJorn and seq_dia=current_seqDia and cod_turno=current_codTurno));   
-            
-            until done
-	end repeat;
-   
-	close idJornada_cur;
-    close  seqDia_cur;
-	close  codTurno_cur;
+select j.Trabalha_sabado into tra
+from funcionario as f
+inner join jornada_de_trabalho as j
+on f.IdJornada = j.Id
+where f.Matricula = m;
 
-return horas;
+select f.CargaHoraria into carg
+from funcionario as f
+where f.Matricula = m;
 
-end ;;
+if  tra = 'Sim' then
+set r = (carg * 5) + 4;
+elseif 
+ tra = 'Não' then
+set r =  (carg * 5);
+
+
+ end if;
+ return r;
+ end ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `kpi_atendimento` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `kpi_atendimento`(Matricula_tec varchar(13), Data_1 DATE, Data_2 DATE)
+main: BEGIN
+
+
+SELECT Matricula_tecnico, KPI_1, Dsc_KPI_1, KPI_2, Dsk_KPI_2, dt_inicio_periodo, dt_final_periodo
+
+FROM kpi
+
+WHERE Matricula_tecnico = Matricula_tec and Data_1 = dt_inicio_periodo and Data_2 = dt_final_periodo;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `verifica_qtd` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `verifica_qtd`()
+main: BEGIN
+
+
+Select * from Item_estoque where Quantidade_Atual < Quantidade_minima;
+
+
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Final view structure for view `equi_datas`
+--
+
+/*!50001 DROP VIEW IF EXISTS `equi_datas`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `equi_datas` AS select `e`.`Cod` AS `Cod`,`e`.`Data_entrada` AS `Data_entrada`,`e`.`Setor` AS `Setor`,`e`.`historico` AS `historico`,`e`.`Fabricante` AS `Fabricante`,`e`.`Estado` AS `Estado`,`e`.`Descricao` AS `Descricao`,`e`.`Cod_contrato` AS `Cod_contrato`,`e`.`Cnpj_Unid_Suporte` AS `Cnpj_Unid_Suporte`,`e`.`Cod_Cliente` AS `Cod_Cliente`,`e`.`Data_inicio` AS `Data_inicio` from `equipamento` `e` where (`e`.`Data_entrada` between '2012-11-10' and '2012-11-18') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `os`
+--
+
+/*!50001 DROP VIEW IF EXISTS `os`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `os` AS select `ordem_servico`.`Num_Ordem_Servico` AS `Num_Ordem_Servico`,`ordem_servico`.`Dt_devida` AS `Dt_devida`,`ordem_servico`.`Prazo_em_dias` AS `Prazo_em_dias`,`ordem_servico`.`Dt_criacao` AS `Dt_criacao`,`ordem_servico`.`Status` AS `Status`,`ordem_servico`.`Cod_orcamento` AS `Cod_orcamento`,`ordem_servico`.`Cod_fatura` AS `Cod_fatura` from `ordem_servico` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `pri_alta_cliente`
+--
+
+/*!50001 DROP VIEW IF EXISTS `pri_alta_cliente`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `pri_alta_cliente` AS select `c`.`Cod` AS `Cod`,`c`.`Prioridade` AS `prioridade`,`c`.`Endereco` AS `endereco`,`c`.`Email` AS `email`,`c`.`Fone` AS `fone`,`u`.`cpf_cnpj` AS `cpf_cnpj`,`u`.`Nome_Razao_social` AS `nome_razao_social` from (`cliente` `c` join `uniao` `u` on((`c`.`Cod` = `u`.`Cod_cliente`))) where (`c`.`Prioridade` = 'alta') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `pri_chamado`
+--
+
+/*!50001 DROP VIEW IF EXISTS `pri_chamado`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `pri_chamado` AS select `c`.`Sequencial` AS `Sequencial`,`c`.`Tipo` AS `Tipo`,`c`.`Status_chamado` AS `Status_chamado`,`c`.`Descricao` AS `Descricao`,`c`.`Prioridade` AS `Prioridade`,`c`.`Mat_supervisor` AS `Mat_supervisor`,`c`.`Mat_tec_interno` AS `Mat_tec_interno`,`c`.`Mat_atendente` AS `Mat_atendente`,`c`.`Num_ordem_servico` AS `Num_ordem_servico`,`c`.`Cod_cliente` AS `Cod_cliente`,`c`.`Id_atendimento` AS `Id_atendimento`,`c`.`Dta_abertura` AS `Dta_abertura` from `chamado` `c` where ((`c`.`Status_chamado` = 'Em processo') and (`c`.`Prioridade` = 'Sim')) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `uniao`
+--
+
+/*!50001 DROP VIEW IF EXISTS `uniao`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `uniao` AS select `cliente_fis`.`Cod_cliente` AS `Cod_cliente`,`cliente_fis`.`Cpf` AS `cpf_cnpj`,`cliente_fis`.`Nome` AS `Nome_Razao_social` from `cliente_fis` union select `cliente_jur`.`Cod_cliente` AS `Cod_cliente`,`cliente_jur`.`Cnpj` AS `Cnpj`,`cliente_jur`.`Razao_social` AS `Razao_social` from `cliente_jur` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -2013,4 +2213,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-02-12  2:01:10
+-- Dump completed on 2018-02-14 19:20:21

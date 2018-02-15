@@ -1,5 +1,5 @@
 package model.dao;
-import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,90 +7,108 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javax.swing.JOptionPane;
-
-import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import model.bean.Fornecedor;
-import model.bean.Funcionario;
 import service.ConnectionFactory;
 
-public class FornecedorDAO extends DAO{
+public class FornecedorDAO extends DAO<Fornecedor>{
 
-private static FornecedorDAO instance = null;
+	private static FornecedorDAO instance = null;
 
 
-public FornecedorDAO() {
-	
-}
+	public FornecedorDAO() {
 
-public static FornecedorDAO getInstance() {
-	if(instance == null) {
-		instance = new FornecedorDAO();
 	}
 
-	return instance;
-}
+	public static FornecedorDAO getInstance() {
+		if(instance == null) {
+			instance = new FornecedorDAO();
+		}
 
-public void create(Fornecedor f/*, Connection con*/) throws MySQLIntegrityConstraintViolationException{
+		return instance;
+	}
 
-        PreparedStatement stmt = null;
+	public void cadastrar(Fornecedor f) throws Exception{
+		String sql = "insert into fornecedor " + "(Cnpj,Razao_social,Email,Telefone) " +
+						"values (?,?,?,?)";
+		prepare(sql);
+		getStmt().setLong(1, f.getCnpj());
+		getStmt().setString(2, f.getRazaoSocial());
+		getStmt().setString(3, f.getEmail());
+		getStmt().setString(4, f.getTelefone());
 
-        try {
-            stmt = con.prepareStatement("insert into fornecedor " +
-				"(Cnpj,Razao_social,Email,Telefone) " +
-				"values (?,?,?,?)");
-            stmt.setLong(1, f.getCnpj());
-			stmt.setString(2, f.getRazaoSocial());
-			stmt.setString(3, f.getEmail());
-			stmt.setString(4, f.getTelefone());
-			
-			stmt.executeUpdate();
+		try {
+			getStmt().execute();
+			getCon().commit();
+			JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
+		} catch (SQLException e) {
+			getCon().rollback();
+			JOptionPane.showMessageDialog(null,"Não foi possível cadastrar!");
+		} finally {
+			closeStmt();
+		}
+		
+		
+	}
 
-            JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        } finally {
-            ConnectionFactory.closeConnection(con, stmt);
-        }
+	public List<Fornecedor> listarTodos() throws Exception {
+		
+		String sql = "SELECT * FROM fornecedor";
+		prepare(sql);
+		ResultSet rs = null;
+		
+		try {
+			rs = getStmt().executeQuery();
+			getCon().commit();
+		} catch (SQLException e) {
+			getCon().rollback();
+			closeStmt();
+		}
+		
+		List<Fornecedor> fornecedores = new ArrayList<>();
+		
+		while (rs.next()) {
+			Fornecedor fornecedor = new Fornecedor();
 
-    }
-
-public List<Fornecedor> read(/*Connection con*/) {
-
-    PreparedStatement stmt = null;
-    ResultSet rs = null;
-
-    List<Fornecedor> fornecedores = new ArrayList<>();
-
-    try {
-        stmt = con.prepareStatement("SELECT * FROM fornecedor");
-        rs = stmt.executeQuery();
-
-        while (rs.next()) {
-
-            Fornecedor fornecedor = new Fornecedor();
-
-            fornecedor.setCnpj(rs.getLong("Cnpj"));
-            fornecedor.setRazaoSocial(rs.getString("Razao_social"));
-            fornecedor.setEmail(rs.getString("Email"));
-            fornecedor.setTelefone(rs.getString("Telefone"));
-            
-			
+			fornecedor.setCnpj(rs.getLong("Cnpj"));
+			fornecedor.setRazaoSocial(rs.getString("Razao_social"));
+			fornecedor.setEmail(rs.getString("Email"));
+			fornecedor.setTelefone(rs.getString("Telefone"));
 
 			fornecedores.add(fornecedor);
-        }
 
-    } catch (SQLException ex) {
-        Logger.getLogger(FornecedorDAO.class.getName()).log(Level.SEVERE, null, ex);
-    } finally {
-        ConnectionFactory.closeConnection(con, stmt, rs);
-    }
+		}
+		
+		rs.close();
+		closeStmt();
+		return fornecedores;
+	}
 
-    return fornecedores;
+	@Override
+	public void atualizar(Fornecedor o) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
 
-}
+	@Override
+	public void remover(Fornecedor o) throws Exception {
+		String sql = "DELETE FROM fornecedor WHERE Cnpj = ?";
+		prepare(sql);
+		getStmt().setLong(1, o.getCnpj());
+		
+		try {
+			getStmt().execute();
+			getCon().commit();
+			JOptionPane.showMessageDialog(null, "Remoção realizada com sucesso!");
+		} catch (SQLException e) {
+			getCon().rollback();
+			JOptionPane.showMessageDialog(null,"Não foi possível remover!");
+		} finally {
+			closeStmt();
+		}
+		
+	}
 
 
-    
+
 }

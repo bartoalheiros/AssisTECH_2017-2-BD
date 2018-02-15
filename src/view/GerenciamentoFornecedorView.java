@@ -17,12 +17,13 @@ import javax.swing.table.DefaultTableModel;
 
 import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 
+import control.ControladorFuncionario;
 import model.bean.Fornecedor;
 import model.bean.Funcionario;
 import model.dao.FornecedorDAO;
 import model.dao.FuncionarioDAO;
 
-public class CadastroFornecedorView extends JFrame {
+public class GerenciamentoFornecedorView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtCnpj;
@@ -41,14 +42,13 @@ public class CadastroFornecedorView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CadastroFornecedorView() {
+	public GerenciamentoFornecedorView() {
 		initComponents();
 	}
 	
 	public void initComponents() {
 		setTitle("Cadastro de fornecedor");
-		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 494, 358);
+		setBounds(100, 100, 560, 402);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -59,7 +59,7 @@ public class CadastroFornecedorView extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		txtCnpj = new JTextField();
-		txtCnpj.setBounds(97, 8, 116, 20);
+		txtCnpj.setBounds(97, 8, 167, 20);
 		contentPane.add(txtCnpj);
 		txtCnpj.setColumns(10);
 		
@@ -82,12 +82,12 @@ public class CadastroFornecedorView extends JFrame {
 		
 		txtRazaoSocial = new JTextField();
 		txtRazaoSocial.setColumns(10);
-		txtRazaoSocial.setBounds(97, 39, 116, 20);
+		txtRazaoSocial.setBounds(97, 39, 167, 20);
 		contentPane.add(txtRazaoSocial);
 		
 		txtEmail = new JTextField();
 		txtEmail.setColumns(10);
-		txtEmail.setBounds(97, 70, 116, 20);
+		txtEmail.setBounds(97, 70, 167, 20);
 		contentPane.add(txtEmail);
 		
 		txtTelefone = new JTextField();
@@ -109,24 +109,40 @@ public class CadastroFornecedorView extends JFrame {
 				f.setEmail(txtEmail.getText());
 				f.setTelefone(txtTelefone.getText());
 				
-				FornecedorDAO fdao = new FornecedorDAO();
+				Fachada fc = Fachada.getInstance();
+				fc.cadastrarFornecedor(f);
 				try {
-					fdao.create(f);
-				} catch (MySQLIntegrityConstraintViolationException e) {
+					readJTable();
+				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 		});
-		btnCadastrar.setBounds(223, 100, 93, 23);
+		btnCadastrar.setBounds(281, 122, 93, 23);
 		contentPane.add(btnCadastrar);
 		
-		JButton btnEditar = new JButton("Editar");
-		btnEditar.setBounds(386, 100, 83, 23);
-		contentPane.add(btnEditar);
-		
 		JButton btnExcluir = new JButton("Excluir");
-		btnExcluir.setBounds(313, 100, 77, 23);
+		btnExcluir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Fornecedor f = new Fornecedor();
+				f.setCnpj(Long.parseLong(txtCnpj.getText()));
+				f.setRazaoSocial(txtRazaoSocial.getText());
+				f.setEmail(txtEmail.getText());
+				f.setTelefone(txtTelefone.getText());
+				Fachada fc = Fachada.getInstance();
+				
+				fc.removerFornecedor(f);
+				
+				try {
+					readJTable();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		btnExcluir.setBounds(371, 122, 77, 23);
 		contentPane.add(btnExcluir);
 		
 		JButton btnSalvarAlteraes = new JButton("Salvar Alterações");
@@ -134,11 +150,11 @@ public class CadastroFornecedorView extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnSalvarAlteraes.setBounds(313, 134, 136, 23);
+		btnSalvarAlteraes.setBounds(281, 156, 136, 23);
 		contentPane.add(btnSalvarAlteraes);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 192, 478, 127);
+		scrollPane.setBounds(0, 192, 554, 182);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
@@ -180,7 +196,7 @@ public class CadastroFornecedorView extends JFrame {
 				txtTelefone.setText("");
 			}
 		});
-		btnLimparCampos.setBounds(225, 69, 116, 23);
+		btnLimparCampos.setBounds(282, 88, 116, 23);
 		contentPane.add(btnLimparCampos);
 		
 		try {
@@ -189,7 +205,12 @@ public class CadastroFornecedorView extends JFrame {
 			e.printStackTrace();
 		}
 		
-		readJTable();
+		try {
+			readJTable();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		setResizable(false);
 
 	}
@@ -219,13 +240,13 @@ public class CadastroFornecedorView extends JFrame {
 	 }	 
 
 	 
-	 public void readJTable(/*Connection con*/) {
+	 public void readJTable() throws Exception {
 
 			DefaultTableModel modelo = (DefaultTableModel) table.getModel();
 			modelo.setNumRows(0);
 			FornecedorDAO fdao = new FornecedorDAO();
 
-			for (Fornecedor f : fdao.read()) {
+			for (Fornecedor f : fdao.listarTodos()) {
 
 				modelo.addRow(new Object[]{
 						f.getCnpj(),

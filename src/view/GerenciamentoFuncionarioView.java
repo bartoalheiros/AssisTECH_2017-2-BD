@@ -17,13 +17,13 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import control.CadastroFuncionarioControler;
+import control.ControladorFuncionario;
 import model.bean.Funcionario;
 import model.dao.FuncionarioDAO;
 import service.ConnectionFactory;
 
 @SuppressWarnings("serial")
-public class CadastroFuncionarioView extends JFrame {
+public class GerenciamentoFuncionarioView extends JFrame{
 
 	private JPanel contentPane;
 	private JTextField tf_mat;
@@ -46,7 +46,7 @@ public class CadastroFuncionarioView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CadastroFuncionarioView(/*Connection con*/) {
+	public GerenciamentoFuncionarioView(/*Connection con*/) {
 
 		initComponents(/*con*/);
 
@@ -54,7 +54,7 @@ public class CadastroFuncionarioView extends JFrame {
 	}
 
 	private void initComponents(/*Connection con*/) {
-
+		
 		setTitle("Cadastro Funcionario");
 		setBounds(100, 100, 1043, 645);
 		contentPane = new JPanel();
@@ -238,9 +238,10 @@ public class CadastroFuncionarioView extends JFrame {
 				f.setId_jornada(tf_id_jornada.getText());
 				f.setData_inicio(tf_dt_inicio.getText());
 				f.setCodUnid_Suporte(Integer.parseInt(tf_cod_unid_sup.getText()));
-				CadastroFuncionarioControler cfc = new CadastroFuncionarioControler();
+				ControladorFuncionario cfc = new ControladorFuncionario();
 				
-				if(cfc.cadastrar(f)) {
+				//TODO ver isso aqui. comando que limpa os campos.
+				/*if(cfc.cadastrar(f)) {
 					tf_mat.setText("");
 					tf_cpf.setText("");
 					tf_login.setText("");
@@ -254,7 +255,7 @@ public class CadastroFuncionarioView extends JFrame {
 					tf_cod_unid_sup.setText("");
 
 					readJTable();
-				}
+				}*/
 				
 			}
 		});
@@ -280,9 +281,11 @@ public class CadastroFuncionarioView extends JFrame {
 				f.setId_jornada(tf_id_jornada.getText());
 				f.setData_inicio(tf_dt_inicio.getText());
 				f.setCodUnid_Suporte(Integer.parseInt(tf_cod_unid_sup.getText()));
-				CadastroFuncionarioControler cfc = new CadastroFuncionarioControler();
+				ControladorFuncionario cfc = new ControladorFuncionario();
 				
-				cfc.delete(f);
+				cfc.remover(f);
+				
+				readJTable();
 			}
 		});
 		btnExcluir.setBounds(232, 347, 91, 23);
@@ -336,7 +339,7 @@ public class CadastroFuncionarioView extends JFrame {
 		modelo.setNumRows(0);
 		FuncionarioDAO fdao = new FuncionarioDAO();
 
-		for (Funcionario f : fdao.read()) {
+		for (Funcionario f : fdao.listarTodos()) {
 
 			modelo.addRow(new Object[]{
 					f.getMatricula(),

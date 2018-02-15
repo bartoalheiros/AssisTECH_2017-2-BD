@@ -24,6 +24,15 @@ public class ConnectionFactory {
             throw new RuntimeException("Erro na conexão: ", ex);
         }
     }
+    
+    public static Connection getConnection(String URL, String USER, String PASS) {
+    	  try {
+              Class.forName(DRIVER);
+              return DriverManager.getConnection(URL, USER, PASS);
+          } catch (ClassNotFoundException | SQLException ex) {
+              throw new RuntimeException("Erro na conexão: ", ex);
+          }
+    }
 
     public static void closeConnection(Connection con) {
         try {
