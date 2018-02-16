@@ -1,4 +1,5 @@
 package br.ufrpe.bds.assistech.model.dao;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,11 +9,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
 import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
-
 import br.ufrpe.bds.assistech.model.bean.Computador;
-import br.ufrpe.bds.assistech.model.bean.Funcionario;
 import br.ufrpe.bds.assistech.service.ConnectionFactory;
 
 

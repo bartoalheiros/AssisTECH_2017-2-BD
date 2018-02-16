@@ -5,11 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
 import br.ufrpe.bds.assistech.control.ControladorChamado;
 import br.ufrpe.bds.assistech.model.bean.Chamado;
-import br.ufrpe.bds.assistech.model.dao.ChamadoDAO;
-
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;

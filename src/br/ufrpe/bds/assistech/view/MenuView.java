@@ -1,7 +1,5 @@
 package br.ufrpe.bds.assistech.view;
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -9,7 +7,6 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -17,6 +14,7 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
 
+@SuppressWarnings("serial")
 public class MenuView extends View {
 
 	private JPanel contentPane;

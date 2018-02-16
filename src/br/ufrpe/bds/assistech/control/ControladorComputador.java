@@ -5,9 +5,7 @@ import javax.swing.JOptionPane;
 import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 
 import br.ufrpe.bds.assistech.model.bean.Computador;
-import br.ufrpe.bds.assistech.model.bean.Funcionario;
 import br.ufrpe.bds.assistech.model.dao.ComputadorDAO;
-import br.ufrpe.bds.assistech.model.dao.FuncionarioDAO;
 
 public class ControladorComputador {
 	

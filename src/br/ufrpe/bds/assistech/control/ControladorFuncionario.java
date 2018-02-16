@@ -2,15 +2,11 @@ package br.ufrpe.bds.assistech.control;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.JOptionPane;
-
-import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
-
 import br.ufrpe.bds.assistech.model.bean.Funcionario;
 import br.ufrpe.bds.assistech.model.dao.FuncionarioDAO;
 
-public class ControladorFuncionario extends Controlador<Funcionario>{
+public class ControladorFuncionario implements IControlador<Funcionario>{
 	
 	private FuncionarioDAO funcionario;
 	
@@ -22,11 +18,31 @@ public class ControladorFuncionario extends Controlador<Funcionario>{
 
 		try{
 			funcionario.cadastrar(f);
-		}catch(MySQLIntegrityConstraintViolationException e){
+		}catch(Exception e){
 			JOptionPane.showMessageDialog(null, "Campo ID_Jornada vazio ou não existe!");
+			e.printStackTrace();
 		}
 
 		
+	}
+	
+	public void remover(Funcionario f){
+		try {
+			if (f != null) {
+				funcionario.remover(f);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void atualizar(Funcionario f) {
+		try {
+			funcionario.atualizar(f);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public boolean sohNumeros( String s ) {  
@@ -40,16 +56,6 @@ public class ControladorFuncionario extends Controlador<Funcionario>{
 			}  
 		}  
 		return d;  
-	}
-	
-	public void remover(Funcionario f){
-		try {
-			if (f != null) {
-				funcionario.remover(f);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 	
 	public List<Funcionario> listarTodos(){

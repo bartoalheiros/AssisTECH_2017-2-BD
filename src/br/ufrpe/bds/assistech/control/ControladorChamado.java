@@ -2,12 +2,7 @@ package br.ufrpe.bds.assistech.control;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.JOptionPane;
-import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
-
 import br.ufrpe.bds.assistech.model.bean.Chamado;
-import br.ufrpe.bds.assistech.model.bean.Funcionario;
 import br.ufrpe.bds.assistech.model.dao.ChamadoDAO;
 
 public class ControladorChamado {
@@ -30,11 +25,6 @@ public class ControladorChamado {
 		
 	}
 	
-	private boolean sohNumeros(Long sequencial) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	public boolean sohNumeros( String s ) {  
 		boolean d = true;  
 		

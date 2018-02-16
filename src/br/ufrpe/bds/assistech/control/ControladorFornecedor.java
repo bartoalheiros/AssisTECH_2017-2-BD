@@ -7,7 +7,7 @@ import br.ufrpe.bds.assistech.model.bean.Fornecedor;
 import br.ufrpe.bds.assistech.model.dao.FornecedorDAO;
 
 
-public class ControladorFornecedor extends Controlador<Fornecedor>{
+public class ControladorFornecedor implements IControlador<Fornecedor>{
 
 	private FornecedorDAO fornecedor;
 

@@ -69,6 +69,18 @@ public class Fachada {
 	}
 	
 	/** FUNCIONARIO */
+	public void cadastrarFuncionario(Funcionario f) {
+		funcionarios.cadastrar(f);
+	}
+	
+	public void removerFuncionario(Funcionario f) {
+		funcionarios.remover(f);
+	}
+	
+	public void atualizarFuncionario(Funcionario f) {
+		funcionarios.atualizar(f);
+	}
+	
 	public List<Funcionario> listarTodosFuncionarios() {
 		return funcionarios.listarTodos();
 	}
@@ -86,4 +98,5 @@ public class Fachada {
 	public List<Chamado> listarChamadoPorSequencial(String str) {
 		return chamados.listarPorSequencial(str);
 	}
+
 }

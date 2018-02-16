@@ -3,10 +3,6 @@ package br.ufrpe.bds.assistech.view;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import br.ufrpe.bds.assistech.model.dao.FuncionarioDAO;
-import br.ufrpe.bds.assistech.model.dao.LoginDAO;
-
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;

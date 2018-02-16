@@ -5,12 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import br.ufrpe.bds.assistech.model.bean.Chamado;
-import br.ufrpe.bds.assistech.service.ConnectionFactory;
 
 public class ChamadoDAO extends DAO<Chamado>{
     

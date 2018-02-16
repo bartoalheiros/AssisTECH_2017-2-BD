@@ -1,10 +1,7 @@
 package br.ufrpe.bds.assistech.view;
 
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,10 +14,8 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import br.ufrpe.bds.assistech.control.ControladorFuncionario;
+import br.ufrpe.bds.assistech.model.bean.Fornecedor;
 import br.ufrpe.bds.assistech.model.bean.Funcionario;
-import br.ufrpe.bds.assistech.model.dao.FuncionarioDAO;
-import br.ufrpe.bds.assistech.service.ConnectionFactory;
 
 @SuppressWarnings("serial")
 public class GerenciamentoFuncionarioView extends JFrame{
@@ -238,15 +233,35 @@ public class GerenciamentoFuncionarioView extends JFrame{
 				f.setId_jornada(tf_id_jornada.getText());
 				f.setData_inicio(tf_dt_inicio.getText());
 				f.setCodUnid_Suporte(Integer.parseInt(tf_cod_unid_sup.getText()));
-				ControladorFuncionario cfc = new ControladorFuncionario();
+				Fachada fch = Fachada.getInstance();
 				
-				cfc.cadastrar(f);
+				fch.cadastrarFuncionario(f);
+				readJTable();
 			}
 		});
 		btnCadastrar.setBounds(10, 347, 108, 23);
 		contentPane.add(btnCadastrar);
 
 		btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Fachada fch = Fachada.getInstance();
+				Funcionario f = new Funcionario();
+				f.setMatricula(tf_mat.getText());
+				f.setCPF(Long.parseLong(tf_cpf.getText()));
+				f.setLogin(tf_login.getText());
+				f.setSenha(tf_password.getText());
+				f.setNome(tf_name.getText());
+				f.setEmail(tf_email.getText());
+				f.setCargaHoraria(Integer.parseInt(tf_carg_hora.getText()));
+				f.setMatriculaSuperv(tf_mat_super.getText());
+				f.setId_jornada(tf_id_jornada.getText());
+				f.setData_inicio(tf_dt_inicio.getText());
+				f.setCodUnid_Suporte(Integer.parseInt(tf_cod_unid_sup.getText()));
+				fch.atualizarFuncionario(f);
+				readJTable();
+			}
+		});
 		btnAtualizar.setBounds(128, 347, 91, 23);
 		contentPane.add(btnAtualizar);
 
@@ -265,9 +280,9 @@ public class GerenciamentoFuncionarioView extends JFrame{
 				f.setId_jornada(tf_id_jornada.getText());
 				f.setData_inicio(tf_dt_inicio.getText());
 				f.setCodUnid_Suporte(Integer.parseInt(tf_cod_unid_sup.getText()));
-				ControladorFuncionario cfc = new ControladorFuncionario();
+				Fachada fch = Fachada.getInstance();
 				
-				cfc.remover(f);
+				fch.removerFuncionario(f);
 				
 				readJTable();
 			}

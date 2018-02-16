@@ -13,8 +13,6 @@ import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import br.ufrpe.bds.assistech.model.bean.Fornecedor;
-import br.ufrpe.bds.assistech.model.dao.FornecedorDAO;
-import javax.swing.ImageIcon;
 
 @SuppressWarnings("serial")
 public class GerenciamentoFornecedorView extends JFrame {
