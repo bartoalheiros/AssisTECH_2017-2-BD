@@ -6,6 +6,7 @@ import javax.swing.UIManager;
 
 import br.ufrpe.bds.assistech.view.LoginView;
 //testeLucas
+//testeLucas2
 public class Main {
 	/**
 	 * Launch the application.
