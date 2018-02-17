@@ -13,8 +13,6 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-
-import br.ufrpe.bds.assistech.model.bean.Fornecedor;
 import br.ufrpe.bds.assistech.model.bean.Funcionario;
 
 @SuppressWarnings("serial")

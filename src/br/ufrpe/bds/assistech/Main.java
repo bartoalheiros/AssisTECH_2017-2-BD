@@ -5,7 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.UIManager;
 
 import br.ufrpe.bds.assistech.view.LoginView;
-
+//testeLucas
 public class Main {
 	/**
 	 * Launch the application.

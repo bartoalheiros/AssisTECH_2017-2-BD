@@ -27,13 +27,13 @@ public class ChamadoDAO extends DAO<Chamado>{
 		getStmt().setString(3, c.getStatusChamado());
 		getStmt().setString(4, c.getDescricao());
 		getStmt().setString(5, c.getPrioridade());
-		getStmt().setString(5, c.getMatSupervisor());
-		getStmt().setString(6, c.getMatTecInterno());
-		getStmt().setString(7, c.getMatAtendente());
-		getStmt().setLong(8, c.getNumOrdemServico());
-		getStmt().setLong(9, c.getCodCliente());
-		getStmt().setLong(10, c.getIdAtendimento());
-		getStmt().setString(10, c.getDataAbertura());
+		getStmt().setString(6, c.getMatSupervisor());
+		getStmt().setString(7, c.getMatTecInterno());
+		getStmt().setString(8, c.getMatAtendente());
+		getStmt().setLong(9, c.getNumOrdemServico());
+		getStmt().setLong(10, c.getCodCliente());
+		getStmt().setLong(11, c.getIdAtendimento());
+		getStmt().setString(12, c.getDataAbertura());
 		
 
         try {
@@ -43,6 +43,7 @@ public class ChamadoDAO extends DAO<Chamado>{
         } catch (SQLException ex) {
             getCon().rollback();
             JOptionPane.showMessageDialog(null, "Não foi possível cadastrar!");
+            ex.printStackTrace();
         }
 
     }
