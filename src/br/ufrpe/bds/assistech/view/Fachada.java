@@ -5,10 +5,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 import br.ufrpe.bds.assistech.control.ControladorChamado;
+import br.ufrpe.bds.assistech.control.ControladorComponente;
 import br.ufrpe.bds.assistech.control.ControladorFornecedor;
 import br.ufrpe.bds.assistech.control.ControladorFuncionario;
 import br.ufrpe.bds.assistech.control.ControladorLogin;
 import br.ufrpe.bds.assistech.model.bean.Chamado;
+import br.ufrpe.bds.assistech.model.bean.Componente;
 import br.ufrpe.bds.assistech.model.bean.Fornecedor;
 import br.ufrpe.bds.assistech.model.bean.Funcionario;
 
@@ -18,6 +20,7 @@ public class Fachada {
 	private ControladorFornecedor fornecedores;
 	private ControladorFuncionario funcionarios;
 	private ControladorChamado chamados;
+	private ControladorComponente componentes;
 	
 	
 	public Fachada() {
@@ -25,6 +28,7 @@ public class Fachada {
 		this.fornecedores = new ControladorFornecedor();
 		this.funcionarios = new ControladorFuncionario();
 		this.chamados = new ControladorChamado();
+		this.componentes = new ControladorComponente();
 	}
 	
 	public static Fachada getInstance() {
@@ -101,6 +105,32 @@ public class Fachada {
 
 	public void cadastrarChamado(Chamado c) {
 		chamados.cadastrar(c);
+	}
+
+	public void removerChamado(Chamado c) {
+		chamados.remover(c);
+		
+	}
+	
+	/** COMPONENTE */
+	public void cadastrarComponente(Componente co){
+		componentes.cadastrar(co);
+	}
+	
+	public void removerComponente(Componente co) {
+		componentes.remover(co);
+	}
+	
+	public List<Componente> listarTodosComponentes() {
+		return componentes.listarTodos();
+	}
+	
+	public  List<Componente> listarComponentePorCod(String str) {
+		return componentes.listarPorCod(str);
+	}
+	
+	public void atualizarComponente(Componente co) {
+		componentes.atualizar(co);
 	}
 
 }

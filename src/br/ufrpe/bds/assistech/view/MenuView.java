@@ -94,6 +94,15 @@ public class MenuView extends View {
 		lblNewLabel.setIcon(new ImageIcon("img\\provider.png"));
 		lblNewLabel.setBounds(32, 52, 70, 72);
 		contentPane.add(lblNewLabel);
+		
+		JButton btnGereComponent = new JButton("Gerenciar Componentes");
+		btnGereComponent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new GerenciamentoComponenteView().setVisible(true);
+			}
+		});
+		btnGereComponent.setBounds(10, 271, 156, 23);
+		contentPane.add(btnGereComponent);
 
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		{{this.addWindowListener(new WindowAdapter() {
@@ -124,4 +133,5 @@ public class MenuView extends View {
 			}});
 		}
 		}
-	}}
+	}	
+}

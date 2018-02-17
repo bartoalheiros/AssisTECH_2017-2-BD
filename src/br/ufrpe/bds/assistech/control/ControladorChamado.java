@@ -5,7 +5,7 @@ import java.util.List;
 import br.ufrpe.bds.assistech.model.bean.Chamado;
 import br.ufrpe.bds.assistech.model.dao.ChamadoDAO;
 
-public class ControladorChamado {
+public class ControladorChamado implements IControlador<Chamado>{
 	
 	private ChamadoDAO chamado;
 	
@@ -38,8 +38,13 @@ public class ControladorChamado {
 		return d;  
 	}
 	
-	public void delete(Chamado c){
-		chamado.remover(c);
+	public void remover(Chamado c){
+		try {
+			chamado.remover(c);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public List<Chamado> listarTodos() {

@@ -291,8 +291,8 @@ public class GerenciamentoChamadoView extends JFrame {
 				c.setCodCliente(Long.parseLong(tf_cod_cli.getText()));
 				c.setIdAtendimento(Long.parseLong(tf_id_aten.getText()));
 				c.setDataAbertura(tf_dat_aber.getText());
-				ControladorChamado cCc = new ControladorChamado();
-				cCc.delete(c);
+				Fachada fch = Fachada.getInstance();
+				fch.removerChamado(c);
 			}
 		});		
 		

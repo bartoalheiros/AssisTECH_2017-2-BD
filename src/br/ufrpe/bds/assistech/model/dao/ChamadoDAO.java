@@ -155,19 +155,21 @@ public class ChamadoDAO extends DAO<Chamado>{
             JOptionPane.showMessageDialog(null, "Erro ao atualizar: " + ex);
         } 
     }
-    public void remover(Chamado c) {
+    public void remover(Chamado c) throws Exception {
 
-        PreparedStatement stmt = null;
+
+		String sql = "DELETE FROM chamado WHERE Sequencial = ?";
+		prepare(sql);
+		getStmt().setLong(1, c.getSequencial());
 
         try {
-            stmt = con.prepareStatement("DELETE FROM chamado WHERE Sequencial = ?");
-            stmt.setLong(1, c.getSequencial());
-
-            stmt.executeUpdate();
-
-            JOptionPane.showMessageDialog(null, "Excluido com sucesso!");
+        	getStmt().execute();
+			getCon().commit();
+			JOptionPane.showMessageDialog(null,"Remoção realizada com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao excluir: " + ex);
+        	getCon().rollback();
+			JOptionPane.showMessageDialog(null,"Não foi possível remover!");
+			ex.printStackTrace();
         } 
 
     }
