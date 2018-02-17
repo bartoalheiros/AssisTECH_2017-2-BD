@@ -99,4 +99,8 @@ public class Fachada {
 		return chamados.listarPorSequencial(str);
 	}
 
+	public void cadastrarChamado(Chamado c) {
+		chamados.cadastrar(c);
+	}
+
 }

@@ -262,24 +262,9 @@ public class GerenciamentoChamadoView extends JFrame {
 				c.setCodCliente(Long.parseLong(tf_cod_cli.getText()));
 				c.setIdAtendimento(Long.parseLong(tf_id_aten.getText()));
 				c.setDataAbertura(tf_dat_aber.getText());
-				ControladorChamado cCc = new ControladorChamado();
+				Fachada fch = Fachada.getInstance();
 				
-				/*if(cCc.cadastrar(c)) {
-					tf_seq.setText("");
-					tf_tip.setText("");
-					tf_status_ch.setText("");
-					tf_desc.setText("");
-					tf_prio.setText("");
-					tf_mat_sup.setText("");
-					tf_mat_tec_int.setText("");
-					tf_mat_aten.setText("");
-					tf_num_ord_serv.setText("");
-					tf_cod_cli.setText("");
-					tf_id_aten.setText("");
-					tf_dat_aber.setText("");
-
-					readJTable();
-				}*/
+				fch.cadastrarChamado(c);
 				
 			}
 		});
@@ -351,7 +336,7 @@ public class GerenciamentoChamadoView extends JFrame {
 		
 	}
 	
-	public void readJTable(/*Connection con*/) {
+	public void readJTable() {
 
 		DefaultTableModel modelo = (DefaultTableModel) table.getModel();
 		modelo.setNumRows(0);
@@ -377,12 +362,10 @@ public class GerenciamentoChamadoView extends JFrame {
 	}
 	
 			private void readJTableForSeq(String seq) {
-				// TODO Auto-generated method stub
 				
 				DefaultTableModel modelo = (DefaultTableModel) table.getModel();
 				modelo.setNumRows(0);
 				Fachada fch = Fachada.getInstance();
-				//Chamado c = cdao.readForSeq(seq);
 
 				for (Chamado c : fch.listarChamadoPorSequencial(seq)) {
 					modelo.addRow(new Object[]{
