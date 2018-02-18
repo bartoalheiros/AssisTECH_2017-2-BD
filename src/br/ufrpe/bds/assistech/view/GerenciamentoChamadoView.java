@@ -19,7 +19,7 @@ import javax.swing.JScrollPane;
 
 @SuppressWarnings("serial")
 public class GerenciamentoChamadoView extends JFrame {
-	
+
 	/**
 	 * 
 	 */
@@ -69,12 +69,12 @@ public class GerenciamentoChamadoView extends JFrame {
 	 * Create the frame.
 	 */
 	public GerenciamentoChamadoView() {
-		
+
 		initComponents(/*con*/);
-		
+
 	}
 	private void initComponents(/*Connection con*/) {
-		
+
 		setTitle("Cadastro Chamado");
 		setBounds(100, 100, 1043, 645);
 		contentPane = new JPanel();
@@ -106,7 +106,7 @@ public class GerenciamentoChamadoView extends JFrame {
 		tf_prio.setBounds(113, 193, 106, 20);
 		contentPane.add(tf_prio);
 		tf_prio.setColumns(10);
-		
+
 		tf_mat_sup = new JTextField();
 		tf_mat_sup.setBounds(113, 243, 106, 20);
 		contentPane.add(tf_mat_sup);
@@ -126,8 +126,8 @@ public class GerenciamentoChamadoView extends JFrame {
 		tf_num_ord_serv.setBounds(406, 96, 110, 20);
 		contentPane.add(tf_num_ord_serv);
 		tf_num_ord_serv.setColumns(10);
-		
-	    tf_cod_cli = new JTextField();
+
+		tf_cod_cli = new JTextField();
 		tf_cod_cli.setBounds(406, 145, 110, 20);
 		contentPane.add(tf_cod_cli);
 		tf_cod_cli.setColumns(10);
@@ -185,7 +185,7 @@ public class GerenciamentoChamadoView extends JFrame {
 		JLabel lblNewLabel_10 = new JLabel("ID atendimento:");
 		lblNewLabel_10.setBounds(308, 196, 86, 14);
 		contentPane.add(lblNewLabel_10);
-		
+
 		JLabel lblNewLabel_11 = new JLabel("Data abertura:");
 		lblNewLabel_11.setBounds(305, 243, 99, 14);
 		contentPane.add(lblNewLabel_11);
@@ -193,18 +193,18 @@ public class GerenciamentoChamadoView extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 381, 1017, 226);
 		contentPane.add(scrollPane);
-		
+
 		table = new JTable();
 		table.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-            	 tbl_ChamadoMouseClicked(evt);
-            }
-        });
-		 table.addKeyListener(new java.awt.event.KeyAdapter() {
-	            public void keyReleased(java.awt.event.KeyEvent evt) {
-	            	tbl_ChamadoKeyReleased(evt);
-	            }
-	        });
+			public void mouseClicked(java.awt.event.MouseEvent evt) {
+				tbl_ChamadoMouseClicked(evt);
+			}
+		});
+		table.addKeyListener(new java.awt.event.KeyAdapter() {
+			public void keyReleased(java.awt.event.KeyEvent evt) {
+				tbl_ChamadoKeyReleased(evt);
+			}
+		});
 		table.setModel(new DefaultTableModel(
 				new Object[][] {
 				},
@@ -212,7 +212,7 @@ public class GerenciamentoChamadoView extends JFrame {
 						"Sequencial", "Tipo", "Status_chamado", "Descricao", "Prioridade", "Mat_supervisor", "Mat_tecnico_interno", "Mat_atendente", "Num_ordem_servico", "Cod_cliente", "Id_atendimento", "Dta_abertura"
 				}
 				) {
-		
+
 			boolean[] columnEditables = new boolean[] {
 					false, false, false, false, false, false, false, false, false, false, false, false
 			};
@@ -227,9 +227,9 @@ public class GerenciamentoChamadoView extends JFrame {
 		table.getColumnModel().getColumn(7).setPreferredWidth(110);
 		table.getColumnModel().getColumn(10).setPreferredWidth(126);
 		scrollPane.setViewportView(table);
-		
+
 		table.getTableHeader().setReorderingAllowed(false);
-		
+
 		JButton btn_buscar = new JButton("");
 		btn_buscar.setIcon(new ImageIcon("img/search.png"));
 		btn_buscar.addActionListener(new ActionListener() {
@@ -237,7 +237,7 @@ public class GerenciamentoChamadoView extends JFrame {
 				readJTableForSeq(tf_seq.getText());
 			}
 		});
-		
+
 		btn_buscar.setBounds(902, 340, 60, 30);
 		contentPane.add(btn_buscar);
 
@@ -245,7 +245,7 @@ public class GerenciamentoChamadoView extends JFrame {
 		textField.setBounds(670, 350, 197, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
-		
+
 		btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -263,9 +263,9 @@ public class GerenciamentoChamadoView extends JFrame {
 				c.setIdAtendimento(Long.parseLong(tf_id_aten.getText()));
 				c.setDataAbertura(tf_dat_aber.getText());
 				Fachada fch = Fachada.getInstance();
-				
+
 				fch.cadastrarChamado(c);
-				
+
 			}
 		});
 		btnCadastrar.setBounds(542, 8, 86, 23);
@@ -295,11 +295,11 @@ public class GerenciamentoChamadoView extends JFrame {
 				fch.removerChamado(c);
 			}
 		});		
-		
+
 		btnExcluir.setBounds(542, 54, 86, 23);
 		contentPane.add(btnExcluir);
-		
-		JButton btnLimparDados = new JButton("Limpar Dados");
+
+		JButton btnLimparDados = new JButton("Limpar Campos");
 		btnLimparDados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				tf_seq.setText("");
@@ -316,12 +316,12 @@ public class GerenciamentoChamadoView extends JFrame {
 				tf_dat_aber.setText("");
 			}
 		});
-		btnLimparDados.setIcon(new ImageIcon("img\\refresh.png"));
+		btnLimparDados.setIcon(null);
 		btnLimparDados.setBounds(544, 142, 103, 23);
 		contentPane.add(btnLimparDados);
-		
-		JButton btnVol = new JButton("Voltar para dados");
-		btnVol.setIcon(new ImageIcon("img\\back.png"));
+
+		JButton btnVol = new JButton("Listar todos");
+		btnVol.setIcon(null);
 		btnVol.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				readJTable();
@@ -331,11 +331,11 @@ public class GerenciamentoChamadoView extends JFrame {
 		contentPane.add(btnVol);
 
 		readJTable();
-		
-		setResizable(false);
-		
+
+		setResizable(true);
+
 	}
-	
+
 	public void readJTable() {
 
 		DefaultTableModel modelo = (DefaultTableModel) table.getModel();
@@ -360,71 +360,71 @@ public class GerenciamentoChamadoView extends JFrame {
 			});
 		}
 	}
-	
-			private void readJTableForSeq(String seq) {
-				
-				DefaultTableModel modelo = (DefaultTableModel) table.getModel();
-				modelo.setNumRows(0);
-				Fachada fch = Fachada.getInstance();
 
-				for (Chamado c : fch.listarChamadoPorSequencial(seq)) {
-					modelo.addRow(new Object[]{
-							c.getSequencial(),
-							c.getTipo(),
-							c.getStatusChamado(),
-							c.getDescricao(),
-							c.getPrioridade(),
-							c.getMatSupervisor(),
-							c.getMatTecInterno(),
-							c.getMatAtendente(),
-							c.getNumOrdemServico(),
-							c.getCodCliente(),
-							c.getIdAtendimento(),
-							c.getDataAbertura()
-					});
-					}
-			}
-			
-			private void tbl_ChamadoMouseClicked(java.awt.event.MouseEvent evt){
-				 if (table.getSelectedRow() != -1) {
+	private void readJTableForSeq(String seq) {
 
-			            tf_seq.setText(table.getValueAt(table.getSelectedRow(), 0).toString());
-			            tf_tip.setText(table.getValueAt(table.getSelectedRow(), 1).toString());
-			            tf_status_ch.setText(table.getValueAt(table.getSelectedRow(), 2).toString());
-			            tf_desc.setText(table.getValueAt(table.getSelectedRow(), 3).toString());
-			            tf_prio.setText(table.getValueAt(table.getSelectedRow(), 4).toString());
-			            tf_mat_sup.setText(table.getValueAt(table.getSelectedRow(), 5).toString());
-			            tf_mat_tec_int.setText(table.getValueAt(table.getSelectedRow(), 6).toString());
-			            tf_mat_aten.setText(table.getValueAt(table.getSelectedRow(), 7).toString());
-			            tf_num_ord_serv.setText(table.getValueAt(table.getSelectedRow(), 8).toString());
-			            tf_cod_cli.setText(table.getValueAt(table.getSelectedRow(), 9).toString());
-			            tf_id_aten.setText(table.getValueAt(table.getSelectedRow(), 10).toString());
-			            tf_dat_aber.setText(table.getValueAt(table.getSelectedRow(), 10).toString());
+		DefaultTableModel modelo = (DefaultTableModel) table.getModel();
+		modelo.setNumRows(0);
+		Fachada fch = Fachada.getInstance();
 
+		for (Chamado c : fch.listarChamadoPorSequencial(seq)) {
+			modelo.addRow(new Object[]{
+					c.getSequencial(),
+					c.getTipo(),
+					c.getStatusChamado(),
+					c.getDescricao(),
+					c.getPrioridade(),
+					c.getMatSupervisor(),
+					c.getMatTecInterno(),
+					c.getMatAtendente(),
+					c.getNumOrdemServico(),
+					c.getCodCliente(),
+					c.getIdAtendimento(),
+					c.getDataAbertura()
+			});
+		}
+	}
 
-			        }
-				 
-			 }
-			
-			private void tbl_ChamadoKeyReleased(java.awt.event.KeyEvent evt) {
-				 if (table.getSelectedRow() != -1) {
+	private void tbl_ChamadoMouseClicked(java.awt.event.MouseEvent evt){
+		if (table.getSelectedRow() != -1) {
 
-			            tf_seq.setText(table.getValueAt(table.getSelectedRow(), 0).toString());
-			            tf_tip.setText(table.getValueAt(table.getSelectedRow(), 1).toString());
-			            tf_status_ch.setText(table.getValueAt(table.getSelectedRow(), 2).toString());
-			            tf_desc.setText(table.getValueAt(table.getSelectedRow(), 3).toString());
-			            tf_prio.setText(table.getValueAt(table.getSelectedRow(), 4).toString());
-			            tf_mat_sup.setText(table.getValueAt(table.getSelectedRow(), 5).toString());
-			            tf_mat_tec_int.setText(table.getValueAt(table.getSelectedRow(), 6).toString());
-			            tf_mat_aten.setText(table.getValueAt(table.getSelectedRow(), 7).toString());
-			            tf_num_ord_serv.setText(table.getValueAt(table.getSelectedRow(), 8).toString());
-			            tf_cod_cli.setText(table.getValueAt(table.getSelectedRow(), 9).toString());
-			            tf_id_aten.setText(table.getValueAt(table.getSelectedRow(), 10).toString());
-			            tf_dat_aber.setText(table.getValueAt(table.getSelectedRow(), 10).toString());
+			tf_seq.setText(table.getValueAt(table.getSelectedRow(), 0).toString());
+			tf_tip.setText(table.getValueAt(table.getSelectedRow(), 1).toString());
+			tf_status_ch.setText(table.getValueAt(table.getSelectedRow(), 2).toString());
+			tf_desc.setText(table.getValueAt(table.getSelectedRow(), 3).toString());
+			tf_prio.setText(table.getValueAt(table.getSelectedRow(), 4).toString());
+			tf_mat_sup.setText(table.getValueAt(table.getSelectedRow(), 5).toString());
+			tf_mat_tec_int.setText(table.getValueAt(table.getSelectedRow(), 6).toString());
+			tf_mat_aten.setText(table.getValueAt(table.getSelectedRow(), 7).toString());
+			tf_num_ord_serv.setText(table.getValueAt(table.getSelectedRow(), 8).toString());
+			tf_cod_cli.setText(table.getValueAt(table.getSelectedRow(), 9).toString());
+			tf_id_aten.setText(table.getValueAt(table.getSelectedRow(), 10).toString());
+			tf_dat_aber.setText(table.getValueAt(table.getSelectedRow(), 10).toString());
 
 
-			        }
-				 
-			 }
-			
+		}
+
+	}
+
+	private void tbl_ChamadoKeyReleased(java.awt.event.KeyEvent evt) {
+		if (table.getSelectedRow() != -1) {
+
+			tf_seq.setText(table.getValueAt(table.getSelectedRow(), 0).toString());
+			tf_tip.setText(table.getValueAt(table.getSelectedRow(), 1).toString());
+			tf_status_ch.setText(table.getValueAt(table.getSelectedRow(), 2).toString());
+			tf_desc.setText(table.getValueAt(table.getSelectedRow(), 3).toString());
+			tf_prio.setText(table.getValueAt(table.getSelectedRow(), 4).toString());
+			tf_mat_sup.setText(table.getValueAt(table.getSelectedRow(), 5).toString());
+			tf_mat_tec_int.setText(table.getValueAt(table.getSelectedRow(), 6).toString());
+			tf_mat_aten.setText(table.getValueAt(table.getSelectedRow(), 7).toString());
+			tf_num_ord_serv.setText(table.getValueAt(table.getSelectedRow(), 8).toString());
+			tf_cod_cli.setText(table.getValueAt(table.getSelectedRow(), 9).toString());
+			tf_id_aten.setText(table.getValueAt(table.getSelectedRow(), 10).toString());
+			tf_dat_aber.setText(table.getValueAt(table.getSelectedRow(), 10).toString());
+
+
+		}
+
+	}
+
 }

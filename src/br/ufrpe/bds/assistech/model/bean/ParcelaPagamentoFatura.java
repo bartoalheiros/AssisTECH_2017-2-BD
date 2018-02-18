@@ -1,6 +1,6 @@
 package br.ufrpe.bds.assistech.model.bean;
 
-public class ParcelaPagamento {
+public class ParcelaPagamentoFatura {
 	private Long seqParcelaPgto;
 	private Long codFatura;
 	private String dtaPagto;

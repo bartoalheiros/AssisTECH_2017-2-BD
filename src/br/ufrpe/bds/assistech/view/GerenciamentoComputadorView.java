@@ -269,7 +269,7 @@ public class GerenciamentoComputadorView extends JFrame {
 	}
 
 
-	public void readJTable(/*Connection con*/) {
+	public void readJTable() {
 
 		DefaultTableModel modelo = (DefaultTableModel) table.getModel();
 		modelo.setNumRows(0);

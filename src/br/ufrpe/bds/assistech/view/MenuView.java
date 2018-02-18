@@ -56,7 +56,7 @@ public class MenuView extends View {
 				new GerenciamentoFornecedorView().setVisible(true); 
 			}
 		});
-		btnGerenciarFornecedores.setBounds(10, 135, 156, 23);
+		btnGerenciarFornecedores.setBounds(10, 135, 177, 23);
 		contentPane.add(btnGerenciarFornecedores);
 
 		JButton btnGerenciarFuncionrio = new JButton("Gerenciar Funcionários");
@@ -65,7 +65,7 @@ public class MenuView extends View {
 				new GerenciamentoFuncionarioView().setVisible(true); 
 			}
 		});
-		btnGerenciarFuncionrio.setBounds(10, 169, 156, 23);
+		btnGerenciarFuncionrio.setBounds(10, 169, 177, 23);
 		contentPane.add(btnGerenciarFuncionrio);
 
 		JButton btnGerenciarChamado = new JButton("Gerenciar  Chamados");
@@ -74,7 +74,7 @@ public class MenuView extends View {
 				new GerenciamentoChamadoView().setVisible(true);
 			}
 		});
-		btnGerenciarChamado.setBounds(10, 203, 156, 23);
+		btnGerenciarChamado.setBounds(10, 203, 177, 23);
 		contentPane.add(btnGerenciarChamado);
 
 		JButton btnGerenciarComputadores = new JButton("Gerenciar Computadores");
@@ -83,7 +83,7 @@ public class MenuView extends View {
 				new GerenciamentoComputadorView().setVisible(true);
 			}
 		});
-		btnGerenciarComputadores.setBounds(10, 237, 156, 23);
+		btnGerenciarComputadores.setBounds(10, 237, 177, 23);
 		contentPane.add(btnGerenciarComputadores);
 
 		JLabel lblSelecioneUmaOpo = new JLabel("Selecione uma opção");
@@ -101,8 +101,26 @@ public class MenuView extends View {
 				new GerenciamentoComponenteView().setVisible(true);
 			}
 		});
-		btnGereComponent.setBounds(10, 271, 156, 23);
+		btnGereComponent.setBounds(10, 271, 177, 23);
 		contentPane.add(btnGereComponent);
+		
+		JButton btnNewButton = new JButton("Gerenciar Faturas");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new GerenciamentoFaturaView().setVisible(true);
+			}
+		});
+		btnNewButton.setBounds(10, 305, 177, 23);
+		contentPane.add(btnNewButton);
+		
+		JButton btnGerenciarClientesE = new JButton("Gerenciar Cliente/Chamado");
+		btnGerenciarClientesE.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new GerenciamentoChamadosClienteView().setVisible(true);
+			}
+		});
+		btnGerenciarClientesE.setBounds(10, 339, 177, 23);
+		contentPane.add(btnGerenciarClientesE);
 
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		{{this.addWindowListener(new WindowAdapter() {

@@ -326,7 +326,7 @@ public class GerenciamentoFuncionarioView extends JFrame{
 
 		readJTable();
 		
-		setResizable(false);
+		setResizable(true);
 
 	}
 

@@ -13,8 +13,10 @@ public class LoginDAO {
 	private String senha;
 	private Connection con;
 	private static LoginDAO instance = null;
+	
+	private LoginDAO() {}
 
-	//para garantir que a classe login terá uma única instância
+	//Singleton para garantir que a classe LoginDAO terá uma única instância
 	public static LoginDAO getInstance() {
 		if(instance == null) {
 			instance = new LoginDAO();

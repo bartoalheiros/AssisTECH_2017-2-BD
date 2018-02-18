@@ -174,4 +174,42 @@ public class ChamadoDAO extends DAO<Chamado>{
 
     }
 
+
+	public List<Chamado> listarPorCodCliente(String str) throws Exception {
+		List<Chamado> chamados = new ArrayList<>();
+		String sql = "SELECT * FROM chamado WHERE Cod_cliente LIKE ?";
+		prepare(sql);
+		getStmt().setString(1, str);
+		ResultSet rs = null;
+
+		try {
+            rs = getStmt().executeQuery();
+            getCon().commit();
+		} catch (SQLException ex) {
+            getCon().rollback();
+        } 
+        
+        while (rs.next()) {
+        	Chamado chamado = new Chamado();
+
+            chamado.setSequencial(rs.getLong("Sequencial"));
+            chamado.setTipo(rs.getString("Tipo"));
+            chamado.setStatusChamado(rs.getString("Status_chamado"));
+            chamado.setDescricao(rs.getString("Descricao"));
+            chamado.setPrioridade(rs.getString("Prioridade"));
+            chamado.setMatSupervisor(rs.getString("Mat_supervisor"));
+            chamado.setMatTecInterno(rs.getString("Mat_tec_interno"));
+			chamado.setMatAtendente(rs.getString("Mat_atendente"));
+			chamado.setNumOrdemServico(rs.getLong("Num_ordem_servico"));
+			chamado.setCodCliente(rs.getLong("Cod_cliente"));
+			chamado.setIdAtendimento(rs.getLong("Id_atendimento"));
+            chamado.setDataAbertura(rs.getString("Dta_abertura"));
+            
+			chamados.add(chamado);
+        }
+
+        return chamados;
+
+	}
+
 }

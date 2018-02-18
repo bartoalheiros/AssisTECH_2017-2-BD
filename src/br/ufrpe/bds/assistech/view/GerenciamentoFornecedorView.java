@@ -224,7 +224,7 @@ public class GerenciamentoFornecedorView extends JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		setResizable(false);
+		setResizable(true);
 
 	}
 

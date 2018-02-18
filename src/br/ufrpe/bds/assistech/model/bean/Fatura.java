@@ -38,5 +38,8 @@ public class Fatura {
 		Cod_cliente = cod_cliente;
 	}
 	
+	public String toString() {
+		return Long.toString(getCod()); 
+	}
 	
 }

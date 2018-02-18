@@ -7,6 +7,7 @@ public class Cliente {
 	private String estado;
 	private String email;
 	private String fone;
+	
 	public Long getCod() {
 		return cod;
 	}
@@ -44,5 +45,8 @@ public class Cliente {
 		this.fone = fone;
 	}
 	
+	public String toString() {
+		return Long.toString(this.getCod());
+	}
 	
 }

@@ -54,7 +54,6 @@ public class GerenciamentoComponenteView extends JFrame {
 		private void iniComponents() {
 		// TODO Auto-generated method stub
 		setTitle("Cadastro componente");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 458, 375);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -271,7 +270,7 @@ public class GerenciamentoComponenteView extends JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		setResizable(false);
+		setResizable(true);
 
 	}
 

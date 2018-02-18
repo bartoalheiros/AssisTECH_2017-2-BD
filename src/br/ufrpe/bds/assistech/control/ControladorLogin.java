@@ -6,21 +6,21 @@ import java.sql.SQLException;
 import br.ufrpe.bds.assistech.model.dao.LoginDAO;
 
 public class ControladorLogin {
-	private LoginDAO login_dao;
+	private LoginDAO loginDAO;
 
 	public ControladorLogin() {
-		this.login_dao = new LoginDAO();
+		this.loginDAO = LoginDAO.getInstance();
 	}
 
 	public void fecharConexao() throws SQLException {
-		login_dao.closeConnection();
+		loginDAO.closeConnection();
 	}
 
 	public void fazerLogin(String nome, String senha) throws Exception {
-		login_dao.login(nome, senha);
+		loginDAO.login(nome, senha);
 	}
 
 	public Connection getConnection() {
-		return login_dao.getConnection();
+		return loginDAO.getConnection();
 	}
 }

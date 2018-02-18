@@ -70,4 +70,22 @@ public class ControladorChamado implements IControlador<Chamado>{
 		
 		return chamados;
 	}
+
+	@Override
+	public void atualizar(Chamado o) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public List<Chamado> listarChamadoPorCodCliente(String str) {
+		List<Chamado> chamados = new ArrayList<Chamado>();
+		try {
+			chamados = chamado.listarPorCodCliente(str);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return chamados;
+	}
 }

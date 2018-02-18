@@ -8,6 +8,7 @@ public class OrdemServico {
 	private String Status;
 	private Long CodOrcamento;
 	private Long CodFatura;
+	
 	public Long getNumOS() {
 		return NumOS;
 	}

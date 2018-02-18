@@ -66,6 +66,7 @@ public class LoginView extends View {
 
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent arg0) {
 
 				Fachada fach = Fachada.getInstance();
@@ -97,6 +98,7 @@ public class LoginView extends View {
 
 				if (resposta == JOptionPane.YES_OPTION) {
 					closeView();
+					System.exit(0);
 				} else if (resposta == JOptionPane.NO_OPTION) {
 					showView();
 				}
