@@ -128,33 +128,35 @@ public class ChamadoDAO extends DAO<Chamado>{
 
     }
 
-    public void atualizar(Chamado c) {
+    public void atualizar(Chamado o) throws Exception {
 
-        PreparedStatement stmt = null;
+    	String sql = "UPDATE chamado SET `Tipo` = ?,`Status_chamado` = ?,`Descricao` = ?,`Prioridade` = ?, `Mat_supervisor` = ?, `Mat_tec_interno` = ?, `Mat_atendente` = ?, `Num_ordem_servico` = ?, `Cod_cliente` = ?, `Id_atendimento` = ?, `Dta_abertura` = ?  WHERE `Sequencial` LIKE ?";
+		prepare(sql);
+		
+		getStmt().setString(1, o.getTipo());
+		getStmt().setString(2, o.getStatusChamado());
+		getStmt().setString(3, o.getDescricao());
+		getStmt().setString(4, o.getPrioridade());
+		getStmt().setString(5, o.getMatSupervisor());
+		getStmt().setString(6, o.getMatTecInterno());
+		getStmt().setString(7, o.getMatAtendente());
+		getStmt().setLong(8, o.getNumOrdemServico());
+		getStmt().setLong(9, o.getCodCliente());
+		getStmt().setLong(10, o.getIdAtendimento());
+		getStmt().setString(11, o.getDataAbertura());
+		getStmt().setLong(12, o.getSequencial());
 
         try {
-            stmt = con.prepareStatement("UPDATE chamado SET Sequencial = ? ,Tipo = ?,Status_chamado = ?,Descricao = ?,Prioridade = ?, Mat_supervisor = ?, Mat_tec_interno = ?, Mat_atendente = ?, Num_ordem-servico = ?, Cod_cliente = ?, Id_atendimento = ?, Dta_abertura = ?  WHERE Sequencial = ?");
-            stmt.setLong(1, c.getSequencial());
-			stmt.setString(2, c.getTipo());
-			stmt.setString(3, c.getStatusChamado());
-			stmt.setString(4, c.getDescricao());
-			stmt.setString(5, c.getPrioridade());
-			stmt.setString(6, c.getMatSupervisor());
-			stmt.setString(7, c.getMatTecInterno());
-			stmt.setString(8, c.getMatAtendente());
-			stmt.setLong(9, c.getNumOrdemServico());
-			stmt.setLong(10, c.getCodCliente());
-			stmt.setLong(11, c.getIdAtendimento());
-			stmt.setString(11, c.getDataAbertura());
-			stmt.setString(1, "%"+c.getSequencial()+"%");
-			
-            stmt.executeUpdate();
-
-            JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");
+        	getStmt().execute();
+			getCon().commit();
+			JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao atualizar: " + ex);
+        	getCon().rollback();
+        	ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar!");
         } 
     }
+    
     public void remover(Chamado c) throws Exception {
 
 

@@ -34,7 +34,7 @@ public class GerenciamentoFornecedorView extends JFrame {
 
 	public void initComponents() {
 		setTitle("Cadastro de fornecedor");
-		setBounds(100, 100, 560, 402);
+		setBounds(100, 100, 753, 526);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -153,7 +153,7 @@ public class GerenciamentoFornecedorView extends JFrame {
 		contentPane.add(btnSalvarAlteraes);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 192, 554, 182);
+		scrollPane.setBounds(0, 192, 737, 296);
 		contentPane.add(scrollPane);
 
 		table = new JTable();

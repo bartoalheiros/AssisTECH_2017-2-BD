@@ -35,6 +35,7 @@ public class FornecedorDAO extends DAO<Fornecedor>{
 		} catch (SQLException e) {
 			getCon().rollback();
 			JOptionPane.showMessageDialog(null,"Não foi possível cadastrar!");
+			
 		}
 
 	}
@@ -117,6 +118,7 @@ public class FornecedorDAO extends DAO<Fornecedor>{
 		} catch (SQLException e) {
 			getCon().rollback();
 			JOptionPane.showMessageDialog(null,"Não foi possível alterar!");
+			e.printStackTrace();
 		}
 	}
 

@@ -54,7 +54,7 @@ public class GerenciamentoComponenteView extends JFrame {
 		private void iniComponents() {
 		// TODO Auto-generated method stub
 		setTitle("Cadastro componente");
-		setBounds(100, 100, 458, 375);
+		setBounds(100, 100, 712, 478);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -207,7 +207,7 @@ public class GerenciamentoComponenteView extends JFrame {
 		contentPane.add(btnConsultar);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(5, 190, 442, 153);
+		scrollPane.setBounds(5, 190, 691, 250);
 		contentPane.add(scrollPane);
 		
 		

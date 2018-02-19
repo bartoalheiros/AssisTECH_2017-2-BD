@@ -272,6 +272,10 @@ public class GerenciamentoChamadoView extends JFrame {
 		contentPane.add(btnCadastrar);
 
 		btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnAtualizar.setBounds(543, 97, 82, 23);
 		contentPane.add(btnAtualizar);
 

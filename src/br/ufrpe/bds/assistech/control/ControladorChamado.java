@@ -73,8 +73,12 @@ public class ControladorChamado implements IControlador<Chamado>{
 
 	@Override
 	public void atualizar(Chamado o) {
-		// TODO Auto-generated method stub
-		
+		try {
+			chamado.atualizar(o);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public List<Chamado> listarChamadoPorCodCliente(String str) {

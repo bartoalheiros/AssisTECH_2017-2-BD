@@ -30,7 +30,7 @@ public class GerenciamentoChamadosClienteView extends JFrame {
 	private JTable table_1;
 	private JTable table_2;
 	private JTextField txtConsulta;
-	private JTextField txtDigiteOCdigo;
+	private JTextField txtConsultaCliente;
 	private JTextField tf_seq;
 	private JTextField tf_tip;
 	private JTextField tf_status_ch;
@@ -80,7 +80,7 @@ public class GerenciamentoChamadosClienteView extends JFrame {
 		JButton btnConsultar = new JButton("Consultar");
 		btnConsultar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				readJTableForCod(txtConsulta.getText());
+				readJTableForCod(txtConsultaCliente.getText());
 				preencherFormulario();
 			}
 		});
@@ -297,11 +297,11 @@ public class GerenciamentoChamadosClienteView extends JFrame {
 		lblChamado.setBounds(11, 308, 77, 14);
 		contentPane.add(lblChamado);
 		
-		txtDigiteOCdigo = new JTextField();
-		txtDigiteOCdigo.setText("Digite o código do Cliente...");
-		txtDigiteOCdigo.setBounds(454, 108, 167, 20);
-		contentPane.add(txtDigiteOCdigo);
-		txtDigiteOCdigo.setColumns(10);
+		txtConsultaCliente = new JTextField();
+		txtConsultaCliente.setText("Digite o código do Cliente...");
+		txtConsultaCliente.setBounds(454, 108, 167, 20);
+		contentPane.add(txtConsultaCliente);
+		txtConsultaCliente.setColumns(10);
 		
 		tf_seq = new JTextField();
 		tf_seq.setBounds(9, 524, 86, 20);
@@ -465,6 +465,15 @@ public class GerenciamentoChamadosClienteView extends JFrame {
 		contentPane.add(btnRemover);
 		
 		JButton btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Fachada fch = Fachada.getInstance();
+				Chamado o = criaChamado();
+				
+				fch.atualizarChamado(o);
+				
+			}
+		});
 		btnAtualizar.setBounds(524, 673, 91, 23);
 		contentPane.add(btnAtualizar);
 		
@@ -683,5 +692,25 @@ public class GerenciamentoChamadosClienteView extends JFrame {
 		txtEmail.setText(table_1.getValueAt(0, 4).toString());
 		txtFone.setText(table_1.getValueAt(0, 5).toString());
 
+	}
+	
+	//método que cria objeto Chamado e devolve preenchido
+	//o objeto é preenchido pelos campos que o usuário informou na tela.
+	public Chamado criaChamado() {
+		Chamado o = new Chamado();
+		o.setSequencial(Long.parseLong(tf_seq.getText()));
+		o.setTipo(tf_tip.getText());
+		o.setStatusChamado(tf_status_ch.getText());
+		o.setDescricao(textAreaDesc.getText());
+		o.setPrioridade(tf_prio.getText());
+		o.setMatSupervisor(tf_mat_sup.getText());
+		o.setMatTecInterno(tf_mat_tec_int.getText());
+		o.setMatAtendente(tf_mat_aten.getText());
+		o.setNumOrdemServico(Long.parseLong(tf_num_ord_serv.getText()));
+		o.setCodCliente(Long.parseLong(tf_cod_cli.getText()));
+		o.setIdAtendimento(Long.parseLong(tf_id_aten.getText()));
+		o.setDataAbertura(tf_dat_aber.getText());
+		
+		return o;
 	}
 }

@@ -148,7 +148,9 @@ public class MenuView extends View {
 					showView();
 				}
 
-			}});
+			}
+
+			});
 		}
 		}
 	}	

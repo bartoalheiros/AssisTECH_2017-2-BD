@@ -14,10 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-
-import br.ufrpe.bds.assistech.control.ControladorComputador;
 import br.ufrpe.bds.assistech.model.bean.Computador;
-import br.ufrpe.bds.assistech.model.dao.ComputadorDAO;
 
 @SuppressWarnings("serial")
 public class GerenciamentoComputadorView extends JFrame {
@@ -62,13 +59,13 @@ public class GerenciamentoComputadorView extends JFrame {
 	 */
 	public GerenciamentoComputadorView() {
 
-		initComponents(/*con*/);
+		initComponents();
 
 	}
-	private void initComponents(/*Connection con*/) {
+	private void initComponents() {
 
 		setTitle("Cadastro Computador");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 569, 503);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(313, 9, 86, 20));
@@ -168,25 +165,12 @@ public class GerenciamentoComputadorView extends JFrame {
 		btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Computador pc = new Computador();
-				pc.setCodEquipamento(tf_cod_eq.getText());
-				pc.setSistemaOperacional(tf_sis_op.getText());
-				pc.setEnderecoIp(tf_end_ip.getText());
-				pc.setFabricanteBios(tf_fab_bi.getText());
-				pc.setVersaoBios(tf_ver_bi.getText());
-				pc.setTipo(tf_tipo.getText());
-				ControladorComputador cPCc = new ControladorComputador();
+				Computador o = preencherComputador();
+				
+				Fachada fch = Fachada.getInstance();
 
-				if(cPCc.cadastrar(pc)) {
-					tf_cod_eq.setText("");
-					tf_sis_op.setText("");
-					tf_end_ip.setText("");
-					tf_fab_bi.setText("");
-					tf_ver_bi.setText("");
-					tf_tipo.setText("");
-
-					readJTable();
-				}
+				fch.cadastrarComputador(o);
+				readJTable();
 
 			}
 		});
@@ -195,21 +179,23 @@ public class GerenciamentoComputadorView extends JFrame {
 		contentPane.add(btnCadastrar);
 
 		btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Fachada fch = Fachada.getInstance();
+				Computador o = preencherComputador();
+				fch.atualizarComputador(o);
+			}
+		});
 		btnAtualizar.setBounds(251, 70, 82, 23);
 		contentPane.add(btnAtualizar);
 
 		btnExcluir = new JButton("Excluir");
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {				
-				Computador pc = new Computador();
-				pc.setCodEquipamento(tf_cod_eq.getText());
-				pc.setSistemaOperacional(tf_sis_op.getText());
-				pc.setEnderecoIp(tf_end_ip.getText());
-				pc.setFabricanteBios(tf_fab_bi.getText());
-				pc.setVersaoBios(tf_ver_bi.getText());
-				pc.setTipo(tf_tipo.getText());
-				ControladorComputador cPCc = new ControladorComputador();
-				cPCc.delete(pc);
+				Computador o = preencherComputador();
+				Fachada fch = Fachada.getInstance();
+				
+				fch.removerComputador(o);
 			}
 		});		
 
@@ -219,12 +205,7 @@ public class GerenciamentoComputadorView extends JFrame {
 		JButton btnLimparDados = new JButton("Limpar Dados");
 		btnLimparDados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				tf_cod_eq.setText("");
-				tf_sis_op.setText("");
-				tf_end_ip.setText("");
-				tf_fab_bi.setText("");
-				tf_ver_bi.setText("");
-				tf_tipo.setText("");
+				limparCampos();
 			}
 		});
 
@@ -273,9 +254,9 @@ public class GerenciamentoComputadorView extends JFrame {
 
 		DefaultTableModel modelo = (DefaultTableModel) table.getModel();
 		modelo.setNumRows(0);
-		ComputadorDAO pcdao = new ComputadorDAO();
+		Fachada fch = Fachada.getInstance();
 
-		for (Computador pc : pcdao.read()) {
+		for (Computador pc : fch.listarTodosComputadores()) {
 
 			modelo.addRow(new Object[]{
 					pc.getCodEquipamento(),
@@ -289,14 +270,14 @@ public class GerenciamentoComputadorView extends JFrame {
 		}
 	}
 
-	private void readJTableForCod(String cod_eq) {
+	private void readJTableForCod(String str) {
 		// TODO Auto-generated method stub
 
 		DefaultTableModel modelo = (DefaultTableModel) table.getModel();
 		modelo.setNumRows(0);
-		ComputadorDAO pcdao = new ComputadorDAO();
+		Fachada fch = Fachada.getInstance();
 
-		for (Computador pc : pcdao.read()) {
+		for (Computador pc : fch.listarTodosComputadoresPorCod(str)) {
 			modelo.addRow(new Object[]{
 					pc.getCodEquipamento(),
 					pc.getSistemaOperacional(),
@@ -332,5 +313,28 @@ public class GerenciamentoComputadorView extends JFrame {
 			tf_tipo.setText(table.getValueAt(table.getSelectedRow(), 5).toString());
 		}
 
+	}
+	
+	//método para preencher o objeto computador, a partir dos campos informados pelo usuário
+	private Computador preencherComputador() {
+		Computador o = new Computador();
+		o.setCodEquipamento(tf_cod_eq.getText());
+		o.setSistemaOperacional(tf_sis_op.getText());
+		o.setEnderecoIp(tf_end_ip.getText());
+		o.setFabricanteBios(tf_fab_bi.getText());
+		o.setVersaoBios(tf_ver_bi.getText());
+		o.setTipo(tf_tipo.getText());
+		
+		return o;
+	}
+	
+	//método para limpar os campos do formulário
+	private void limparCampos() {
+		tf_cod_eq.setText("");
+		tf_sis_op.setText("");
+		tf_end_ip.setText("");
+		tf_fab_bi.setText("");
+		tf_ver_bi.setText("");
+		tf_tipo.setText("");
 	}
 }
