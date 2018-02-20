@@ -121,6 +121,15 @@ public class MenuView extends View {
 		});
 		btnGerenciarClientesE.setBounds(10, 339, 177, 23);
 		contentPane.add(btnGerenciarClientesE);
+		
+		JButton btnGerenciarOrdemDe = new JButton("Gerenciar Ordem de Servico");
+		btnGerenciarOrdemDe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new GerenciamentoOrdemServicoView().setVisible(true);
+			}
+		});
+		btnGerenciarOrdemDe.setBounds(10, 373, 176, 23);
+		contentPane.add(btnGerenciarOrdemDe);
 
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		{{this.addWindowListener(new WindowAdapter() {

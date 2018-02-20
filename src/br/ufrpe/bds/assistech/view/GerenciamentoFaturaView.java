@@ -103,11 +103,11 @@ public class GerenciamentoFaturaView<E> extends JFrame {
 		lblNroParcelas.setBounds(218, 50, 86, 14);
 		contentPane.add(lblNroParcelas);
 
-		JLabel lblNewLabel = new JLabel("Valor total:");
+		JLabel lblNewLabel = new JLabel("Valor total: *");
 		lblNewLabel.setBounds(314, 50, 70, 14);
 		contentPane.add(lblNewLabel);
 
-		JLabel lblNewLabel_1 = new JLabel("Status:");
+		JLabel lblNewLabel_1 = new JLabel("Status: *");
 		lblNewLabel_1.setBounds(410, 50, 46, 14);
 		contentPane.add(lblNewLabel_1);
 
@@ -249,11 +249,11 @@ public class GerenciamentoFaturaView<E> extends JFrame {
 		contentPane.add(tfCodFatura);
 		tfCodFatura.setColumns(10);
 
-		JLabel lblCod_1 = new JLabel("Cod. Cliente:");
-		lblCod_1.setBounds(121, 50, 70, 14);
+		JLabel lblCod_1 = new JLabel("Cod. Cliente: *");
+		lblCod_1.setBounds(121, 50, 78, 14);
 		contentPane.add(lblCod_1);
 
-		JLabel lbCodFatura = new JLabel("Cod.:");
+		JLabel lbCodFatura = new JLabel("Cod.: *");
 		lbCodFatura.setBounds(20, 50, 70, 14);
 		contentPane.add(lbCodFatura);
 

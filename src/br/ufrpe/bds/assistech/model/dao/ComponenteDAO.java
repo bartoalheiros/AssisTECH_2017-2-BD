@@ -124,7 +124,7 @@ public class ComponenteDAO extends DAO<Componente> {
 	
 	@Override
 	public void remover(Componente co) throws Exception {
-		String sql = "DELETE FROM componente WHERE Cod = ?";
+		String sql = "DELETE FROM componente WHERE Cod LIKE ?";
 		prepare(sql);
 		getStmt().setLong(1, co.getCod());
 

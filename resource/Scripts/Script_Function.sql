@@ -38,7 +38,7 @@ set r =  (carg * 5);
  return r;
  end $
  
- select fn_hora('3221219790129');
+ select fn_hora('3221219790124');
 
 
 #Juliana
@@ -76,5 +76,25 @@ END $
 
 # Chamada da função
 SELECT faturas_pagas(122211);
+
+DELIMITER $
+CREATE FUNCTION ordem_servico(ordem INT)
+RETURNS BOOLEAN
+
+
+determINistic
+BEGIN
+  DECLARE status_ordem tinyint(1);  
+  SELECT count(0) INTO status_ordem FROM assistech.ordem_servico 
+  WHERE Num_Ordem_Servico = ordem AND Status = 'Concluída';
+  IF (status_ordem = 0) THEN 
+ RETURN 0;
+  ELSE 
+ RETURN 1;
+  END IF;
+END $
+
+# Chamada da função
+SELECT ordem_servico(1293137);
 
 

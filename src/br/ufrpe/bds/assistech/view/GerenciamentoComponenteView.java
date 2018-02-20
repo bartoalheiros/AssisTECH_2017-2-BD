@@ -144,10 +144,6 @@ public class GerenciamentoComponenteView extends JFrame {
 		
 		JButton btnExcluir = new JButton("Excluir");
 		btnExcluir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Componente co = new Componente();
 				co.setCod(Long.parseLong(tf_cod.getText()));

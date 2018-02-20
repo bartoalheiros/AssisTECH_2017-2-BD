@@ -1,6 +1,6 @@
 #Procedure 2
 #Juliana
-
+#TODO: gerar a linha INSERT na tabela KPI
 DELIMITER $$
 
 

@@ -1,23 +1,34 @@
 use assistech;
 
-#author: Bartô
+
+#author: José Bartolomeu A. D. Neto
 #Trigger1. Para atualizar o atributo  "idade" da tabela DEPENDENTE
+
+#Descricao do Funcionamento:
+#o bloco if corrige o erro que pode ocorrer pela simples subtração do ano_atual - ano_nasc.
+#se o ano 'virou', mas o mês não chegou ainda ou se o ano 'virou' mas mas o mês chegou e o dia não é subtraído 1 da data de aniversario calculada
+#pois a pessoa oficialmente ainda não fez aniversário.
+#ex: eu nasci em 01-11-1989, se eu deixasse só o conteúdo dentro do elseif no trigger, ele simplismente faria 2018 - 1989 = 29 em qualquer mês
+#de 2018... No entanto eu só faço 29 anos quando o mês atual for novembro e chegar o dia do meu aniversário...
+
+drop trigger if exists update_age;
+
 delimiter |
 create trigger update_age
 before insert on assistech.dependente
 for each row
 begin
-	#este bloco if corrige o erro que pode ocorrer pela simples subtração do ano_atual - ano_nasc.
-    #se o ano 'virou', mas o mês chegou e o dia não é subtraído 1 da data de aniversario calculada
-    #pois a pessoa oficialmente ainda não fez aniversário.
-    if  ( MONTH(curdate()) < MONTH(new.Data_nascimento) or MONTH(curdate()) >= MONTH(new.Data_nascimento) ) and DAY(curdate()) < DAY(New.Data_nascimento) then
+	
+    if  ( MONTH(curdate()) < MONTH(new.Data_nascimento) or (MONTH(curdate()) >= MONTH(new.Data_nascimento) ) and DAY(curdate()) < DAY(New.Data_nascimento)) then
 		set new.Idade = ((YEAR(curdate())) - YEAR(new.Data_nascimento))-1;
-        elseif MONTH(curdate()) >= MONTH(new.Data_nascimento) and DAY(curdate()) >= DAY(new.Data_nascimento) then
+	elseif ( MONTH(curdate()) >= MONTH(new.Data_nascimento) and DAY(curdate()) >= DAY(new.Data_nascimento) ) then
 			set new.Idade = (YEAR(curdate())) - YEAR(new.Data_nascimento);
     end if;
 end|
 
-#author: Bartô
+
+drop trigger if exists upd_num_func_ins;
+#author: José Bartolomeu A. D. Neto
 #Trigger2.1  Para atualizar   o atributo "Num.Funcionarios" de UNIDADE DE SUPORTE ao Inserir um Funcionário.
 delimiter |
 create trigger upd_num_func_ins
@@ -28,7 +39,8 @@ begin
     UPDATE assistech.unidade_de_suporte SET Nro_funcionarios = @num_func + 1 WHERE  Cod=new.CodigoUnidadeDeSuporte;
 end |
 
-#author: Bartô
+drop trigger if exists upd_num_func_del;
+#author: José Bartolomeu A. D. Neto
 #Trigger2.2  Para atualizar   o atributo "Num.Funcionarios" de UNIDADE DE SUPORTE ao Remover um Funcionário.
 delimiter |
 create trigger upd_num_func_del
@@ -39,6 +51,7 @@ begin
     UPDATE assistech.unidade_de_suporte SET Nro_funcionarios = @num_func - 1 WHERE  Cod=old.CodigoUnidadeDeSuporte;
 end |
 
+drop trigger if exists set_dta_devida;
 #author: Bartô
 #Trigger3.  Para  gerar o valor do atributo "dt_devida" de ORDEM DE SERVICO
 delimiter |

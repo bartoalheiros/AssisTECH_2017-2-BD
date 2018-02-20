@@ -7,6 +7,7 @@ private String modelo;
 private String fabricante;
 private String numeroSerie;
 private String onboard;
+
 public Long getCod() {
 	return cod;
 }

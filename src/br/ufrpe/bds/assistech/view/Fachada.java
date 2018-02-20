@@ -8,6 +8,7 @@ import br.ufrpe.bds.assistech.control.ControladorChamado;
 import br.ufrpe.bds.assistech.control.ControladorCliente;
 import br.ufrpe.bds.assistech.control.ControladorComponente;
 import br.ufrpe.bds.assistech.control.ControladorComputador;
+import br.ufrpe.bds.assistech.control.ControladorEquipamento;
 import br.ufrpe.bds.assistech.control.ControladorFatura;
 import br.ufrpe.bds.assistech.control.ControladorFornecedor;
 import br.ufrpe.bds.assistech.control.ControladorFuncionario;
@@ -18,6 +19,7 @@ import br.ufrpe.bds.assistech.model.bean.Chamado;
 import br.ufrpe.bds.assistech.model.bean.Cliente;
 import br.ufrpe.bds.assistech.model.bean.Componente;
 import br.ufrpe.bds.assistech.model.bean.Computador;
+import br.ufrpe.bds.assistech.model.bean.Equipamento;
 import br.ufrpe.bds.assistech.model.bean.Fatura;
 import br.ufrpe.bds.assistech.model.bean.Fornecedor;
 import br.ufrpe.bds.assistech.model.bean.Funcionario;
@@ -36,6 +38,7 @@ public class Fachada {
 	private ControladorOrdemServico ordensServico;
 	private ControladorParcelaPagamentoFatura parcelasPagamentoFatura;
 	private ControladorComputador computadores;
+	private ControladorEquipamento equipamentos;
 
 
 	private Fachada() {
@@ -49,6 +52,7 @@ public class Fachada {
 		this.ordensServico = new ControladorOrdemServico();
 		this.parcelasPagamentoFatura = new ControladorParcelaPagamentoFatura();
 		this.computadores = new ControladorComputador();
+		this.equipamentos = new ControladorEquipamento();
 	}
 
 	public static Fachada getInstance() {
@@ -222,10 +226,22 @@ public class Fachada {
 	public List<OrdemServico> listarOrdemServicoPorCodFatura(String str) {
 		return ordensServico.listarPorCodFatura(str);
 	}
+	
+	public List<OrdemServico> listarOrdemServicoPorNumOS(String str) {
+		return ordensServico.listarPorNumero(str);
+	}
+	
+	public void cadastrarOrdemServico(OrdemServico o) {
+		ordensServico.cadastrar(o);
+	}
 
 	/** Parcela Pagamento Fatura */
 	public List<ParcelaPagamentoFatura> listarParcelasPgtoFaturaPorCodFatura(String str) {
 		return parcelasPagamentoFatura.listarParcelasPgtoPorCodFatura(str);
 	}
-
+	
+	/**Equipamento */
+	public List<Equipamento> listarTodosEquipamentos() {
+		return equipamentos.listarTodos();
+	}
 }

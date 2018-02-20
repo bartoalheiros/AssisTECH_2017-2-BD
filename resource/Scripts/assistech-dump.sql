@@ -414,7 +414,7 @@ CREATE TABLE `computador` (
 
 LOCK TABLES `computador` WRITE;
 /*!40000 ALTER TABLE `computador` DISABLE KEYS */;
-INSERT INTO `computador` VALUES ('13508','Windows 10','192.168.100.08','Aopen','2.4.2558','Tablet'),('18398','Linux Cent OS','192.168.100.05','Gigabity','8.9.9915','handhelds'),('20790','Windows 10','192.168.100.01','Award/Phoenix','2.8.3356','Desktop'),('29476','Windows 7','192.168.100.07','Kinpo Electronics','4.6.6795','handhelds'),('34993','Windows 7','192.168.100.00','AMI','5.5.2478','Notebook'),('36512','Solaris','192.168.100.03','PCchips','2.1.4477','Tablet'),('41246','Ubuntu Lin','192.168.100.04','ECS','2.4.1244','Desktop'),('53435','Mac OS 8','192.168.100.02','Asus','1.4.3345','handhelds'),('6554','Linux Mandriva','198.65.36.6','test','test','tes'),('79969','Linux Cent OS','192.168.100.06','MSI','7.6.5578','Desktop'),('99542','teste','192.36.32.65','teste','teste','teste');
+INSERT INTO `computador` VALUES ('13508','Windows 10','192.168.100.08','Aopen','2.4.2558','Tablet'),('18398','Linux Cent OS','192.168.100.05','Gigabity','8.9.9915','handhelds'),('20790','Windows 10','192.168.100.01','Award/Phoenix','2.8.3356','Desktop'),('29476','Windows 7','192.168.100.07','Kinpo Electronics','4.6.6795','handhelds'),('34993','Windows 7','192.168.100.00','AMI','5.5.2478','Notebook'),('36512','Solaris','192.168.100.03','PCchips','2.1.4477','Tablet'),('41246','Ubuntu Lin','192.168.100.04','ECS','2.4.1244','Desktop'),('53435','Mac OS 8','192.168.100.02','Asus','1.4.3345','handhelds'),('6554','Linux Mandriva','198.65.36.6','test','test','tes'),('79969','Linux Cent OS','192.168.100.06','MSI','7.6.5578','Desktop'),('99542','teste','192.36.32.65','teste29','teste','teste');
 /*!40000 ALTER TABLE `computador` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -540,7 +540,7 @@ CREATE TABLE `dependente` (
 
 LOCK TABLES `dependente` WRITE;
 /*!40000 ALTER TABLE `dependente` DISABLE KEYS */;
-INSERT INTO `dependente` VALUES (11111,'3221219790123','José das Neves','M','1989-11-01','Irmão',28),(55555,'3221219790128','José Pereira Furtado','M','1989-11-01','Irmão',29),(77777,'3221219790123','Marina Souza','F','1989-11-01','Irmã',28),(264004,'3221219790128','Lynn Combs','F','1987-10-15','Esposa',22),(315209,'3221219790128','Bianca Wilcox','M','1987-10-14','Filho',29),(337485,'3221219790128','Teegan Mccray','F','1987-10-08','Filha',10),(412979,'3221219790128','Hayley Medina','F','1987-10-07','Filho',10),(459845,'3221219790129','Indira Spears','F','1987-10-21','Esposa',40),(498923,'3221219790121','Jordan Mercer','F','1954-10-11','Esposa',48),(557468,'3221219790121','Rae Roman','M','1987-10-20','Filha',4),(562315,'3221219790123','Afonso Pereira Souza','M','1989-11-01','Irmão',29),(633728,'3221219790123','Hannah Buck','F','1955-10-09','Filha',3),(686894,'3221219790123','Breanna Clay','M','1959-10-12','Filho',30),(701513,'3221219790123','Jolene House','F','1969-10-13','Filho',12),(760658,'3221219790123','Iris Mcbride','F','1987-10-19','Esposa',26),(962307,'3221219790123','Mauritânio Vieira','M','1989-11-01','Irmão',29),(962315,'3221219790128','Alexandra Maria Causa','F','1989-11-01','Irmã',28);
+INSERT INTO `dependente` VALUES (11111,'3221219790123','José das Neves','M','1989-11-01','Irmão',28),(55555,'3221219790128','José Pereira Furtado','M','1989-11-01','Irmão',29),(77777,'3221219790123','Marina Souza','F','1989-11-01','Irmã',28),(254465,'3221219790128','Luciana Maria Delta','F','1989-11-01','Irmã',28),(256654,'3221219790128','Luciano Mario Deltonico','M','1989-02-20','Irmão',29),(264004,'3221219790128','Lynn Combs','F','1987-10-15','Esposa',22),(315209,'3221219790128','Bianca Wilcox','M','1987-10-14','Filho',29),(337485,'3221219790128','Teegan Mccray','F','1987-10-08','Filha',10),(412979,'3221219790128','Hayley Medina','F','1987-10-07','Filho',10),(459845,'3221219790129','Indira Spears','F','1987-10-21','Esposa',40),(498923,'3221219790121','Jordan Mercer','F','1954-10-11','Esposa',48),(557468,'3221219790121','Rae Roman','M','1987-10-20','Filha',4),(562315,'3221219790123','Afonso Pereira Souza','M','1989-11-01','Irmão',29),(633728,'3221219790123','Hannah Buck','F','1955-10-09','Filha',3),(686894,'3221219790123','Breanna Clay','M','1959-10-12','Filho',30),(701513,'3221219790123','Jolene House','F','1969-10-13','Filho',12),(760658,'3221219790123','Iris Mcbride','F','1987-10-19','Esposa',26),(962307,'3221219790123','Mauritânio Vieira','M','1989-11-01','Irmão',29),(962315,'3221219790128','Alexandra Maria Causa','F','1989-11-01','Irmã',28);
 /*!40000 ALTER TABLE `dependente` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -556,20 +556,12 @@ DELIMITER ;;
 before insert on assistech.dependente
 for each row
 begin
-	SET @ano_atual:=YEAR(curdate());
-    SET @idade:=(@ano_atual) - YEAR(new.Data_nascimento);
-    SET @mes_atual:=MONTH(curdate());
-    SET @dia_atual:=DAY(curdate());
-    SET @mes_nasc:=MONTH(new.Data_nascimento);
-    SET @dia_nasc:=DAY(new.Data_nascimento);
-   
-    if  @mes_atual<@mes_nasc then
-		set @idade:=@idade-1;
-        elseif @mes_atual>=@mes_nasc and @dia_atual>=@dia_nasc then
-			set @idade:=@idade;
+	
+    if  ( MONTH(curdate()) < MONTH(new.Data_nascimento) or (MONTH(curdate()) >= MONTH(new.Data_nascimento) ) and DAY(curdate()) < DAY(New.Data_nascimento)) then
+		set new.Idade = ((YEAR(curdate())) - YEAR(new.Data_nascimento))-1;
+	elseif ( MONTH(curdate()) >= MONTH(new.Data_nascimento) and DAY(curdate()) >= DAY(new.Data_nascimento) ) then
+			set new.Idade = (YEAR(curdate())) - YEAR(new.Data_nascimento);
     end if;
-    
-    set new.Idade=@idade;
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -857,7 +849,7 @@ CREATE TABLE `equipamento` (
 
 LOCK TABLES `equipamento` WRITE;
 /*!40000 ALTER TABLE `equipamento` DISABLE KEYS */;
-INSERT INTO `equipamento` VALUES ('13508','2012-11-11','Automacao','O equipamento nunca foi aberto.','Gabinete Fonte MIMAX','Lenovo','Bahia','6711649',921567,143693,'0000-00-00'),('18398','2012-11-15','Automacao','O equipamento jÃ¡ passou por 1 manutenÃ§Ãµes.','MemÃ³ria RAM 2GB DDR','Positivo','Minas Gerais','6711649',468928,143693,'0000-00-00'),('19703','2012-11-12','Almoxarifado','O equipamento nunca foi aberto.','HD Western 1TB Sata ','Lexmark','Santa Catarina','6711649',444272,143693,'0000-00-00'),('20790','2012-11-21','Ferragens','O equipamento jÃ¡ deu problema de travamento suspeita do processador.','CartÃ£o de 16GB','HP','Rio de Janeiro','6711649',419036,143693,'0000-00-00'),('29476','2012-11-13','Almoxarifado','O equipamento nunca foi aberto.','MemÃ³ria RAM 2GB DDR','Lenovo','SÃ£o Paulo','3727393',419036,236843,'0000-00-00'),('31115','2012-11-24','Automacao','Falhas coloridas na imagem.','HD Western 1TB Sata ','HP','Bahia','3727393',221596,236843,'0000-00-00'),('34993','2012-11-10','Ferragens','O equipamento jÃ¡ passou por 3 manutenÃ§Ãµes.','Teclado Multimidia A','CCE','Rio de Janeiro','3727393',122211,236843,'0000-00-00'),('36512','2012-11-18','Almoxarifado','O equipamento jÃ¡ passou por 1 manutenÃ§Ãµes.','MemÃ³ria RAM 2GB DDR','CCE','SÃ£o Paulo','3727393',236843,236843,'0000-00-00'),('41246','2012-11-17','Recepcao','O equipamento jÃ¡ deu problema de travamento suspeita do processador.','Teclado Multimidia A','Itautech','Bahia','4914676',236843,145281,'0000-00-00'),('44201','2012-11-22','Recepcao','Esquentando muito.','MemÃ³ria RAM 2GB DDR','Microsol','ParanÃ¡','4914676',593141,145281,'0000-00-00'),('53435','2012-03-19','Automacao','O equipamento jÃ¡ passou por 1 manutenÃ§Ãµes.','Processador Intel I5','Philco','Rio Grande do Sul','4914676',236843,145281,'0000-00-00'),('55377','2012-11-16','Automacao','O equipamento jÃ¡ passou por 3 manutenÃ§Ãµes.','CartÃ£o de 16GB','Philco','ParÃ¡','4914676',122211,145281,'0000-00-00'),('6554','2007-11-03','Servicos','Teste','Teste','Teste','Teste','1759570',664879,143693,'2005-02-03'),('75322','2012-11-23','Automacao','Falhas coloridas na imagem.','CartÃ£o de 16GB','Philco','SÃ£o Paulo','1759570',221596,143693,'0000-00-00'),('79969','2012-11-14','Automacao','O equipamento jÃ¡ passou por 3 manutenÃ§Ãµes.','Processador Intel I5','Philco','Rio Grande do Sul','1759570',921567,143693,'0000-00-00'),('99542','2012-11-20','Ferragens','O equipamento jÃ¡ passou por 1 manutenÃ§Ãµes.','Processador Intel I5','CCE','ParÃ¡','1759570',664879,143693,'0000-00-00');
+INSERT INTO `equipamento` VALUES ('13508','2012-11-11','Automacao','O equipamento nunca foi aberto.','Gabinete Fonte MIMAX','Lenovo','Bahia','6711649',921567,143693,'0000-00-00'),('18398','2012-11-15','Automacao','O equipamento jÃ¡ passou por 1 manutenÃ§Ãµes.','MemÃ³ria RAM 2GB DDR','Positivo','Minas Gerais','6711649',468928,143693,'0000-00-00'),('19703','2012-11-12','Almoxarifado','O equipamento nunca foi aberto.','HD Western 1TB Sata ','Lexmark','Santa Catarina','6711649',444272,143693,'0000-00-00'),('20790','2012-11-21','Ferragens','O equipamento jÃ¡ deu problema de travamento suspeita do processador.','CartÃ£o de 16GB','HP','Rio de Janeiro','6711649',419036,143693,'0000-00-00'),('29476','2012-11-13','Almoxarifado','O equipamento nunca foi aberto.','MemÃ³ria RAM 2GB DDR','Lenovo','SÃ£o Paulo','3727393',419036,236843,'0000-00-00'),('31115','2012-11-24','Automacao','Falhas coloridas na imagem.','HD Western 1TB Sata ','HP','Bahia','3727393',221596,236843,'0000-00-00'),('34993','2012-11-10','Ferragens','O equipamento jÃ¡ passou por 3 manutenÃ§Ãµes.','Teclado Multimidia A','CCE','Rio de Janeiro','3727393',122211,236843,'0000-00-00'),('36512','2012-11-18','Almoxarifado','O equipamento jÃ¡ passou por 1 manutenÃ§Ãµes.','MemÃ³ria RAM 2GB DDR','CCE','SÃ£o Paulo','3727393',236843,236843,'0000-00-00'),('41246','2012-11-17','Recepcao','O equipamento jÃ¡ deu problema de travamento suspeita do processador.','Teclado Multimidia A','Itautech','Bahia','4914676',236843,145281,'0000-00-00'),('44201','2012-11-22','Recepcao','Esquentando muito.','MemÃ³ria RAM 2GB DDR','Microsol','ParanÃ¡','4914676',593141,145281,'0000-00-00'),('53435','2012-03-19','Automacao','O equipamento jÃ¡ passou por 1 manutenÃ§Ãµes.','Processador Intel I5','Philco','Rio Grande do Sul','4914676',236843,145281,'0000-00-00'),('55377','2012-11-16','Automacao','O equipamento jÃ¡ passou por 3 manutenÃ§Ãµes.','CartÃ£o de 16GB','Philco','ParÃ¡','4914676',122211,145281,'0000-00-00'),('6554','2007-11-03','Servicos','Teste','Teste','Teste','Teste','1759570',664879,143693,'2005-02-03'),('75322','2012-11-23','Automacao','Falhas coloridas na imagem.','CartÃ£o de 16GB','Philco','SÃ£o Paulo','1759570',221596,143693,'0000-00-00'),('79969','2012-11-14','Automacao','O equipamento jÃ¡ passou por 3 manutenÃ§Ãµes.','Processador Intel I5','Philco','Rio Grande do Sul','1759570',921567,143693,'0000-00-00'),('99542','2012-11-20','Ferragens','O equipamento jÃ¡ passou por 1 manutenÃ§Ãµes.','Processador Intel I5','CCE','ParÃ¡','1759570',664879,143693,'0000-00-00'),('99889','2018-11-02','Ferragens','Teste','Processador Intel I5','Philco','Pernambuco','1759570',664879,143693,'2018-02-07');
 /*!40000 ALTER TABLE `equipamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -911,7 +903,7 @@ CREATE TABLE `fatura` (
 
 LOCK TABLES `fatura` WRITE;
 /*!40000 ALTER TABLE `fatura` DISABLE KEYS */;
-INSERT INTO `fatura` VALUES (111365,12,750.00,'Em andamento',754431),(117095,12,1500.00,'Em andamento',122211),(125469,4,500.23,'Liquidada',444272),(133327,10,575.00,'Em aberto',141076),(133652,30,3054.26,'Em andamento',143693),(133965,6,1900.56,'Liquidada',421804),(139545,13,2500.00,'Em andamento',143693),(139665,10,65.00,'Em curso',143693),(150619,12,0.00,'Liquidada',448803),(189562,20,450.00,'Em andamento',143693),(215469,17,1200.00,'Em andamento',754431),(223259,20,1030.56,'Liquidada',374702),(231307,12,0.00,'Em andamento',419036),(254807,12,0.00,'Liquidada',921567),(255898,30,2537.10,'Em andamento',444272),(332619,12,0.00,'Em andamento',546312),(417174,12,0.00,'Liquidada',494738),(525009,12,0.00,'Em andamento',468928),(544386,12,0.00,'Liquidada',421804),(559734,12,0.00,'Em andamento',236843),(592439,12,0.00,'Em andamento',219478),(629787,12,0.00,'Liquidada',690810),(743797,12,0.00,'Em andamento',444272),(788998,17,120.00,'Em andamento',143693),(805070,12,0.00,'Em andamento',374702),(857787,12,0.00,'Em andamento',754431),(875466,3,297.56,'Liquidada',444272),(913831,12,0.00,'Em andamento',143693),(923654,15,120.00,'Em andamento',143693);
+INSERT INTO `fatura` VALUES (111365,12,750.00,'Em andamento',754431),(117095,3,1500.00,'Em andamento',122211),(125469,4,500.23,'Liquidada',444272),(133327,10,575.00,'Em aberto',141076),(133652,30,3054.26,'Em andamento',143693),(133965,6,1900.56,'Liquidada',421804),(139545,13,2500.00,'Em andamento',143693),(139665,10,65.00,'Em curso',143693),(150619,12,0.00,'Liquidada',448803),(189562,20,450.00,'Em andamento',143693),(215469,17,1200.00,'Em andamento',754431),(223259,20,1030.56,'Liquidada',374702),(231307,12,0.00,'Em andamento',419036),(254807,12,0.00,'Liquidada',921567),(255898,30,2537.10,'Em andamento',444272),(332619,12,0.00,'Em andamento',546312),(417174,12,0.00,'Liquidada',494738),(525009,12,0.00,'Em andamento',468928),(544386,12,0.00,'Liquidada',421804),(559734,12,0.00,'Em andamento',236843),(592439,12,0.00,'Em andamento',219478),(629787,12,0.00,'Liquidada',690810),(743797,12,0.00,'Em andamento',444272),(788998,17,120.00,'Em andamento',143693),(805070,12,0.00,'Em andamento',374702),(857787,12,0.00,'Em andamento',754431),(875466,3,297.56,'Liquidada',444272),(913831,12,0.00,'Em andamento',143693),(923654,15,120.00,'Em andamento',143693);
 /*!40000 ALTER TABLE `fatura` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1232,7 +1224,7 @@ CREATE TABLE `jornada_de_trabalho` (
 
 LOCK TABLES `jornada_de_trabalho` WRITE;
 /*!40000 ALTER TABLE `jornada_de_trabalho` DISABLE KEYS */;
-INSERT INTO `jornada_de_trabalho` VALUES ('32163328','Não','Não_Tem\r'),('32163329','Não','Não_Tem'),('32163330','Sim','Não_Tem'),('32163331','Sim','Não_Tem'),('32163332','Não','Não_Tem'),('32163333','Não','Não_Tem'),('32163334','Sim','Não_Tem'),('32163335','Não','Não_Tem'),('32163336','Não','Não_Tem'),('32163337','Não','Não_Tem'),('32163338','Não','Não_Tem'),('32163339','Sim','Não_Tem'),('32163340','Sim','Não_Tem'),('32163341','Sim','Não_Tem'),('32163342','Sim','Não_Tem'),('32163349','Sim','Não_tem'),('32163350','Não','Não_tem'),('32163351','Sim','Não_tem'),('33125644','Sim','Jornada do Carlos');
+INSERT INTO `jornada_de_trabalho` VALUES ('32163328','Não','Não_Tem\r'),('32163329','Não','Não_Tem'),('32163330','Sim','Não_Tem'),('32163331','Sim','Não_Tem'),('32163332','Não','Não_Tem'),('32163333','Não','Não_Tem'),('32163334','Não','Não_Tem'),('32163335','Não','Não_Tem'),('32163336','Não','Não_Tem'),('32163337','Não','Não_Tem'),('32163338','Não','Não_Tem'),('32163339','Sim','Não_Tem'),('32163340','Sim','Não_Tem'),('32163341','Sim','Não_Tem'),('32163342','Sim','Não_Tem'),('32163349','Sim','Não_tem'),('32163350','Não','Não_tem'),('32163351','Sim','Não_tem'),('33125644','Sim','Jornada do Carlos');
 /*!40000 ALTER TABLE `jornada_de_trabalho` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2019,6 +2011,48 @@ UNLOCK TABLES;
 --
 -- Dumping routines for database 'assistech'
 --
+/*!50003 DROP FUNCTION IF EXISTS `faturas_pagas` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `faturas_pagas`(fatura INT) RETURNS tinyint(1)
+    DETERMINISTIC
+BEGIN
+
+# Cria uma variavel para armazenar o total de faturas que já foram pagas
+DECLARE totalFaturasPagas int(8);
+
+# Cria uma variavel para armazenar o numero de parcelas da fatura
+DECLARE totalFaturas int(3);
+
+# Recupera o número de faturas pagas
+SET totalFaturasPagas = ( select  count(c.Cod)
+FROM cliente as c
+INNER JOIN fatura as f ON c.Cod = f.Cod_cliente
+INNER JOIN parcela_pagto_fatura as pg ON f.Cod = pg.Cod_fatura WHERE c.Cod = fatura);
+
+  # Recupera o número de faturas totais
+SET totalFaturas = ( SELECT Num_parcelas FROM fatura WHERE Cod_cliente = fatura);
+
+  # Se o número total de parcelas da fatura for maior que o número de parcelas já pagas retorna 1
+  IF ((totalFaturas - totalFaturasPagas) > 0) THEN
+    return TRUE;
+  ELSE
+    RETURN FALSE ;
+  END IF;
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP FUNCTION IF EXISTS `fn_hora` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -2057,6 +2091,33 @@ set r =  (carg * 5);
  end if;
  return r;
  end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP FUNCTION IF EXISTS `ordem_servico` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `ordem_servico`(ordem INT) RETURNS tinyint(1)
+    DETERMINISTIC
+BEGIN
+  DECLARE status_ordem tinyint(1);  
+  SELECT count(0) INTO status_ordem FROM assistech.ordem_servico 
+  WHERE Num_Ordem_Servico = ordem AND Status = 'Concluída';
+  IF (status_ordem = 0) THEN 
+ RETURN 0;
+  ELSE 
+ RETURN 1;
+  END IF;
+END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
@@ -2212,4 +2273,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-02-19  1:46:38
+-- Dump completed on 2018-02-20  0:22:48

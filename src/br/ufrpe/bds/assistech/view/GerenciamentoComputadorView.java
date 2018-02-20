@@ -49,10 +49,11 @@ public class GerenciamentoComputadorView extends JFrame {
 		});
 	}
 	private JTable table;
-	private JTextField textField;
+	private JTextField tfBuscar;
 	private JButton btnCadastrar;
 	private JButton btnAtualizar;
 	private JButton btnExcluir;
+	private JButton btnVoltar;
 
 	/**
 	 * Create the frame.
@@ -150,17 +151,17 @@ public class GerenciamentoComputadorView extends JFrame {
 		btn_buscar.setIcon(new ImageIcon("img/search.png"));
 		btn_buscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				readJTableForCod(tf_cod_eq.getText());
+				readJTableForCod(tfBuscar.getText());
 			}
 		}); 
 
 		btn_buscar.setBounds(410, 36, 99, 30);
 		contentPane.add(btn_buscar);
 
-		textField = new JTextField();
-		textField.setBounds(366, 9, 143, 20);
-		contentPane.add(textField);
-		textField.setColumns(6);
+		tfBuscar = new JTextField();
+		tfBuscar.setBounds(366, 9, 143, 20);
+		contentPane.add(tfBuscar);
+		tfBuscar.setColumns(6);
 
 		btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
@@ -184,6 +185,8 @@ public class GerenciamentoComputadorView extends JFrame {
 				Fachada fch = Fachada.getInstance();
 				Computador o = preencherComputador();
 				fch.atualizarComputador(o);
+				
+				readJTable();
 			}
 		});
 		btnAtualizar.setBounds(251, 70, 82, 23);
@@ -196,6 +199,8 @@ public class GerenciamentoComputadorView extends JFrame {
 				Fachada fch = Fachada.getInstance();
 				
 				fch.removerComputador(o);
+				
+				readJTable();
 			}
 		});		
 
@@ -242,6 +247,15 @@ public class GerenciamentoComputadorView extends JFrame {
 		tf_tipo.setColumns(10);
 		tf_tipo.setBounds(135, 169, 109, 20);
 		contentPane.add(tf_tipo);
+		
+		btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				readJTable();
+			}
+		});
+		btnVoltar.setBounds(251, 134, 91, 23);
+		contentPane.add(btnVoltar);
 
 		readJTable();
 

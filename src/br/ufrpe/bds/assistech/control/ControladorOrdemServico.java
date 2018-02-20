@@ -48,6 +48,19 @@ public class ControladorOrdemServico implements IControlador<OrdemServico> {
 		}
 		
 		return listOrdens;
-	} 
+	}
+
+	public List<OrdemServico> listarPorNumero(String str) {
+		List<OrdemServico> ordens = null;
+		
+		try {
+			ordens = ordemServico.listarPorNumero(str);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return ordens;
+	}
 
 }

@@ -67,8 +67,6 @@ public class FornecedorDAO extends DAO<Fornecedor>{
 
 		}
 
-		rs.close();
-		
 		return fornecedores;
 	}
 
