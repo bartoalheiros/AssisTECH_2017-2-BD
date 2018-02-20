@@ -59,22 +59,29 @@ create trigger set_dta_devida
 before insert on assistech.ordem_servico
 for each row
 begin
-	
-		IF DAY(LAST_DAY(new.Dt_criacao))=30 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 30 then
+		
+        #meses com 30 dias.
+		IF (DAY(LAST_DAY(new.Dt_criacao))=30) THEN
+			set @diferenca:=abs(30 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
+            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao), '-',@diferenca);
+		ELSEIF (DAY(LAST_DAY(new.Dt_criacao))=30) AND ( (new.Prazo_em_dias + day(new.Dt_criacao)) > 30 ) then
 			set @diferenca:=abs(30 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
             set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao)+1, '-',@diferenca);
         END IF;  
         
+        #mes de dezembro, passou de 31, incrementa o ano.
         IF EXTRACT(MONTH from new.Dt_criacao)=12 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 31 then
 				set @diferenca:=abs(31 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
 				set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao)+1, '-','01', '-',@diferenca);
         END IF;
         
-        IF EXTRACT(MONTH from new.Dt_criacao)!=12 AND DAY(LAST_DAY(new.Dt_criacao))=31 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 31 then
+        #meses com 31 dias, exceto dezembro.
+        IF (EXTRACT(MONTH from new.Dt_criacao)!=12) AND (DAY(LAST_DAY(new.Dt_criacao))=31) AND ((new.Prazo_em_dias + day(new.Dt_criacao)) > 31) then
 			set @diferenca:=abs(31 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
             set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao)+1, '-',@diferenca);
 		END IF;
         
+        #ano não-bissexto, fevereiro com 28 dias.
         IF DAY(LAST_DAY(new.Dt_criacao))=28 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 28 then
 			set @diferenca:=abs(28 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );
             set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-','03', '-',@diferenca);
@@ -87,8 +94,6 @@ begin
         END IF;    
        
 end |
-
-drop trigger set_dta_devida;
 
 #select abs(7);
 #SELECT DAY(LAST_DAY( curdate() )) as DIAS_MES;
