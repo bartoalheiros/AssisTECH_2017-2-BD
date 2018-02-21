@@ -56,19 +56,19 @@ public class GerenciamentoComputadorComponenteView extends JFrame {
 	}
 	private JTable tableComputador;
 	private JTextField tfBuscar;
-	private JButton btnCadastrar;
+	private JButton btnCadastrarComputador;
 	private JButton btnAtualizar;
 	private JButton btnExcluir;
 	private JButton btnVoltar;
 	private JScrollPane scrollPane_1;
-	private JTable tableComponentes;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
+	private JTextField tfCodigoComponente;
+	private JTextField tfTipoComponente;
+	private JTextField tfModeloComponente;
+	private JTextField tfFabricanteComponente;
+	private JTextField tfNumSerieComponente;
+	private JTextField tfOnboardComponente;
 	private JTextField txtBuscarComponente;
+	private JTable tableComponente;
 
 	/**
 	 * Create the frame.
@@ -170,16 +170,16 @@ public class GerenciamentoComputadorComponenteView extends JFrame {
 			}
 		}); 
 
-		btn_buscar.setBounds(410, 36, 99, 30);
+		btn_buscar.setBounds(562, 164, 99, 30);
 		contentPane.add(btn_buscar);
 
 		tfBuscar = new JTextField();
-		tfBuscar.setBounds(366, 9, 143, 20);
+		tfBuscar.setBounds(409, 168, 143, 20);
 		contentPane.add(tfBuscar);
 		tfBuscar.setColumns(6);
 
-		btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.addActionListener(new ActionListener() {
+		btnCadastrarComputador = new JButton("Cadastrar");
+		btnCadastrarComputador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Computador o = preencherComputador();
 
@@ -191,8 +191,8 @@ public class GerenciamentoComputadorComponenteView extends JFrame {
 			}
 		});
 
-		btnCadastrar.setBounds(251, 8, 105, 23);
-		contentPane.add(btnCadastrar);
+		btnCadastrarComputador.setBounds(251, 8, 105, 23);
+		contentPane.add(btnCadastrarComputador);
 
 		btnAtualizar = new JButton("Atualizar");
 		btnAtualizar.addActionListener(new ActionListener() {
@@ -276,45 +276,63 @@ public class GerenciamentoComputadorComponenteView extends JFrame {
 		scrollPane_1.setBounds(8, 459, 650, 173);
 		contentPane.add(scrollPane_1);
 
-		tableComponentes = new JTable();
-		tableComponentes.setModel(new DefaultTableModel(
+		tableComponente = new JTable();
+		tableComponente.setModel(new DefaultTableModel(
 				new Object[][] {
 				},
 				new String[] {
-						"Cod", "Tipo", "Modelo", "Fabricante", "Numero de S\u00E9rie", "Onboard"
+						"Codigo", "Tipo", "Modelo", "Fabricante", "Numero de Serie", "Onboard"
 				}
-				));
-		scrollPane_1.setViewportView(tableComponentes);
+				) {
+			boolean[] columnEditables = new boolean[] {
+					false, false, false, false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
 
-		textField = new JTextField();
-		textField.setBounds(8, 668, 86, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		tableComponente.addMouseListener(new java.awt.event.MouseAdapter() {
+			public void mouseClicked(java.awt.event.MouseEvent evt) {
+				tbl_ComponenteMouseClicked(evt);
+			}
+		});
+		tableComponente.addKeyListener(new java.awt.event.KeyAdapter() {
+			public void keyReleased(java.awt.event.KeyEvent evt) {
+				tbl_ComponenteKeyReleased(evt);
+			}
+		});
+		scrollPane_1.setViewportView(tableComponente);
 
-		textField_1 = new JTextField();
-		textField_1.setBounds(104, 668, 86, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		tfCodigoComponente = new JTextField();
+		tfCodigoComponente.setBounds(8, 668, 86, 20);
+		contentPane.add(tfCodigoComponente);
+		tfCodigoComponente.setColumns(10);
 
-		textField_2 = new JTextField();
-		textField_2.setBounds(200, 668, 86, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		tfTipoComponente = new JTextField();
+		tfTipoComponente.setBounds(104, 668, 86, 20);
+		contentPane.add(tfTipoComponente);
+		tfTipoComponente.setColumns(10);
 
-		textField_3 = new JTextField();
-		textField_3.setBounds(296, 668, 86, 20);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
+		tfModeloComponente = new JTextField();
+		tfModeloComponente.setBounds(200, 668, 86, 20);
+		contentPane.add(tfModeloComponente);
+		tfModeloComponente.setColumns(10);
 
-		textField_4 = new JTextField();
-		textField_4.setBounds(395, 668, 86, 20);
-		contentPane.add(textField_4);
-		textField_4.setColumns(10);
+		tfFabricanteComponente = new JTextField();
+		tfFabricanteComponente.setBounds(296, 668, 86, 20);
+		contentPane.add(tfFabricanteComponente);
+		tfFabricanteComponente.setColumns(10);
 
-		textField_5 = new JTextField();
-		textField_5.setBounds(492, 668, 86, 20);
-		contentPane.add(textField_5);
-		textField_5.setColumns(10);
+		tfNumSerieComponente = new JTextField();
+		tfNumSerieComponente.setBounds(395, 668, 86, 20);
+		contentPane.add(tfNumSerieComponente);
+		tfNumSerieComponente.setColumns(10);
+
+		tfOnboardComponente = new JTextField();
+		tfOnboardComponente.setBounds(492, 668, 86, 20);
+		contentPane.add(tfOnboardComponente);
+		tfOnboardComponente.setColumns(10);
 
 		JLabel lblCodigo = new JLabel("Codigo: *");
 		lblCodigo.setBounds(10, 643, 46, 14);
@@ -341,15 +359,57 @@ public class GerenciamentoComputadorComponenteView extends JFrame {
 		contentPane.add(lblOnbard);
 
 		JButton btnCadastrarComponente = new JButton("Cadastrar");
+		btnCadastrarComponente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Componente co = preencherComponente();
+				Fachada fch = Fachada.getInstance();		
+				fch.cadastrarComponente(co);		
+				try {		
+					readJTableComponente();		
+				} catch (Exception e) {		
+					// TODO Auto-generated catch block		
+					e.printStackTrace();		
+				}		
+			}
+
+		});
 		btnCadastrarComponente.setBounds(6, 699, 91, 23);
 		contentPane.add(btnCadastrarComponente);
 
 		JButton btnRemoverComponente = new JButton("Remover");
-		btnRemoverComponente.setBounds(114, 699, 91, 23);
+		btnRemoverComponente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Fachada fch = Fachada.getInstance();		
+				Componente o = preencherComponente();
+
+				fch.removerComponente(o);
+				
+				readJTableComponente();
+
+
+			}
+		});
+		btnRemoverComponente.setBounds(200, 699, 91, 23);
 		contentPane.add(btnRemoverComponente);
 
 		JButton btnAtualizarComponente = new JButton("Atualizar");
-		btnAtualizarComponente.setBounds(215, 699, 91, 23);
+		btnAtualizarComponente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				Fachada fch = Fachada.getInstance();		
+				Componente o = preencherComponente();
+
+				fch.atualizarComponente(o);		
+
+				try {		
+					readJTableComponente();		
+				} catch (Exception e) {		
+					// TODO Auto-generated catch block		
+					e.printStackTrace();		
+				}		
+			}
+		});
+		btnAtualizarComponente.setBounds(104, 699, 91, 23);
 		contentPane.add(btnAtualizarComponente);
 
 		JButton btnBuscarComponente = new JButton("Buscar");
@@ -373,7 +433,7 @@ public class GerenciamentoComputadorComponenteView extends JFrame {
 	}
 
 
-	public void readJTable() {
+	private void readJTable() {
 
 		DefaultTableModel modelo = (DefaultTableModel) tableComputador.getModel();
 		modelo.setNumRows(0);
@@ -441,6 +501,33 @@ public class GerenciamentoComputadorComponenteView extends JFrame {
 
 	}
 
+	private void tbl_ComponenteMouseClicked(java.awt.event.MouseEvent evt){
+		if (tableComponente.getSelectedRow() != -1) {
+
+			tfCodigoComponente.setText(tableComponente.getValueAt(tableComponente.getSelectedRow(), 0).toString());
+			tfTipoComponente.setText(tableComponente.getValueAt(tableComponente.getSelectedRow(), 1).toString());
+			tfModeloComponente.setText(tableComponente.getValueAt(tableComponente.getSelectedRow(), 2).toString());
+			tfFabricanteComponente.setText(tableComponente.getValueAt(tableComponente.getSelectedRow(), 3).toString());
+			tfNumSerieComponente.setText(tableComponente.getValueAt(tableComponente.getSelectedRow(), 4).toString());
+			tfOnboardComponente.setText(tableComponente.getValueAt(tableComponente.getSelectedColumnCount(), 5).toString());
+
+
+		}
+
+	}
+	private void tbl_ComponenteKeyReleased(java.awt.event.KeyEvent evt) {
+		if (tableComponente.getSelectedRow() != -1) {
+
+			tfCodigoComponente.setText(tableComponente.getValueAt(tableComponente.getSelectedRow(), 0).toString());
+			tfTipoComponente.setText(tableComponente.getValueAt(tableComponente.getSelectedRow(), 1).toString());
+			tfModeloComponente.setText(tableComponente.getValueAt(tableComponente.getSelectedRow(), 2).toString());
+			tfFabricanteComponente.setText(tableComponente.getValueAt(tableComponente.getSelectedRow(), 3).toString());
+			tfNumSerieComponente.setText(tableComponente.getValueAt(tableComponente.getSelectedRow(), 4).toString());
+			tfOnboardComponente.setText(tableComponente.getValueAt(tableComponente.getSelectedColumnCount(), 5).toString());
+
+		}
+
+	}
 	//método para preencher o objeto computador, a partir dos campos informados pelo usuário
 	private Computador preencherComputador() {
 		Computador o = new Computador();
@@ -464,14 +551,13 @@ public class GerenciamentoComputadorComponenteView extends JFrame {
 		tf_tipo.setText("");
 	}
 
-	//carrega a tabela de Componente a partir dos dados selecionados na linha da tabela de Computador
-	public void readJTableComponenteForCodComputador() {
+	private void readJTableComponente() {
 		Fachada fch = Fachada.getInstance();
 		List<Componente> componentes = new ArrayList<>();
 
-		componentes = fch.listarComponentePorCodComputador(tableComputador.getValueAt(tableComputador.getSelectedRow(), 0).toString());
+		componentes = fch.listarTodosComponentes();
 
-		DefaultTableModel modelo = (DefaultTableModel) tableComponentes.getModel();
+		DefaultTableModel modelo = (DefaultTableModel) tableComponente.getModel();
 		modelo.setNumRows(0);
 
 		for (Componente o : componentes) {
@@ -484,5 +570,39 @@ public class GerenciamentoComputadorComponenteView extends JFrame {
 					o.getOnboard()
 			});
 		}
+	}
+
+	//carrega a tabela de Componente a partir dos dados selecionados na linha da tabela de Computador
+	private void readJTableComponenteForCodComputador() {
+		Fachada fch = Fachada.getInstance();
+		List<Componente> componentes = new ArrayList<>();
+
+		componentes = fch.listarComponentePorCodComputador(tableComputador.getValueAt(tableComputador.getSelectedRow(), 0).toString());
+
+		DefaultTableModel modelo = (DefaultTableModel) tableComponente.getModel();
+		modelo.setNumRows(0);
+
+		for (Componente o : componentes) {
+			modelo.addRow(new Object[]{
+					o.getCod(),
+					o.getTipo(),
+					o.getModelo(),
+					o.getFabricante(),
+					o.getNumeroSerie(),
+					o.getOnboard()
+			});
+		}
+	}
+
+	private Componente preencherComponente() {
+		Componente o = new Componente();		
+		o.setCod(Long.parseLong(tfCodigoComponente.getText()));		
+		o.setTipo(tfTipoComponente.getText());		
+		o.setModelo(tfModeloComponente.getText());		
+		o.setFabricante(tfFabricanteComponente.getText());		
+		o.setNumeroSerie(tfNumSerieComponente.getText());		
+		o.setOnboard(tfOnboardComponente.getText());
+
+		return o;
 	}
 }
