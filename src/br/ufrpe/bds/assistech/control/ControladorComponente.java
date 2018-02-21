@@ -85,5 +85,18 @@ public class ControladorComponente implements IControlador<Componente>{
 			e.printStackTrace();
 		}
 	}
+
+	public List<Componente> listarComponentePorCodComputador(String str) {
+		List<Componente> componentes = null;
+		
+		try {
+			componentes = componente.listarComponentePorCodComputador(str);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return componentes;
+	}
 }
 

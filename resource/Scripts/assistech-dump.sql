@@ -102,6 +102,7 @@ CREATE TABLE `atendimento` (
   `id_atendimento` int(11) NOT NULL,
   `Sequencial_chamado` int(11) DEFAULT NULL,
   `Mat_tec_campo` varchar(13) NOT NULL,
+  `Dta_atendimento` date NOT NULL,
   PRIMARY KEY (`id_atendimento`),
   UNIQUE KEY `Sequencial_chamado_UNIQUE` (`Sequencial_chamado`),
   KEY `tec_campo_atendimento_fk_idx` (`Mat_tec_campo`),
@@ -115,7 +116,7 @@ CREATE TABLE `atendimento` (
 
 LOCK TABLES `atendimento` WRITE;
 /*!40000 ALTER TABLE `atendimento` DISABLE KEYS */;
-INSERT INTO `atendimento` VALUES (43207177,326138,'3221219790123'),(44565456,1122321,'3221219790126'),(78899874,NULL,'3221219790125'),(80369101,455427,'3221219790124'),(80369102,721605,'3221219790125'),(80369103,414136,'3221219790126'),(80369106,449291,'3221219790126');
+INSERT INTO `atendimento` VALUES (43207177,326138,'3221219790123','2017-03-13'),(44565456,1122321,'3221219790123','2017-03-01'),(78899874,NULL,'3221219790123','2017-03-17'),(80369101,455427,'3221219790123','2017-03-15'),(80369102,721605,'3221219790125','2017-03-01'),(80369103,414136,'3221219790125','2017-03-07'),(80369106,449291,'3221219790125','2017-03-12');
 /*!40000 ALTER TABLE `atendimento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -277,7 +278,7 @@ CREATE TABLE `chamado` (
 
 LOCK TABLES `chamado` WRITE;
 /*!40000 ALTER TABLE `chamado` DISABLE KEYS */;
-INSERT INTO `chamado` VALUES (127003,'Interno','Concluido','Sem descricao','Sim','3221219790123','4037469036387','2246705981087',538507,419036,0,'2010-12-15'),(133365,'Externo','Em aberto','Chamado para o conserto de 10 fontes do laboratório\nde eletrônica.','Alta','3221219790130','4555232574','3221219790125',899987,122211,78899874,'2007-03-05'),(142530,'Interno','Em processo','Sem descricao','Sim','3221219790118','4974678704490','6758517699760',628743,444272,0,'2014-04-19'),(285228,'Externo','Concluido','Sem descricao','NÃ£o','3221219790130','6857090937968','5968756780532',702449,444272,80369100,'2001-05-03'),(326138,'Externo','Concluido','Sem descricao','Sim','3221219790123','9607524394231','6977418034599',896492,419036,43207177,'2009-09-12'),(375295,'Interno','Em processo','Sem descricao','Sim','3221219790118','1013901989839','1539784638533',901221,494738,0,'2014-04-10'),(414136,'Externo','Na espera','Sem descricao','Sim','3221219790118','7336402053778','8182166689073',251182,754431,80369103,'2015-03-12'),(449291,'Interno','Em processo','Sem descricao','NÃ£o','3221219790118','2939681544360','5107105363576',746207,754431,0,'2001-05-03'),(455427,'Externo','Em processo','Sem descricao','Sim','3221219790123','7897223023730','6985312133607',743273,494738,80369101,'2012-07-15'),(469529,'Interno','Em processo','Sem descricao','Sim','3221219790130','5720417742894','2329300698267',579148,419036,0,'2015-03-12'),(474898,'Externo','Em processo','Sem descricao','NÃ£o','3221219790123','1877625217369','3033985495123',812795,754431,80369104,'2001-05-03'),(721605,'Externo','Concluido','Sem descricao','NÃ£o','3221219790118','5219251264524','1594092172270',640479,419036,80369102,'2014-04-10'),(831513,'Interno','Concluido','Sem descricao','Sim','3221219790130','4781915415583','2756836595671',498872,754431,0,'2014-04-10'),(857233,'Interno','Em processo','Sem descricao','NÃ£o','3221219790130','4101975791421','7006151265588',977699,494738,0,'2001-05-03'),(993477,'Interno','Na espera','Sem descricao','NÃ£o','3221219790123','7067254094982','6248141194587',293137,419036,0,'2012-07-15'),(11132456,'Externo','Em processo','Chamado aberto para consertar 50 máquinas do polo pina.','Alta','3221219790123','4555232574','3221219790118',109006,143693,80369106,'2005-12-03');
+INSERT INTO `chamado` VALUES (127003,'Interno','Concluido','Sem descricao','Sim','3221219790123','4037469036387','2246705981087',538507,419036,0,'2010-12-15'),(133365,'Externo','Em aberto','Chamado para o conserto de 10 fontes do laboratório\nde eletrônica.','Alta','3221219790130','4555232574','3221219790125',899987,122211,78899874,'2007-03-05'),(142530,'Interno','Em processo','Sem descricao','Sim','3221219790118','4974678704490','6758517699760',628743,444272,0,'2014-04-19'),(285228,'Externo','Concluido','Sem descricao','NÃ£o','3221219790130','6857090937968','5968756780532',702449,444272,80369100,'2001-05-03'),(326138,'Externo','Concluido','Sem descricao','Sim','3221219790123','9607524394231','6977418034599',896492,419036,43207177,'2009-09-12'),(375295,'Interno','Em processo','Sem descricao','Sim','3221219790118','1013901989839','1539784638533',901221,494738,0,'2014-04-10'),(414136,'Externo','Na espera','Sem descricao','Sim','3221219790118','7336402053778','8182166689073',251182,754431,80369103,'2015-03-12'),(449291,'Interno','Em processo','Sem descricao','NÃ£o','3221219790118','2939681544360','5107105363576',746207,754431,0,'2001-05-03'),(455427,'Externo','Em processo','Sem descricao','Sim','3221219790123','7897223023730','6985312133607',743273,494738,80369101,'2012-07-15'),(469529,'Interno','Em processo','Sem descricao','Sim','3221219790130','5720417742894','2329300698267',579148,419036,0,'2015-03-12'),(474898,'Externo','Em processo','Sem descricao','NÃ£o','3221219790123','1877625217369','3033985495123',812795,754431,80369104,'2001-05-03'),(721605,'Externo','Concluido','Sem descricao','NÃ£o','3221219790118','5219251264524','1594092172270',640479,419036,80369102,'2014-04-10'),(831513,'Interno','Concluido','Sem descricao','Sim','3221219790130','4781915415583','2756836595671',498872,754431,0,'2014-04-10'),(993477,'Interno','Na espera','Sem descricao','NÃ£o','3221219790123','7067254094982','6248141194587',293137,419036,0,'2012-07-15'),(11132456,'Externo','Em processo','Chamado aberto para consertar 50 máquinas do polo pina.','Alta','3221219790123','4555232574','3221219790118',109006,143693,80369106,'2005-12-03');
 /*!40000 ALTER TABLE `chamado` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -374,8 +375,12 @@ CREATE TABLE `componente` (
   `Modelo` varchar(45) NOT NULL,
   `Fabricante` varchar(45) NOT NULL,
   `NumSerie` varchar(45) NOT NULL,
-  `Onboard` varchar(3) NOT NULL,
-  PRIMARY KEY (`Cod`)
+  `Onboard` varchar(3) DEFAULT NULL,
+  `Cod_equipamento` varchar(15) NOT NULL,
+  PRIMARY KEY (`Cod`,`Cod_equipamento`),
+  KEY `componente_computador_fk_idx` (`Cod_equipamento`),
+  KEY `componente_computador_idx` (`Cod_equipamento`),
+  CONSTRAINT `componente_computador_fk` FOREIGN KEY (`Cod_equipamento`) REFERENCES `computador` (`Cod_equipamento`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -385,7 +390,7 @@ CREATE TABLE `componente` (
 
 LOCK TABLES `componente` WRITE;
 /*!40000 ALTER TABLE `componente` DISABLE KEYS */;
-INSERT INTO `componente` VALUES (100499,'Software','Windows 7','Microsoft','761349','NÃ£'),(104793,'Hardware','Tower Combo PC','Cisco','909661','Sim'),(183952,'Rede','Windows 7','Cisco','606682','Sim'),(193096,'Hardware','Intel Core I3','Panasonic','277435','Sim'),(311419,'Hardware','VLC','AMD','129576','Sim'),(551114,'Software','Intel Core I3','Microsoft','741261','Sim'),(604581,'Rede','Tower Combo PC','Cisco','549997','Sim'),(693920,'Hardware','Tower Combo PC','Intel','373042','NÃ£'),(703113,'Hardware','Intel Core I3','Intel','262698','NÃ£'),(716794,'Hardware','Atlhon XP','AMD','295066','Sim'),(741632,'Software','VLC','Microsoft','673027','Sim'),(804251,'Software','Bulldozer','Nvidia','504125','Sim'),(862624,'Hardware','Windows 7','ItaliaExpress','835231','Sim'),(970926,'Hardware','FruitLoop','Nvidia','929354','NÃ£'),(988763,'Software','VLC','Apple','854204','Sim');
+INSERT INTO `componente` VALUES (100499,'Software','Windows 7','Microsoft','761349','NÃ£','36512'),(104793,'Hardware','Tower Combo PC','Cisco','909661','Sim','13508'),(183952,'Rede','Windows 7','Cisco','606682','Sim','13508'),(193096,'Hardware','Intel Core I3','Panasonic','277435','Sim','13508'),(255654,'Placa mãe','Asus7054','Asus','12365479','','36512'),(311419,'Hardware','VLC','AMD','129576','Sim','36512'),(551114,'Software','Intel Core I3','Microsoft','741261','Sim','36512'),(604581,'Rede','Tower Combo PC','Cisco','549997','Sim','41246'),(693920,'Hardware','Tower Combo PC','Intel','373042','NÃ£','41246'),(703113,'Hardware','Intel Core I3','Intel','262698','NÃ£','41246'),(716794,'Hardware','Atlhon XP','AMD','295066','Sim','6554'),(741632,'Software','VLC','Microsoft','673027','Sim','6554'),(804251,'Software','Bulldozer','Nvidia','504125','Sim','6554'),(855654,'Hardware','NVidiaGTX9852','NVidia','788965','Não','79969'),(862624,'Hardware','Windows 7','ItaliaExpress','835231','Sim','79969'),(970926,'Hardware','FruitLoop','Nvidia','929354','NÃ£','79969'),(988763,'Software','VLC','Apple','854204','Sim','79969');
 /*!40000 ALTER TABLE `componente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -416,33 +421,6 @@ LOCK TABLES `computador` WRITE;
 /*!40000 ALTER TABLE `computador` DISABLE KEYS */;
 INSERT INTO `computador` VALUES ('13508','Windows 10','192.168.100.08','Aopen','2.4.2558','Tablet'),('18398','Linux Cent OS','192.168.100.05','Gigabity','8.9.9915','handhelds'),('20790','Windows 10','192.168.100.01','Award/Phoenix','2.8.3356','Desktop'),('29476','Windows 7','192.168.100.07','Kinpo Electronics','4.6.6795','handhelds'),('34993','Windows 7','192.168.100.00','AMI','5.5.2478','Notebook'),('36512','Solaris','192.168.100.03','PCchips','2.1.4477','Tablet'),('41246','Ubuntu Lin','192.168.100.04','ECS','2.4.1244','Desktop'),('53435','Mac OS 8','192.168.100.02','Asus','1.4.3345','handhelds'),('6554','Linux Mandriva','198.65.36.6','test','test','tes'),('79969','Linux Cent OS','192.168.100.06','MSI','7.6.5578','Desktop'),('99542','teste','192.36.32.65','teste29','teste','teste');
 /*!40000 ALTER TABLE `computador` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `computador_componente`
---
-
-DROP TABLE IF EXISTS `computador_componente`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `computador_componente` (
-  `Cod_equipamento` varchar(15) NOT NULL,
-  `Cod_Componente` int(11) NOT NULL,
-  `data_instalacao` date NOT NULL,
-  PRIMARY KEY (`Cod_equipamento`,`Cod_Componente`,`data_instalacao`),
-  KEY `componente_fk` (`Cod_Componente`),
-  CONSTRAINT `componente_fk` FOREIGN KEY (`Cod_Componente`) REFERENCES `componente` (`Cod`) ON UPDATE CASCADE,
-  CONSTRAINT `computador_fk` FOREIGN KEY (`Cod_equipamento`) REFERENCES `computador` (`Cod_equipamento`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `computador_componente`
---
-
-LOCK TABLES `computador_componente` WRITE;
-/*!40000 ALTER TABLE `computador_componente` DISABLE KEYS */;
-/*!40000 ALTER TABLE `computador_componente` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -789,7 +767,7 @@ CREATE TABLE `envolveu` (
 
 LOCK TABLES `envolveu` WRITE;
 /*!40000 ALTER TABLE `envolveu` DISABLE KEYS */;
-INSERT INTO `envolveu` VALUES (109006,'19703\r'),(251182,'20790\r'),(293137,'79969\r'),(498872,'75322\r'),(538507,'29476\r'),(579148,'18398\r'),(628743,'34993\r'),(640479,'99542\r'),(702449,'36512\r'),(743273,'53435\r'),(746207,'31115'),(812795,'44201\r'),(896492,'13508\r'),(901221,'41246\r'),(977699,'55377\r');
+INSERT INTO `envolveu` VALUES (109006,'19703\r'),(251182,'20790\r'),(293137,'79969\r'),(498872,'75322\r'),(538507,'29476\r'),(579148,'18398\r'),(628743,'34993\r'),(640479,'99542\r'),(702449,'36512\r'),(743273,'53435\r'),(746207,'31115'),(812795,'44201\r'),(896492,'13508\r'),(901221,'41246\r');
 /*!40000 ALTER TABLE `envolveu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -888,7 +866,7 @@ DROP TABLE IF EXISTS `fatura`;
 CREATE TABLE `fatura` (
   `Cod` int(11) NOT NULL,
   `Num_parcelas` int(11) NOT NULL,
-  `Valor_total` decimal(6,2) NOT NULL,
+  `Valor_total` decimal(10,2) NOT NULL,
   `Status_` varchar(30) NOT NULL,
   `Cod_cliente` int(11) NOT NULL,
   PRIMARY KEY (`Cod`),
@@ -903,7 +881,7 @@ CREATE TABLE `fatura` (
 
 LOCK TABLES `fatura` WRITE;
 /*!40000 ALTER TABLE `fatura` DISABLE KEYS */;
-INSERT INTO `fatura` VALUES (111365,12,750.00,'Em andamento',754431),(117095,3,1500.00,'Em andamento',122211),(125469,4,500.23,'Liquidada',444272),(133327,10,575.00,'Em aberto',141076),(133652,30,3054.26,'Em andamento',143693),(133965,6,1900.56,'Liquidada',421804),(139545,13,2500.00,'Em andamento',143693),(139665,10,65.00,'Em curso',143693),(150619,12,0.00,'Liquidada',448803),(189562,20,450.00,'Em andamento',143693),(215469,17,1200.00,'Em andamento',754431),(223259,20,1030.56,'Liquidada',374702),(231307,12,0.00,'Em andamento',419036),(254807,12,0.00,'Liquidada',921567),(255654,2,230.00,'Em andamento',374702),(255898,30,2537.10,'Em andamento',444272),(332619,12,0.00,'Em andamento',546312),(417174,12,0.00,'Liquidada',494738),(525009,12,0.00,'Em andamento',468928),(544386,12,0.00,'Liquidada',421804),(559734,12,0.00,'Em andamento',236843),(566545,3,400.00,'Em andamento',143693),(592439,12,0.00,'Em andamento',219478),(629787,12,0.00,'Liquidada',690810),(743797,12,0.00,'Em andamento',444272),(788998,17,120.00,'Em andamento',143693),(805070,12,0.00,'Em andamento',374702),(857787,12,0.00,'Em andamento',754431),(875466,3,297.56,'Liquidada',444272),(913831,12,0.00,'Em andamento',143693),(923654,15,120.00,'Em andamento',143693);
+INSERT INTO `fatura` VALUES (111365,12,750.00,'Em andamento',754431),(117095,3,1500.00,'Em andamento',122211),(125469,4,500.23,'Liquidada',444272),(133327,10,575.00,'Em aberto',141076),(133652,30,3054.26,'Em andamento',143693),(133965,6,1900.56,'Liquidada',421804),(139545,13,2500.00,'Em andamento',143693),(139665,10,65.00,'Em curso',143693),(150619,12,0.00,'Liquidada',448803),(189562,20,450.00,'Em andamento',143693),(215469,17,1200.00,'Em andamento',754431),(223259,20,1030.56,'Liquidada',374702),(231307,12,0.00,'Em andamento',419036),(254807,12,0.00,'Liquidada',921567),(255654,2,230.00,'Em andamento',374702),(255898,30,2537.10,'Em andamento',444272),(332619,12,0.00,'Em andamento',546312),(336545,3,9999.99,'Liquidada',444272),(417174,12,0.00,'Liquidada',494738),(525009,12,0.00,'Em andamento',468928),(544386,12,0.00,'Liquidada',421804),(544754,9,35000.00,'Em andamento',374702),(559734,12,0.00,'Em andamento',236843),(565587,3,1200.00,'Concluído',143693),(566455,3,1700.00,'Concluída',374702),(566545,3,400.00,'Em andamento',143693),(592439,12,0.00,'Em andamento',219478),(629787,12,0.00,'Liquidada',690810),(743797,12,0.00,'Em andamento',444272),(755652,3,9999.99,'Liquidada',444272),(755654,5,2700.00,'Em andamento',444272),(755656,6,2500.00,'Concluída',374702),(788998,17,120.00,'Em andamento',143693),(805070,12,0.00,'Em andamento',374702),(856545,7,1300.00,'Concluída',143693),(857787,12,0.00,'Em andamento',754431),(866545,3,270.00,'Em andamento',143693),(875466,3,297.56,'Liquidada',444272),(889878,5,1500.00,'Em andamento',444272),(913831,12,0.00,'Em andamento',143693),(923654,15,120.00,'Em andamento',143693);
 /*!40000 ALTER TABLE `fatura` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1004,7 +982,7 @@ CREATE TABLE `funcionario` (
 
 LOCK TABLES `funcionario` WRITE;
 /*!40000 ALTER TABLE `funcionario` DISABLE KEYS */;
-INSERT INTO `funcionario` VALUES ('3221219790118',11898352001,'Kylan','131274509274058','Collier, Alexis Q.','non.hendrerit@quismassa.com',6,'3221219790123','32163328','1999-11-02',12369),('3221219790119',11898352002,'Finn','131274509274059','Thompson, David N.','sapien@Duisami.org',6,'3221219790118','33884623','2010-12-03',12369),('3221219790121',11898352004,'Francis','131274509274061','Ayala, Francesca U.','aliquam@tempusnonlacinia.net',4,'3221219790118','32163331','2007-12-02',44665),('3221219790123',11898352006,'Derek','2226654','Derek Greener','derek@email.com',8,'3221219790118','32163333','2001-11-04',44665),('3221219790124',11898352007,'Isabella','131274509274064','Gould, Beatrice T.','neque@lacus.net',6,'3221219790118','32163334','2010-12-03',44665),('3221219790127',11898352010,'Dane','131274509274067','Orr, Cain Z.','dictum.sapien@uteros.edu',4,'3221219790130','32163337','1994-10-20',44665),('3221219790128',11898352011,'Branden','131274509274068','Brandenburgos da Silva','branden@email.com',6,'3221219790130','32163338','1990-12-03',58994),('3221219790129',11898352012,'Dexter','131274509274069','Buckner, Martina X.','risus.In@ipsumDonecsollicitudin.edu',4,'3221219790130','32163339','2003-05-07',58994),('3221219790130',11898352013,'Leila','131274509274070','Downs, Athena Q.','nulla@Nam.org',6,'3221219790123','32163340','2003-05-07',58994),('3221219790131',11898352014,'Haviva','131274509274071','Kirk, Trevor H.','eu@nunc.co.uk',4,'3221219790123','32163341','2003-05-07',58994),('3221219790132',11898352015,'Molly','131274509274072','Coffey, Drew N.','Nullam@nec.net',4,'3221219790130','32163342','2003-05-07',58994),('3221219790133',11111111111,'augusto','123451','Silvio Carlos Augusto Melo','augusto.carlos@gmail.com',8,'3221219790130','32163329','2001-12-03',12369),('3221219790134',88888888888,'Alberto','11111111111','Alberto Jomard','alberto_jomard@email.com',8,'3221219790130','32163349','2007-11-07',12369),('3221219790176',44444444444,'JFA','888888','Jonas Fernando Alcarroci','jonas.fernando@email.com',8,'3221219790130','32163351','2011-03-05',58994),('4555232574',1223654456,'Teste','123','teste','teste@email.com',6,'3221219790118','33125644','2003-05-07',44665),('655898789987',5224565545,'Teste2','1234','teste2','teste2@email.com',8,'3221219790118','22565458','2016-05-02',44665);
+INSERT INTO `funcionario` VALUES ('3221219790118',11898352001,'Kylan','131274509274058','Collier, Alexis Q.','non.hendrerit@quismassa.com',6,'3221219790123','32163328','1999-11-02',12369),('3221219790119',11898352002,'Finn','131274509274059','Thompson, David N.','sapien@Duisami.org',6,'3221219790118','33884623','2010-12-03',12369),('3221219790121',11898352004,'Francis','131274509274061','Ayala, Francesca U.','aliquam@tempusnonlacinia.net',4,'3221219790118','32163331','2007-12-02',44665),('3221219790123',11898352006,'Derek','2226654','Derek Greener','derek@email.com',8,'3221219790118','32163333','2001-11-04',44665),('3221219790124',11898352007,'Isabella','131274509274064','Gould, Beatrice T.','neque@lacus.net',6,'3221219790118','32163334','2010-12-03',44665),('3221219790125',2554565897,'Teste3','12345','teste3','teste3@email.com',8,'3221219790118','25565489','2016-05-03',44665),('3221219790127',11898352010,'Dane','131274509274067','Orr, Cain Z.','dictum.sapien@uteros.edu',4,'3221219790130','32163337','1994-10-20',44665),('3221219790128',11898352011,'Branden','131274509274068','Brandenburgos da Silva','branden@email.com',6,'3221219790130','32163338','1990-12-03',58994),('3221219790129',11898352012,'Dexter','131274509274069','Buckner, Martina X.','risus.In@ipsumDonecsollicitudin.edu',4,'3221219790130','32163339','2003-05-07',58994),('3221219790130',11898352013,'Leila','131274509274070','Downs, Athena Q.','nulla@Nam.org',6,'3221219790123','32163340','2003-05-07',58994),('3221219790131',11898352014,'Haviva','131274509274071','Kirk, Trevor H.','eu@nunc.co.uk',4,'3221219790123','32163341','2003-05-07',58994),('3221219790132',11898352015,'Molly','131274509274072','Coffey, Drew N.','Nullam@nec.net',4,'3221219790130','32163342','2003-05-07',58994),('3221219790133',11111111111,'augusto','123451','Silvio Carlos Augusto Melo','augusto.carlos@gmail.com',8,'3221219790130','32163329','2001-12-03',12369),('3221219790134',88888888888,'Alberto','11111111111','Alberto Jomard','alberto_jomard@email.com',8,'3221219790130','32163349','2007-11-07',12369),('3221219790176',44444444444,'JFA','888888','Jonas Fernando Alcarroci','jonas.fernando@email.com',8,'3221219790130','32163351','2011-03-05',58994),('4555232574',1223654456,'Teste','123','teste','teste@email.com',6,'3221219790118','33125644','2003-05-07',44665),('655898789987',5224565545,'Teste2','1234','teste2','teste2@email.com',8,'3221219790118','22565458','2016-05-02',44665);
 /*!40000 ALTER TABLE `funcionario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -1102,7 +1080,7 @@ CREATE TABLE `instancia_servico` (
 
 LOCK TABLES `instancia_servico` WRITE;
 /*!40000 ALTER TABLE `instancia_servico` DISABLE KEYS */;
-INSERT INTO `instancia_servico` VALUES (109006,855547,3,'Média','Pendente'),(251182,904566,12,'Alta','Em andamento'),(293137,215386,5,'Alta','Concluído'),(498872,613677,14,'Alta','Pendente'),(538507,556703,4,'Média','Pendente'),(579148,341250,6,'Baixa','Concluído'),(628743,204239,1,'Alta','Concluído'),(640479,459121,11,'Baixa','Concluído'),(702449,613590,9,'Alta','Concluído'),(743273,605518,10,'Baixa','Concluído'),(746207,438841,15,'Média','Concluído'),(812795,193624,13,'Alta','Pendente'),(896492,461863,2,'Baixa','Em andamento'),(901221,267080,8,'Média','Pendente'),(977699,983704,7,'Média','Em andamento');
+INSERT INTO `instancia_servico` VALUES (109006,855547,3,'Média','Pendente'),(251182,904566,12,'Alta','Em andamento'),(293137,215386,5,'Alta','Concluído'),(498872,613677,14,'Alta','Pendente'),(538507,556703,4,'Média','Pendente'),(579148,341250,6,'Baixa','Concluído'),(628743,204239,1,'Alta','Concluído'),(640479,459121,11,'Baixa','Concluído'),(702449,613590,9,'Alta','Concluído'),(743273,605518,10,'Baixa','Concluído'),(746207,438841,15,'Média','Concluído'),(812795,193624,13,'Alta','Pendente'),(896492,461863,2,'Baixa','Em andamento'),(901221,267080,8,'Média','Pendente');
 /*!40000 ALTER TABLE `instancia_servico` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1222,7 +1200,7 @@ CREATE TABLE `jornada_de_trabalho` (
 
 LOCK TABLES `jornada_de_trabalho` WRITE;
 /*!40000 ALTER TABLE `jornada_de_trabalho` DISABLE KEYS */;
-INSERT INTO `jornada_de_trabalho` VALUES ('22565458','Sim','Jornada do João'),('32163328','Não','Não_Tem\r'),('32163329','Não','Não_Tem'),('32163330','Sim','Não_Tem'),('32163331','Sim','Não_Tem'),('32163332','Não','Não_Tem'),('32163333','Não','Não_Tem'),('32163334','Não','Não_Tem'),('32163335','Não','Não_Tem'),('32163336','Não','Não_Tem'),('32163337','Não','Não_Tem'),('32163338','Não','Não_Tem'),('32163339','Sim','Não_Tem'),('32163340','Sim','Não_Tem'),('32163341','Sim','Não_Tem'),('32163342','Sim','Não_Tem'),('32163349','Sim','Não_tem'),('32163350','Não','Não_tem'),('32163351','Sim','Não_tem'),('33125644','Sim','Jornada do Carlos');
+INSERT INTO `jornada_de_trabalho` VALUES ('22565458','Sim','Jornada do João'),('25565489','Sim','Jornado do Silva'),('32163328','Não','Não_Tem\r'),('32163329','Não','Não_Tem'),('32163330','Sim','Não_Tem'),('32163331','Sim','Não_Tem'),('32163332','Não','Não_Tem'),('32163333','Não','Não_Tem'),('32163334','Não','Não_Tem'),('32163335','Não','Não_Tem'),('32163336','Não','Não_Tem'),('32163337','Não','Não_Tem'),('32163338','Não','Não_Tem'),('32163339','Sim','Não_Tem'),('32163340','Sim','Não_Tem'),('32163341','Sim','Não_Tem'),('32163342','Sim','Não_Tem'),('32163349','Sim','Não_tem'),('32163350','Não','Não_tem'),('32163351','Sim','Não_tem'),('33125644','Sim','Jornada do Carlos');
 /*!40000 ALTER TABLE `jornada_de_trabalho` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1267,8 +1245,8 @@ DROP TABLE IF EXISTS `kpi`;
 CREATE TABLE `kpi` (
   `Sequencial` int(11) NOT NULL,
   `Matricula_tecnico` varchar(13) NOT NULL,
-  `KPI_1` varchar(30) DEFAULT NULL,
-  `KPI_2` varchar(30) DEFAULT NULL,
+  `KPI_1` int(11) DEFAULT NULL,
+  `KPI_2` int(11) DEFAULT NULL,
   `Dsc_KPI_1` varchar(100) DEFAULT NULL,
   `Dsk_KPI_2` varchar(100) DEFAULT NULL,
   `dt_inicio_periodo` date DEFAULT NULL,
@@ -1286,7 +1264,7 @@ CREATE TABLE `kpi` (
 
 LOCK TABLES `kpi` WRITE;
 /*!40000 ALTER TABLE `kpi` DISABLE KEYS */;
-INSERT INTO `kpi` VALUES (11952,'3221219790146','13','34','Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2010-11-14','2011-05-02','2013-07-08'),(16491,'3221219790138','3','6','Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2016-03-03','2016-04-12','2010-11-03'),(25848,'3221219790136','10','59','Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2014-01-02','2014-12-12','2012-11-03'),(26790,'3221219790150','32','58','Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2011-05-06','2017-08-09','2018-01-02'),(32823,'3221219790144','60','22','Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2008-12-12','2018-12-13','2018-11-05'),(44985,'3221219790143','47','23','Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2015-06-08','2015-11-06','2017-03-04'),(50748,'3221219790141','10','29','Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2018-12-12','2018-12-13','2018-11-05'),(52145,'3221219790148','1','9','Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2016-03-03','2016-04-12','2010-11-03'),(54382,'3221219790140','11','56','Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2017-05-06','2017-08-09','2018-01-02'),(61192,'3221219790149','32','34','Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2005-01-15','2010-01-01','2011-02-13'),(64408,'3221219790145','24','36','Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2015-06-08','2015-11-06','2017-03-04'),(69253,'3221219790147','51','49','Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2007-02-11','2012-03-11','2011-12-11'),(74103,'3221219790139','49','38','Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2009-01-12','2010-01-01','2011-02-13'),(93220,'3221219790137','52','50','Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2012-02-11','2012-03-11','2011-12-11'),(94257,'3221219790142','9','9','Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2011-12-12','2018-12-13','2018-11-05');
+INSERT INTO `kpi` VALUES (11952,'3221219790146',13,34,'Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2010-11-14','2011-05-02','2013-07-08'),(16491,'3221219790138',3,6,'Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2016-03-03','2016-04-12','2010-11-03'),(25848,'3221219790136',10,59,'Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2014-01-02','2014-12-12','2012-11-03'),(26790,'3221219790150',32,58,'Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2011-05-06','2017-08-09','2018-01-02'),(32823,'3221219790144',60,22,'Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2008-12-12','2018-12-13','2018-11-05'),(44985,'3221219790143',47,23,'Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2015-06-08','2015-11-06','2017-03-04'),(50748,'3221219790141',10,29,'Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2018-12-12','2018-12-13','2018-11-05'),(52145,'3221219790148',1,9,'Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2016-03-03','2016-04-12','2010-11-03'),(54382,'3221219790140',11,56,'Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2017-05-06','2017-08-09','2018-01-02'),(61192,'3221219790149',32,34,'Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2005-01-15','2010-01-01','2011-02-13'),(64408,'3221219790145',24,36,'Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2015-06-08','2015-11-06','2017-03-04'),(69253,'3221219790147',51,49,'Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2007-02-11','2012-03-11','2011-12-11'),(74103,'3221219790139',49,38,'Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2009-01-12','2010-01-01','2011-02-13'),(93220,'3221219790137',52,50,'Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2012-02-11','2012-03-11','2011-12-11'),(94257,'3221219790142',9,9,'Total de Máquinas Consertadas por Semana','Máquinas Consertadas sem Retorno por Mês','2011-12-12','2018-12-13','2018-11-05'),(166545,'3221219790123',3,0,'Total de Máquinas Consertadas por Semana','','2017-03-01','2017-03-15','2018-02-21');
 /*!40000 ALTER TABLE `kpi` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1403,7 +1381,7 @@ CREATE TABLE `orcamento` (
 
 LOCK TABLES `orcamento` WRITE;
 /*!40000 ALTER TABLE `orcamento` DISABLE KEYS */;
-INSERT INTO `orcamento` VALUES (107695,'2018-12-26',60,'2019-01-07','Referente a troca de dois módulos de memória DDR3  em Notebook.','2018-11-17'),(111091,'2018-12-03',90,'2019-01-05','Referente a formatação de 30 pcs HP.','2018-11-05'),(124565,'2017-12-01',90,'2017-12-03','Referente a troca de capacitores e resistores SMD das TVs da praça de alimentação.','2017-11-22'),(130254,'2030-09-05',5,'2029-12-06','Sem descricao','2010-01-16'),(135698,'2015-02-12',90,'2015-02-17','Referente a instalação de SO em 50 máquinas do laboratório de Biologia da FURGS.','2015-02-07'),(154258,'2016-02-12',90,'2016-02-22','Referente a troca da resistência de 3 bebedouros da unidade Camará.','2016-02-09'),(155624,'2018-12-03',90,'2019-01-19','Referente a troca de placa Mãe Notebook Hp dv6-6c30br.','2018-12-23'),(203114,'2021-06-05',5,'2029-12-06','Sem descricao','2001-10-16'),(233654,'2017-12-22',90,'2017-12-12','Referente a manutenção de peças de avião do jato 5936 da Azul.','2017-12-07'),(255897,'2019-01-05',90,'2019-01-17','Referente a troca de gabinete de 12 pcs de mesa.','2018-12-22'),(272995,'2031-08-05',5,'2029-12-06','Sem descricao','2012-09-16'),(326744,'2024-07-05',5,'2029-12-06','Sem descricao','2015-03-16'),(333654,'2005-08-15',13,'2005-11-07','Referente a troca de 50 Gabinetes no polo pina.','2005-08-15'),(408327,'2003-10-05',5,'2029-12-06','Sem descricao','2005-09-15'),(412926,'2002-09-05',5,'2029-12-06','Sem descricao','2012-09-16'),(438497,'2030-08-05',5,'2029-12-06','Sem descricao','2010-09-10'),(455123,'2005-10-02',8,'2005-11-07','Referente a troca de 30 placas mãe do laboratório de informática.','2005-03-15'),(566545,'2018-01-07',15,'2018-01-18','Referente a troca de peças na Fresadeira.','2018-01-16'),(578698,'2006-07-05',5,'2029-12-06','Sem descricao','2012-09-16'),(603251,'2019-01-02',31,'2019-01-07','Sem descricao','2019-01-02'),(604439,'2013-07-05',5,'2029-12-06','Sem descricao','2012-09-16'),(736090,'2019-06-05',5,'2029-12-06','Sem descricao','2001-10-16'),(756250,'2021-09-05',5,'2029-12-06','Sem descricao','2015-03-16'),(758001,'2015-08-05',5,'2029-12-06','Sem descricao','2015-03-16'),(809677,'2006-10-05',5,'2029-12-06','Sem descricao','2015-03-16'),(815265,'2017-03-12',90,'2017-03-27','Referente a troca de Placa Mãe em 27 PCs de Mesa.','2017-03-10'),(852467,'2017-03-03',90,'2017-03-05','Referente a manutenção preventiva de 120 PCs de mesa dos 3 laboratórios de Química da FURG.','2017-02-17'),(896738,'2026-08-05',5,'2029-12-06','Sem descricao','2010-09-10'),(903365,'2018-01-17',7,'2018-02-02','Referente ao conserto de 12 bebedouros da unidade Santana.','2018-01-13'),(905543,'2011-10-05',5,'2029-12-06','Sem descricao','2015-03-16');
+INSERT INTO `orcamento` VALUES (107695,'2018-12-26',60,'2019-01-07','Referente a troca de dois módulos de memória DDR3  em Notebook.','2018-11-17'),(111091,'2018-12-03',90,'2019-01-05','Referente a formatação de 30 pcs HP.','2018-11-05'),(112321,'2017-12-07',15,'2017-12-10','Referente ao conserto de 30 gabinetes.','2017-12-07'),(124565,'2017-12-01',90,'2017-12-03','Referente a troca de capacitores e resistores SMD das TVs da praça de alimentação.','2017-11-22'),(130254,'2030-09-05',5,'2029-12-06','Sem descricao','2010-01-16'),(135698,'2015-02-12',90,'2015-02-17','Referente a instalação de SO em 50 máquinas do laboratório de Biologia da FURGS.','2015-02-07'),(154258,'2016-02-12',90,'2016-02-22','Referente a troca da resistência de 3 bebedouros da unidade Camará.','2016-02-09'),(155624,'2018-12-03',90,'2019-01-19','Referente a troca de placa Mãe Notebook Hp dv6-6c30br.','2018-12-23'),(203114,'2021-06-05',5,'2029-12-06','Sem descricao','2001-10-16'),(233654,'2017-12-22',90,'2017-12-12','Referente a manutenção de peças de avião do jato 5936 da Azul.','2017-12-07'),(255654,'2017-11-07',30,'2018-11-08','Referente ao conserto de 30 impressoras HP da empresa JFino Calçados.','2017-11-07'),(255897,'2019-01-05',90,'2019-01-17','Referente a troca de gabinete de 12 pcs de mesa.','2018-12-22'),(272995,'2031-08-05',5,'2029-12-06','Sem descricao','2012-09-16'),(326744,'2024-07-05',5,'2029-12-06','Sem descricao','2015-03-16'),(333654,'2005-08-15',13,'2005-11-07','Referente a troca de 50 Gabinetes no polo pina.','2005-08-15'),(408327,'2003-10-05',5,'2029-12-06','Sem descricao','2005-09-15'),(412926,'2002-09-05',5,'2029-12-06','Sem descricao','2012-09-16'),(438497,'2030-08-05',5,'2029-12-06','Sem descricao','2010-09-10'),(455123,'2005-10-02',8,'2005-11-07','Referente a troca de 30 placas mãe do laboratório de informática.','2005-03-15'),(455652,'2017-10-02',20,'2017-10-07','Referente ao conserto de 12 estabilizadores KVA.','2017-10-02'),(555654,'2017-02-20',7,'2017-02-23','Orcamento aprova de R$ 1200.00; para conserto de 5 placas de estabilizadores VIA 1000 KVA.','2017-02-21'),(566545,'2018-01-07',15,'2018-01-18','Referente a troca de peças na Fresadeira.','2018-01-16'),(578698,'2006-07-05',5,'2029-12-06','Sem descricao','2012-09-16'),(603251,'2019-01-02',31,'2019-01-07','Sem descricao','2019-01-02'),(604439,'2013-07-05',5,'2029-12-06','Sem descricao','2012-09-16'),(665458,'2016-02-01',7,'2016-02-07','Referente ao conserto de 15 gabinetes.','2016-02-10'),(736090,'2019-06-05',5,'2029-12-06','Sem descricao','2001-10-16'),(756250,'2021-09-05',5,'2029-12-06','Sem descricao','2015-03-16'),(758001,'2015-08-05',5,'2029-12-06','Sem descricao','2015-03-16'),(809677,'2006-10-05',5,'2029-12-06','Sem descricao','2015-03-16'),(815265,'2017-03-12',90,'2017-03-27','Referente a troca de Placa Mãe em 27 PCs de Mesa.','2017-03-10'),(852467,'2017-03-03',90,'2017-03-05','Referente a manutenção preventiva de 120 PCs de mesa dos 3 laboratórios de Química da FURG.','2017-02-17'),(855654,'2018-02-10',15,'2018-02-11','Referente ao conserto de 13 placas mãe para M&A seguradora.','2018-02-10'),(855789,'2017-12-26',30,'2017-12-27','Referente ao conserto de 10 gabinetes.','2017-12-26'),(896738,'2026-08-05',5,'2029-12-06','Sem descricao','2010-09-10'),(899565,'2018-02-13',15,'2018-02-10','Referente ao conserto de 10 Placa Mãe Gigabit.','2018-02-09'),(903365,'2018-01-17',7,'2018-02-02','Referente ao conserto de 12 bebedouros da unidade Santana.','2018-01-13'),(905543,'2011-10-05',5,'2029-12-06','Sem descricao','2015-03-16'),(966354,'2017-10-05',5,'2017-10-06','Referente ao conserto de 17 gabinetes.','2017-10-05');
 /*!40000 ALTER TABLE `orcamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1438,7 +1416,7 @@ CREATE TABLE `ordem_servico` (
 
 LOCK TABLES `ordem_servico` WRITE;
 /*!40000 ALTER TABLE `ordem_servico` DISABLE KEYS */;
-INSERT INTO `ordem_servico` VALUES (109006,'2013-10-14',3,'2019-01-15','Em Curso',130254,743797),(123457,'2018-01-02',14,'2017-12-19','Concluída',124565,125469),(123658,'2020-03-03',14,'2020-02-18','Em Curso',905543,117095),(136958,'2019-03-03',14,'2019-02-19','Em Curso',107695,189562),(144568,'2016-03-04',14,'2016-02-19','Em Curso',154258,875466),(226587,'2019-03-02',14,'2019-02-19','Em Curso',111091,139545),(251182,'2022-10-14',3,'2028-01-15','Em Curso',578698,592439),(256598,'2019-03-05',14,'2019-02-19','Em Curso',255897,111365),(276894,'2019-03-03',14,'2019-02-19','Em Curso',155624,133652),(293137,'2015-10-14',3,'2021-01-15','Em Curso',438497,417174),(452265,'2015-03-05',14,'2015-02-19','Concluída',135698,223259),(456254,'2017-11-02',14,'2017-10-19','Concluída',233654,133965),(498872,'2024-10-14',3,'2030-01-15','Em Curso',736090,150619),(579148,'2016-10-14',3,'2022-01-15','Em Curso',272995,525009),(635452,'2017-04-02',14,'2017-03-19','Em Curso',852467,255898),(654525,'2017-05-03',14,'2017-04-19','Em Curso',815265,215469),(702449,'2019-10-14',3,'2025-01-15','Em Curso',408327,857787),(743273,'2020-10-14',3,'2026-01-15','Em Curso',758001,332619),(746207,'2025-10-14',3,'2031-01-15','Em Curso',203114,559734),(812795,'2023-10-14',3,'2029-01-15','Em Curso',809677,913831),(885565,'2018-03-02',15,'2018-02-15','Em Curso',903365,566545),(896492,'2012-10-14',3,'2018-01-15','Em Curso',326744,254807),(899987,'2005-03-02',15,'2005-02-15','Em curso',455123,788998),(901221,'2018-10-14',3,'2024-01-15','Em Curso',896738,544386),(963325,'2019-03-02',14,'2019-02-19','Em Curso',603251,923654),(977699,'0000-00-00',14,'2019-02-19','Em Curso',412926,805070);
+INSERT INTO `ordem_servico` VALUES (109006,'2013-10-14',3,'2019-01-15','Em Curso',130254,743797),(111324,'2016-02-17',5,'2016-02-12','Concluída',665458,856545),(123457,'2018-01-02',14,'2017-12-19','Concluída',124565,125469),(123658,'2020-03-03',14,'2020-02-18','Em Curso',905543,117095),(136958,'2019-03-03',14,'2019-02-19','Em Curso',107695,189562),(144568,'2016-03-10',20,'2016-02-19','Concluída',154258,875466),(226587,'2019-03-02',14,'2019-02-19','Em Curso',111091,139545),(251182,'2022-10-14',3,'2028-01-15','Em Curso',578698,592439),(256598,'2019-03-05',14,'2019-02-19','Em Curso',255897,111365),(276894,'2019-03-03',14,'2019-02-19','Em Curso',155624,133652),(293137,'2015-10-14',3,'2021-01-15','Em Curso',438497,417174),(333654,'2017-10-19',7,'2017-10-12','Concluída',455652,755654),(334488,'2017-02-26',5,'2017-02-21','Concluída',555654,565587),(452265,'2015-03-05',14,'2015-02-19','Concluída',135698,223259),(456254,'2017-11-02',14,'2017-10-19','Concluída',233654,133965),(498872,'2024-10-14',3,'2030-01-15','Em Curso',736090,150619),(547894,'2017-12-16',9,'2017-12-07','Concluída',112321,544754),(565445,'2018-01-15',20,'2017-12-26','Concluída',855789,755656),(579148,'2016-10-14',3,'2022-01-15','Em Curso',272995,525009),(635452,'2017-04-02',14,'2017-03-19','Em Curso',852467,255898),(654525,'2017-05-03',14,'2017-04-19','Em Curso',815265,215469),(702449,'2019-10-14',3,'2025-01-15','Em Curso',408327,857787),(743273,'2020-10-14',3,'2026-01-15','Em Curso',758001,332619),(746207,'2025-10-14',3,'2031-01-15','Em Curso',203114,559734),(755654,'2017-10-21',12,'2017-10-09','Concluída',966354,566455),(812795,'2023-10-14',3,'2029-01-15','Em Curso',809677,913831),(866954,'2017-12-07',7,'2017-11-30','Concluída',255654,755652),(885565,'2018-03-02',15,'2018-02-15','Em Curso',903365,566545),(889878,'2018-03-07',15,'2018-02-20','Em curso',855654,889878),(896492,'2012-10-14',3,'2018-01-15','Em Curso',326744,254807),(899987,'2005-03-02',15,'2005-02-15','Em curso',455123,788998),(901221,'2018-10-14',3,'2024-01-15','Em Curso',896738,544386),(963325,'2019-03-02',14,'2019-02-19','Em Curso',603251,923654),(977699,'2018-02-22',4,'2018-02-18','Em curso',899565,866545);
 /*!40000 ALTER TABLE `ordem_servico` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -1455,35 +1433,50 @@ before insert on assistech.ordem_servico
 for each row
 begin
 		
-        #meses com 30 dias.
-		IF DAY(LAST_DAY(new.Dt_criacao))=30 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 30 then
-			set @diferenca:=abs(30 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
-            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao)+1, '-',@diferenca);
+        #meses com 30 dias. testado ok.
+		IF ( DAY(LAST_DAY(new.Dt_criacao)) = 30 ) AND ( (new.Prazo_em_dias + day(new.Dt_criacao)) > 30 ) then
+			set @diferenca := abs(30 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
+            set new.Dt_devida = ( CONCAT(YEAR(new.Dt_criacao), '-', MONTH(new.Dt_criacao)+1, '-', @diferenca) );
+		ELSEIF ( DAY(LAST_DAY(new.Dt_criacao)) = 30 ) THEN
+			set @diferenca := ( new.Prazo_em_dias + day(new.Dt_criacao) );   
+            set new.Dt_devida = ( CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao), '-',@diferenca) );
         END IF;  
         
-        #mes de dezembro, passou de 31, incrementa o ano.
-        IF EXTRACT(MONTH from new.Dt_criacao)=12 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 31 then
-				set @diferenca:=abs(31 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
-				set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao)+1, '-','01', '-',@diferenca);
+        #mes de dezembro, passou de 31, incrementa o ano. em teste. if ok.
+        IF ( EXTRACT(MONTH from new.Dt_criacao) = 12 ) AND ( (new.Prazo_em_dias + day(new.Dt_criacao)) > 31 ) then
+			set @diferenca := ( abs(31 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) ) );   
+			set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao)+1, '-','01', '-',@diferenca); 
+        ELSEIF ( EXTRACT(MONTH from new.Dt_criacao) = 12 ) THEN
+			set @diferenca := ( new.Prazo_em_dias + day(new.Dt_criacao) );   
+			set new.Dt_devida = ( CONCAT(YEAR(new.Dt_criacao), '-','12', '-',@diferenca) );
         END IF;
         
         #meses com 31 dias, exceto dezembro.
-        IF (EXTRACT(MONTH from new.Dt_criacao)!=12) AND (DAY(LAST_DAY(new.Dt_criacao))=31) AND ((new.Prazo_em_dias + day(new.Dt_criacao)) > 31) then
-			set @diferenca:=abs(31 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
-            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao)+1, '-',@diferenca);
+        IF ( EXTRACT(MONTH from new.Dt_criacao) != 12 ) AND ( DAY(LAST_DAY(new.Dt_criacao))=31 ) AND ( (new.Prazo_em_dias + day(new.Dt_criacao) ) > 31 ) THEN
+			set @diferenca := abs(31 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );   
+            set new.Dt_devida = CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao)+1, '-',@diferenca);
+        ELSEIF ( EXTRACT(MONTH from new.Dt_criacao)!=12 ) AND (DAY(LAST_DAY(new.Dt_criacao))=31) THEN
+			set @diferenca := ( new.Prazo_em_dias + day(new.Dt_criacao) );   
+            set new.Dt_devida = ( CONCAT(YEAR(new.Dt_criacao), '-',MONTH(new.Dt_criacao), '-',@diferenca) ); 
 		END IF;
         
         #ano não-bissexto, fevereiro com 28 dias.
-        IF DAY(LAST_DAY(new.Dt_criacao))=28 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 28 then
-			set @diferenca:=abs(28 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );
-            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-','03', '-',@diferenca);
+        IF (DAY(LAST_DAY(new.Dt_criacao))=28) AND ( (new.Prazo_em_dias + day(new.Dt_criacao)) > 28 ) THEN
+			set @diferenca := abs(28 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );
+            set new.Dt_devida = CONCAT(YEAR(new.Dt_criacao), '-','03', '-',@diferenca);
+        ELSEIF DAY(LAST_DAY(new.Dt_criacao))=28 THEN 
+			set @diferenca := ( new.Prazo_em_dias + day(new.Dt_criacao) );
+            set new.Dt_devida = (CONCAT(YEAR(new.Dt_criacao), '-','02', '-',@diferenca));
         END IF;    
         
         #ano bissexto. - Fevereiro tem 29 dias.
-        IF DAY(LAST_DAY(new.Dt_criacao))=29 AND (new.Prazo_em_dias + day(new.Dt_criacao)) > 29 then
-			set @diferenca:=abs(29 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );
-            set new.Dt_devida=CONCAT(YEAR(new.Dt_criacao), '-','03', '-',@diferenca);     
-        END IF;    
+        IF ( DAY(LAST_DAY(new.Dt_criacao)) = 29 ) AND ( (new.Prazo_em_dias + day(new.Dt_criacao)) > 29 ) THEN
+			set @diferenca := abs(29 - ( new.Prazo_em_dias + day(new.Dt_criacao) ) );
+            set new.Dt_devida = ( CONCAT(YEAR(new.Dt_criacao), '-','03', '-',@diferenca) );
+        ELSEIF ( DAY(LAST_DAY(new.Dt_criacao)) = 29 ) THEN
+			set @diferenca := ( new.Prazo_em_dias + day(new.Dt_criacao) );
+            set new.Dt_devida = ( CONCAT(YEAR(new.Dt_criacao), '-','02', '-',@diferenca) );
+		END IF;    
        
 end */;;
 DELIMITER ;
@@ -1626,7 +1619,7 @@ CREATE TABLE `plano_orcamento` (
 
 LOCK TABLES `plano_orcamento` WRITE;
 /*!40000 ALTER TABLE `plano_orcamento` DISABLE KEYS */;
-INSERT INTO `plano_orcamento` VALUES ('524702','',2047,'Sim','2018-09-29',142530),('517471','',561,'Não','2018-11-04',326138),('916786','',2759,'Não','2012-11-15',127003),('906403','',888,'Não','2018-11-04',993477),('647245','',2223,'Não','2015-12-11',469529),('441943','',1045,'Sim','2014-03-27',857233),('304653','',1500,'Não','2018-09-29',375295),('246040','',1245,'Sim','2018-11-04',285228),('544881','',392,'Não','2017-01-04',455427),('138653','',1745,'Sim','2011-04-06',721605),('727557','',1000,'Não','2012-04-12',414136),('950012','',3245,'Sim','2012-11-15',474898),('361195','',2245,'Não','2018-11-04',831513),('219922','',545,'Sim','2017-11-04',449291);
+INSERT INTO `plano_orcamento` VALUES ('524702','',2047,'Sim','2018-09-29',142530),('517471','',561,'Não','2018-11-04',326138),('916786','',2759,'Não','2012-11-15',127003),('906403','',888,'Não','2018-11-04',993477),('647245','',2223,'Não','2015-12-11',469529),('304653','',1500,'Não','2018-09-29',375295),('246040','',1245,'Sim','2018-11-04',285228),('544881','',392,'Não','2017-01-04',455427),('138653','',1745,'Sim','2011-04-06',721605),('727557','',1000,'Não','2012-04-12',414136),('950012','',3245,'Sim','2012-11-15',474898),('361195','',2245,'Não','2018-11-04',831513),('219922','',545,'Sim','2017-11-04',449291);
 /*!40000 ALTER TABLE `plano_orcamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1772,7 +1765,7 @@ CREATE TABLE `tecnico` (
 
 LOCK TABLES `tecnico` WRITE;
 /*!40000 ALTER TABLE `tecnico` DISABLE KEYS */;
-INSERT INTO `tecnico` VALUES ('3221219790136',17,19,15),('3221219790137',8,66,17),('3221219790138',24,17,10),('3221219790139',20,88,23),('3221219790140',12,7,28),('3221219790141',3,23,6),('3221219790142',18,68,21),('3221219790143',14,47,3),('3221219790144',16,7,22),('3221219790145',8,30,22),('3221219790146',10,30,29),('3221219790147',12,60,6),('3221219790148',7,21,24),('3221219790149',10,83,24),('3221219790150',16,62,12),('4555232574',15,33,2);
+INSERT INTO `tecnico` VALUES ('3221219790123',30,109,1),('3221219790124',20,27,2),('3221219790125',109,400,13),('3221219790136',17,19,15),('3221219790137',8,66,17),('3221219790138',24,17,10),('3221219790139',20,88,23),('3221219790140',12,7,28),('3221219790141',3,23,6),('3221219790142',18,68,21),('3221219790143',14,47,3),('3221219790144',16,7,22),('3221219790145',8,30,22),('3221219790146',10,30,29),('3221219790147',12,60,6),('3221219790148',7,21,24),('3221219790149',10,83,24),('3221219790150',16,62,12),('4555232574',15,33,2);
 /*!40000 ALTER TABLE `tecnico` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2000,7 +1993,7 @@ CREATE TABLE `unidade_de_suporte` (
 
 LOCK TABLES `unidade_de_suporte` WRITE;
 /*!40000 ALTER TABLE `unidade_de_suporte` DISABLE KEYS */;
-INSERT INTO `unidade_de_suporte` VALUES (13496314178466,12369,4,'Posuere Vulputate Industries','Bahia','Bahia','114-4625 Sed Ave','(81) 3031-2509\r'),(13496314178466,44665,6,'Varius Et LLC','São Paulo','São Paulo','Ap #333-7229 Pellentesque Avenue','(81) 3031-2508\r'),(13496314178466,58994,6,'Fermentum Convallis Incorporated','São Paulo','São Paulo','P.O. Box 295, 5585 Quam Street','(81) 3031-2507\r'),(13496314178469,12365,285,'Sed Neque Sed Associates','São Paulo','São Paulo','7595 Curabitur St.','(81) 3031-2506\r'),(13496314178469,45639,130,'Quisque Tincidunt Pede Incorporated','Minas Gerais','Minas Gerais','Ap #560-3318 Eget Ave','(81) 3031-2504\r'),(13496314178469,89874,102,'Ligula Aenean Euismod LLC','Rio de Janeiro','Rio de Janeiro','3905 Semper. St.','(81) 3031-2505\r'),(13496314178472,11111,999,'Quisque PC','Bahia','Bahia','Ap #317-4665 Lorem, St.','(81) 3031-2503\r'),(13496314178473,12032,27,'A PC','Paraíba','Paraíba','P.O. Box 129, 1164 Cras Road','(81) 3031-2502\r'),(13496314178474,89872,40,'Interdum Enim Non LLP','Rio de Janeiro','Rio de Janeiro','166-1000 Libero. Av.','(81) 3031-2501\r'),(13496314178475,12360,381,'Porttitor Eros Foundation','Minas Gerais','Minas Gerais','P.O. Box 581, 6377 Natoque Road','(81) 3031-2500\r'),(13496314178476,45632,347,'In Scelerisque Scelerisque LLP','Goiás','Goiás','4466 Vitae, Av.','(81) 3031-2499\r'),(13496314178477,78965,492,'A Limited','Bahia','Bahia','P.O. Box 699, 9231 Commodo St.','(81) 3031-2498\r'),(13496314178478,12366,293,'Vitae Sodales Institute','Rio Grande do Sul','Rio Grande do Sul','9472 Nunc Rd.','(81) 3031-2497\r'),(13496314178479,78963,215,'Nonummy Ac Foundation','Minas Gerais','Minas Gerais','Ap #910-3882 Praesent Avenue','(81) 3031-2496\r'),(13496314178480,12368,411,'Nec Luctus Foundation','Rio de Janeiro','Rio de Janeiro','5142 Aliquet Rd.','(81) 3031-2495');
+INSERT INTO `unidade_de_suporte` VALUES (13496314178466,12369,4,'Posuere Vulputate Industries','Bahia','Bahia','114-4625 Sed Ave','(81) 3031-2509\r'),(13496314178466,44665,7,'Varius Et LLC','São Paulo','São Paulo','Ap #333-7229 Pellentesque Avenue','(81) 3031-2508\r'),(13496314178466,58994,6,'Fermentum Convallis Incorporated','São Paulo','São Paulo','P.O. Box 295, 5585 Quam Street','(81) 3031-2507\r'),(13496314178469,12365,285,'Sed Neque Sed Associates','São Paulo','São Paulo','7595 Curabitur St.','(81) 3031-2506\r'),(13496314178469,45639,130,'Quisque Tincidunt Pede Incorporated','Minas Gerais','Minas Gerais','Ap #560-3318 Eget Ave','(81) 3031-2504\r'),(13496314178469,89874,102,'Ligula Aenean Euismod LLC','Rio de Janeiro','Rio de Janeiro','3905 Semper. St.','(81) 3031-2505\r'),(13496314178472,11111,999,'Quisque PC','Bahia','Bahia','Ap #317-4665 Lorem, St.','(81) 3031-2503\r'),(13496314178473,12032,27,'A PC','Paraíba','Paraíba','P.O. Box 129, 1164 Cras Road','(81) 3031-2502\r'),(13496314178474,89872,40,'Interdum Enim Non LLP','Rio de Janeiro','Rio de Janeiro','166-1000 Libero. Av.','(81) 3031-2501\r'),(13496314178475,12360,381,'Porttitor Eros Foundation','Minas Gerais','Minas Gerais','P.O. Box 581, 6377 Natoque Road','(81) 3031-2500\r'),(13496314178476,45632,347,'In Scelerisque Scelerisque LLP','Goiás','Goiás','4466 Vitae, Av.','(81) 3031-2499\r'),(13496314178477,78965,492,'A Limited','Bahia','Bahia','P.O. Box 699, 9231 Commodo St.','(81) 3031-2498\r'),(13496314178478,12366,293,'Vitae Sodales Institute','Rio Grande do Sul','Rio Grande do Sul','9472 Nunc Rd.','(81) 3031-2497\r'),(13496314178479,78963,215,'Nonummy Ac Foundation','Minas Gerais','Minas Gerais','Ap #910-3882 Praesent Avenue','(81) 3031-2496\r'),(13496314178480,12368,411,'Nec Luctus Foundation','Rio de Janeiro','Rio de Janeiro','5142 Aliquet Rd.','(81) 3031-2495');
 /*!40000 ALTER TABLE `unidade_de_suporte` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2133,15 +2126,15 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `kpi_atendimento`(Matricula_tec varchar(13), Data_1 DATE, Data_2 DATE)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `kpi_atendimento`(Matricula_tec varchar(13), Data_1 DATE, Data_2 DATE, Seq_kpi int)
 main: BEGIN
 
+declare num_atendimentos int;
 
-SELECT Matricula_tecnico, KPI_1, Dsc_KPI_1, KPI_2, Dsk_KPI_2, dt_inicio_periodo, dt_final_periodo
+SELECT COUNT(id_atendimento) into num_atendimentos FROM atendimento WHERE (Mat_tec_campo = Matricula_tec AND DAY(Dta_atendimento) >= DAY(Data_1) AND DAY(Dta_atendimento) <= DAY(Data_2));
 
-FROM kpi
+INSERT INTO kpi VALUES(Seq_kpi, Matricula_tec,num_atendimentos, 0, 'Total de Máquinas Consertadas por Semana', '', Data_1, Data_2, CURDATE());
 
-WHERE Matricula_tecnico = Matricula_tec and Data_1 = dt_inicio_periodo and Data_2 = dt_final_periodo;
 
 END ;;
 DELIMITER ;
@@ -2273,4 +2266,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-02-20 15:17:00
+-- Dump completed on 2018-02-21  2:05:00

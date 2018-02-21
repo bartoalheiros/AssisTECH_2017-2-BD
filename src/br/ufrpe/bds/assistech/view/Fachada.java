@@ -186,6 +186,10 @@ public class Fachada {
 	public void atualizarComponente(Componente co) {
 		componentes.atualizar(co);
 	}
+	
+	public List<Componente> listarComponentePorCodComputador(String str) {
+		return componentes.listarComponentePorCodComputador(str);
+	}
 
 	/** CLIENTE */
 	public List<Cliente> listarTodosClientes() {

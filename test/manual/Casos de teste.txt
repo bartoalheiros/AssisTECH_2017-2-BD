@@ -1,0 +1,19 @@
+Casos de teste
+
+Trigger 3:
+
+	-meses com 30 dias ok.
+
+	-meses com 31 dias ok.
+
+	-meses com 31 dias, exceto dezembro:
+		IF ok
+		ELSEIF  ok
+		
+	-ano não-bissexto fevereiro com 28 dias:	
+		IF ok
+		ELSEIF ok
+	-ano bissexto fevereiro com 29 dias:
+		alguns :: anos bissextos 2008, 2012, 2016..
+		IF ok
+		ELSEIF ok

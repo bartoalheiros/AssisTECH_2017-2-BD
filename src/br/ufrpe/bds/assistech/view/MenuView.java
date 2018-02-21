@@ -56,7 +56,7 @@ public class MenuView extends View {
 				new GerenciamentoFornecedorView().setVisible(true); 
 			}
 		});
-		btnGerenciarFornecedores.setBounds(10, 135, 177, 23);
+		btnGerenciarFornecedores.setBounds(136, 76, 248, 23);
 		contentPane.add(btnGerenciarFornecedores);
 
 		JButton btnGerenciarFuncionrio = new JButton("Gerenciar Funcionários");
@@ -65,7 +65,7 @@ public class MenuView extends View {
 				new GerenciamentoFuncionarioView().setVisible(true); 
 			}
 		});
-		btnGerenciarFuncionrio.setBounds(10, 169, 177, 23);
+		btnGerenciarFuncionrio.setBounds(136, 110, 248, 23);
 		contentPane.add(btnGerenciarFuncionrio);
 
 		JButton btnGerenciarChamado = new JButton("Gerenciar  Chamados");
@@ -74,16 +74,16 @@ public class MenuView extends View {
 				new GerenciamentoChamadoView().setVisible(true);
 			}
 		});
-		btnGerenciarChamado.setBounds(10, 203, 177, 23);
+		btnGerenciarChamado.setBounds(136, 144, 248, 23);
 		contentPane.add(btnGerenciarChamado);
 
-		JButton btnGerenciarComputadores = new JButton("Gerenciar Computadores");
+		JButton btnGerenciarComputadores = new JButton("Gerenciar Computador e Componentes");
 		btnGerenciarComputadores.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new GerenciamentoComputadorView().setVisible(true);
+				new GerenciamentoComputadorComponenteView().setVisible(true);
 			}
 		});
-		btnGerenciarComputadores.setBounds(10, 237, 177, 23);
+		btnGerenciarComputadores.setBounds(136, 178, 248, 23);
 		contentPane.add(btnGerenciarComputadores);
 
 		JLabel lblSelecioneUmaOpo = new JLabel("Selecione uma opção");
@@ -92,17 +92,8 @@ public class MenuView extends View {
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("img\\provider.png"));
-		lblNewLabel.setBounds(32, 52, 70, 72);
+		lblNewLabel.setBounds(32, 48, 70, 72);
 		contentPane.add(lblNewLabel);
-		
-		JButton btnGereComponent = new JButton("Gerenciar Componentes");
-		btnGereComponent.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				new GerenciamentoComponenteView().setVisible(true);
-			}
-		});
-		btnGereComponent.setBounds(10, 271, 177, 23);
-		contentPane.add(btnGereComponent);
 		
 		JButton btnNewButton = new JButton("Gerenciar Faturas");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -110,7 +101,7 @@ public class MenuView extends View {
 				new GerenciamentoFaturaView().setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(10, 305, 177, 23);
+		btnNewButton.setBounds(136, 226, 248, 23);
 		contentPane.add(btnNewButton);
 		
 		JButton btnGerenciarClientesE = new JButton("Gerenciar Cliente/Chamado");
@@ -119,7 +110,7 @@ public class MenuView extends View {
 				new GerenciamentoChamadosClienteView().setVisible(true);
 			}
 		});
-		btnGerenciarClientesE.setBounds(10, 339, 177, 23);
+		btnGerenciarClientesE.setBounds(136, 331, 249, 23);
 		contentPane.add(btnGerenciarClientesE);
 		
 		JButton btnGerenciarOrdemDe = new JButton("Gerenciar Ordem de Servico");
@@ -128,7 +119,7 @@ public class MenuView extends View {
 				new GerenciamentoOrdemServicoView().setVisible(true);
 			}
 		});
-		btnGerenciarOrdemDe.setBounds(10, 373, 176, 23);
+		btnGerenciarOrdemDe.setBounds(136, 260, 248, 23);
 		contentPane.add(btnGerenciarOrdemDe);
 
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);

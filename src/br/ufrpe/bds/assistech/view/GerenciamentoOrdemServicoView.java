@@ -429,9 +429,9 @@ public class GerenciamentoOrdemServicoView<E> extends JFrame {
 		JList list_1 = new JList();
 		scrollPane_2.setViewportView(list_1);
 		
-		JLabel lblServio = new JLabel("Serviço:");
-		lblServio.setBounds(465, 143, 46, 14);
-		contentPane.add(lblServio);
+		JLabel lblServico = new JLabel("Serviços:");
+		lblServico.setBounds(465, 143, 46, 14);
+		contentPane.add(lblServico);
 
 		Fachada fch = Fachada.getInstance();
 
