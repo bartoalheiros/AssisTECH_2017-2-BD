@@ -1,16 +1,13 @@
 package br.ufrpe.bds.assistech.model.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.swing.JOptionPane;
+
 import br.ufrpe.bds.assistech.model.bean.Funcionario;
-import br.ufrpe.bds.assistech.service.ConnectionFactory;
 
 public class FuncionarioDAO extends DAO<Funcionario>{
 
@@ -59,7 +56,9 @@ public class FuncionarioDAO extends DAO<Funcionario>{
 		} catch (SQLException ex) {
 			getCon().rollback();
 		} 
-
+		
+		System.out.println("rs: " + rs);
+		
 		List<Funcionario> funcionarios = new ArrayList<>();
 
 		while (rs.next()) {

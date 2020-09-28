@@ -41,17 +41,19 @@ public class FornecedorDAO extends DAO<Fornecedor>{
 	}
 
 	public List<Fornecedor> listarTodos() throws Exception {
-
+		
+		ResultSet rs = null;
 		String sql = "SELECT * FROM fornecedor";
 		prepare(sql);
-		ResultSet rs = null;
-
+		
 		try {
 			rs = getStmt().executeQuery();
 			getCon().commit();
 		} catch (SQLException e) {
 			getCon().rollback();
 		}
+		
+		System.out.println("rs: " + rs);
 
 		List<Fornecedor> fornecedores = new ArrayList<>();
 
