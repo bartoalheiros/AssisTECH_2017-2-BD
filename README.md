@@ -2,7 +2,7 @@
 Bem-vindos. Welcome.
 
 
-Apresentação do Sistema 0.1: https://www.youtube.com/watch?v=JkBznchsnSI&feature=youtu.be
+Apresentação do Sistema 0.1: https://cutt.ly/4f04fts
 
 *qualquer uso deve ser dado créditos aos idealizadores do sistema. 
 Enviar e-mail para: alheirosb@gmail.com
