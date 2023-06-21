@@ -14,7 +14,8 @@ Bem-vindos.
 Projeto escrito em Java SE 1.8
 Utiliza Maven e MYSQL 8
 
-Este é um projeto de Assistência Técnica de Software de Gestão de Computadores. como fornecedores e funcionários, equipamentos na assistência e etc. É possível criar, recuperar, atualizar e deletar. Os dados são persistidos no Banco de Dados MYSQL 8. Foi feita toda a modelagem dos dados no modelo eer, que é possível encontrar no caminho resource/Modelagem eer.
+Este é um projeto de Software de Gestão de Assistência Técnica Informática. É possível criar, recuperar, atualizar e deletar, cadastros de fornecedores, funcionários e equipamentos no atendimento por exemplo. Os dados são persistidos no Banco de Dados MYSQL 8. Foi feita toda a modelagem dos dados no modelo eer, que é possível encontrar no caminho resource/Modelagem eer.
+
 Demonstração do Sistema v1.0: https://cutt.ly/4f04fts
 
 *se forem feitos quaisquer usos devem ser dados os devidos créditos aos idealizadores do sistema. 
