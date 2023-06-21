@@ -8,7 +8,7 @@ This is a project with some classes which might be useful in  a Techinical Assis
 ystem Demonstration v1.0: https://cutt.ly/4f04fts
 
 *if any use is made, credit must be given to the creators of the system.
-Questions, send an email to: alheirosb@gmail.com****
+Questions, send an email to: alheirosb@gmail.com*
 
 Bem-vindos. 
 Projeto escrito em Java SE 1.8
