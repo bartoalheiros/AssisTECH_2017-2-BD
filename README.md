@@ -3,7 +3,7 @@ Welcome.
 Project written in Java SE 1.8
 Uses Maven and MYSQL 8
 
-This is a project for an Techinical Assistance of Computers Management Software. like suppliers and employees, equipments in the assistence and so on. It's possible to create, retrieve, update and delete. The data is persisted in MYSQL Database 8. It was made all data modeling in eer model, which is possiblie to find in resource/Modelagem eer path.
+This is a project for a Technical Computers Assistance Management Software. It's possible to create, retrieve, update and delete , suppliers, employees and equipments registers in the assistence for example. The data is persisted in MYSQL Database 8. It was made all data modeling in eer model, which is possiblie to find in resource/Modelagem eer path.
 
 ystem Video Demonstration v1.0(in Portuguese): https://cutt.ly/4f04fts
 
