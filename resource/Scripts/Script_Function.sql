@@ -1,9 +1,9 @@
 
 /*1 para retornar o total de hora semanal de trabalho de um FUNCIONADIO a partir de sua jornada de trabalho*/
 
-use assistech
+use assistech;
 
-DROP FUNCTION fn_hora;
+DROP FUNCTION IF EXISTS fn_hora;
 
 -- Edvaldo e Bartô
 DELIMITER $
